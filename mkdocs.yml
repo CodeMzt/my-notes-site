@@ -5,6 +5,23 @@ copyright: Copyright &copy; 2025 马梓腾 # 替换为你的名字
 # --- 主题设置 ---
 theme:
   name: material
+  features:
+    # 导航结构
+    - navigation.expand       # 1. 展开左侧导航树
+    - navigation.indexes      # 2. 启用目录页链接
+    
+    # 页面优化
+    - toc.follow              # 3. 目录跟随滚动
+    - content.tabs.link       # 4. 允许链接到内容标签页
+    - content.code.copy       # 5. 启用代码块复制按钮
+    
+    # 搜索优化
+    - search.suggest          # 6. 搜索建议
+    - search.highlight        # 7. 搜索结果高亮
+    
+    # 可选增强（根据偏好选择）
+    # - navigation.tabs         # 在顶部添加一级导航栏标签 (如果一级目录较少，推荐)
+    - header.autohide         # 滚动时自动隐藏顶部标题栏
   palette:
     # 浅色模式（系统偏好浅色时默认）
     - media: "(prefers-color-scheme: light)"
