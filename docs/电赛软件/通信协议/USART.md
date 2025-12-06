@@ -12,8 +12,7 @@
 |USB|DP、DM|半双工|异步|差分|点对点|
 # 硬件连接方式	
 
-<img src="./../%E5%9B%BE%E6%BA%90/USART%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5.png" alt="image-20251130203712118" style="zoom:50%;" />
-
+![../图源/USART硬件连接.png](../图源/USART硬件连接.png)
 
 # 信号电平标准
 
@@ -69,6 +68,7 @@
 ```
 
 常用波特率配置表：
+
 | 波特率 | 时钟源要求 | 适用场景 |
 |--------|------------|----------|
 | 9600 | 低频时钟 | 长距离通信 |
@@ -78,6 +78,5 @@
 
 # 时序例子
 
-<img src="./../%E5%9B%BE%E6%BA%90/USART%E6%97%B6%E5%BA%8F%E4%BE%8B%E5%AD%901.png" alt="image-20251130204422976" style="zoom:80%;" />
-
-<img src="./../%E5%9B%BE%E6%BA%90/USART%E6%97%B6%E5%BA%8F%E4%BE%8B%E5%AD%902.png" alt="image-20251130204448783" style="zoom:80%;" />
+![../图源/USART时序例子2.png](../图源/USART时序例子2.png)
+![../图源/USART时序例子1.png](../图源/USART时序例子1.png)

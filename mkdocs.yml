@@ -47,9 +47,9 @@ plugins:
   
 # --- 导航菜单配置 (Nav) ---
 nav:
-  - 首页: index.md
+  - 🏡 首页: index.md
 
-  - 机器学习 (Machine Learning): # 主菜单项：机器学习
+  - 🤖 机器学习 (Machine Learning):
     - Pytorch 学习:
       - nn 神经网络: 机器学习/Pytorch_Learning/nn.ipynb
       - tensor 张量: 机器学习/Pytorch_Learning/tensor.ipynb
@@ -58,31 +58,47 @@ nav:
       - tensorboard 可视化: 机器学习/Pytorch_Learning/tensorboard.ipynb
       - Test Notebook: 机器学习/Pytorch_Learning/Test.ipynb
       
-  - 电赛软件 (Embedded Software): # 主菜单项：电赛软件
-    - 简介: 电赛软件/电赛软件.md # 目录介绍页
+  - 💻 电赛软件 (Embedded Software):
+    - 简介: 电赛软件/电赛软件.md 
     
-    - ARM 架构:
-        - ARM 架构概述: 电赛软件/ARM架构/ARM架构.md
-        - ARM Cortex-M CPU 架构: 电赛软件/ARM架构/ARM Cortex-M CPU 架构.md
-        - 通用寄存器: 电赛软件/ARM架构/通用寄存器.md
-        - 特殊寄存器xPSR: 电赛软件/ARM架构/特殊寄存器xPSR.md
+    - 基础与架构:
+        - ARM 架构:
+            - ARM 架构概述: 电赛软件/ARM架构/ARM架构.md
+            - ARM Cortex-M CPU 架构: 电赛软件/ARM架构/ARM Cortex-M CPU 架构.md
+            - 通用寄存器: 电赛软件/ARM架构/通用寄存器.md
+            - 特殊寄存器xPSR: 电赛软件/ARM架构/特殊寄存器xPSR.md
+        - 汇编入门:
+            - 汇编入门: 电赛软件/汇编入门/汇编入门.md
+            - 标签: 电赛软件/汇编入门/标签.md
+            - 内存管理: 电赛软件/汇编入门/内存管理.md
+            - 堆: 电赛软件/汇编入门/堆.md
+            - 栈: 电赛软件/汇编入门/栈.md
+            - POP指令: 电赛软件/汇编入门/POP指令.md
+            - PUSH指令: 电赛软件/汇编入门/PUSH指令.md
+            - B和BX指令: 电赛软件/汇编入门/B和BX指令.md
     
-    - RTOS 实时操作系统:
-        - 简介: 电赛软件/RTOS/RTOS.md
-        - 任务堆栈: 电赛软件/RTOS/任务堆栈.md
-        - 任务切换: 电赛软件/RTOS/任务切换.md
-        - FreeRTOS:
-            - FreeRTOS 简介: 电赛软件/RTOS/FreeRTOS/FreeRTOS.md
-            - 任务创建和删除: 电赛软件/RTOS/FreeRTOS/任务创建和删除.md
-            - 任务调度: 电赛软件/RTOS/FreeRTOS/任务调度.md
-            - 任务通知: 电赛软件/RTOS/FreeRTOS/任务通知.md
-            - 内存管理: 电赛软件/RTOS/FreeRTOS/内存管理.md
-            - 同步、互斥与通信: 电赛软件/RTOS/FreeRTOS/同步、互斥与通信.md
-            - 队列: 电赛软件/RTOS/FreeRTOS/队列.md
-            - 队列集: 电赛软件/RTOS/FreeRTOS/队列集.md
-            - 中断管理: 电赛软件/RTOS/FreeRTOS/中断管理.md
-            - 移植: 电赛软件/RTOS/FreeRTOS/移植.md
-            # 排序：我将 FreeRTOS 文件按照逻辑顺序进行了调整，你可以根据需要修改。
+    - 实时操作系统:
+        - RTOS 基础:
+            - RTOS 简介: 电赛软件/RTOS/RTOS.md
+            - 任务堆栈: 电赛软件/RTOS/任务堆栈.md
+            - 任务切换: 电赛软件/RTOS/任务切换.md
+        - FreeRTOS 详解:
+            - FreeRTOS 简介: 电赛软件/FreeRTOS/FreeRTOS.md
+            - 任务调度: 电赛软件/FreeRTOS/任务调度.md
+            - 列表和列表项: 电赛软件/FreeRTOS/列表和列表项.md
+            - 内存管理: 电赛软件/FreeRTOS/内存管理.md
+            - 任务创建和删除: 电赛软件/FreeRTOS/任务创建和删除.md
+            - 任务调度器的挂起和恢复: 电赛软件/FreeRTOS/任务调度器的挂起和恢复.md
+            - 同步、互斥与通信: 电赛软件/FreeRTOS/同步、互斥与通信.md
+            - 信号量: 电赛软件/FreeRTOS/信号量.md
+            - 互斥量: 电赛软件/FreeRTOS/互斥量.md
+            - 队列: 电赛软件/FreeRTOS/队列.md
+            - 队列集: 电赛软件/FreeRTOS/队列集.md
+            - 任务挂起和恢复: 电赛软件/FreeRTOS/任务挂起和恢复.md
+            - 任务通知: 电赛软件/FreeRTOS/任务通知.md
+            - 事件组: 电赛软件/FreeRTOS/事件组.md
+            - 中断管理: 电赛软件/FreeRTOS/中断管理.md
+            - 移植: 电赛软件/FreeRTOS/移植.
     
     - STM32 HAL 库:
         - 库介绍: 电赛软件/STM32 HAL库/STM32 HAL库.md
@@ -96,19 +112,18 @@ nav:
         - WDG: 电赛软件/STM32 HAL库/WDG.md
         - 硬件通信协议: 电赛软件/STM32 HAL库/硬件通信协议.md
     
-    - 通信协议:
-        - 简介: 电赛软件/通信协议/通信协议.md
-        - I2C: 电赛软件/通信协议/I2C.md
-        - SPI: 电赛软件/通信协议/SPI.md
-        - USART: 电赛软件/通信协议/USART.md
-        - CAN: 电赛软件/通信协议/CAN.md
-    
-    - 电控算法:
-        - 简介: 电赛软件/电控算法/电控算法.md
-        - PID: 电赛软件/电控算法/PID.md
-        - LQR: 电赛软件/电控算法/LQR.md
-        - SMC: 电赛软件/电控算法/SMC.md
-    
-    - 视觉应用:
-        - 视觉: 电赛软件/视觉/视觉.md
-        - Micropython & K230: 电赛软件/视觉/Micropython & K230.md
+    - 通信与算法:
+        - 通信协议:
+            - 简介: 电赛软件/通信协议/通信协议.md
+            - I2C: 电赛软件/通信协议/I2C.md
+            - SPI: 电赛软件/通信协议/SPI.md
+            - USART: 电赛软件/通信协议/USART.md
+            - CAN: 电赛软件/通信协议/CAN.md
+        - 电控算法:
+            - 简介: 电赛软件/电控算法/电控算法.md
+            - PID: 电赛软件/电控算法/PID.md
+            - LQR: 电赛软件/电控算法/LQR.md
+            - SMC: 电赛软件/电控算法/SMC.md
+        - 视觉应用:
+            - 视觉: 电赛软件/视觉/视觉.md
+            - Micropython & K230: 电赛软件/视觉/Micropython & K230.md
