@@ -1,10 +1,10 @@
 site_name: 个人技术与学习笔记 # 设置你的网站标题
 site_description: 机器学习与嵌入式开发笔记 # 添加一个网站描述
-copyright: Copyright &copy; 2024 Your Name # 替换为你的名字
+copyright: Copyright &copy; 2025 马梓腾 # 替换为你的名字
 
 # --- 主题设置 ---
 theme:
-  name: material
+  name: readthedocs
   language: zh # 设置主题语言为中文
   features:
     - navigation.expand # 展开所有父级导航
