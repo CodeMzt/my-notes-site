@@ -1,0 +1,86 @@
+site_name: 个人技术与学习笔记 # 设置你的网站标题
+site_description: 机器学习与嵌入式开发笔记 # 添加一个网站描述
+copyright: Copyright &copy; 2024 Your Name # 替换为你的名字
+
+# --- 主题设置 ---
+theme:
+  name: material
+  language: zh # 设置主题语言为中文
+  features:
+    - navigation.expand # 展开所有父级导航
+    - navigation.indexes # 允许在父级导航中点击目录页
+    - search.suggest # 搜索建议
+    - search.highlight # 搜索结果高亮
+    
+# --- 插件设置 ---
+plugins:
+  - search # 启用搜索功能
+  - jupyter # 启用 Jupyter Notebook 渲染插件（必须安装 mkdocs-jupyter）
+  
+# --- 导航菜单配置 (Nav) ---
+nav:
+  - 首页: index.md
+
+  - 机器学习 (Machine Learning): # 主菜单项：机器学习
+    - Pytorch 学习:
+      - nn 神经网络: 机器学习/Pytorch_Learning/nn.ipynb
+      - tensor 张量: 机器学习/Pytorch_Learning/tensor.ipynb
+      - data 数据处理: 机器学习/Pytorch_Learning/data.ipynb
+      - transform 转换: 机器学习/Pytorch_Learning/transfrom.ipynb
+      - tensorboard 可视化: 机器学习/Pytorch_Learning/tensorboard.ipynb
+      - Test Notebook: 机器学习/Pytorch_Learning/Test.ipynb
+      
+  - 电赛软件 (Embedded Software): # 主菜单项：电赛软件
+    - 简介: 电赛软件/电赛软件.md # 目录介绍页
+    
+    - ARM 架构:
+        - ARM 架构概述: 电赛软件/ARM架构/ARM架构.md
+        - ARM Cortex-M CPU 架构: 电赛软件/ARM架构/ARM Cortex-M CPU 架构.md
+        - 通用寄存器: 电赛软件/ARM架构/通用寄存器.md
+        - 特殊寄存器xPSR: 电赛软件/ARM架构/特殊寄存器xPSR.md
+    
+    - RTOS 实时操作系统:
+        - 简介: 电赛软件/RTOS/RTOS.md
+        - 任务堆栈: 电赛软件/RTOS/任务堆栈.md
+        - 任务切换: 电赛软件/RTOS/任务切换.md
+        - FreeRTOS:
+            - FreeRTOS 简介: 电赛软件/RTOS/FreeRTOS/FreeRTOS.md
+            - 任务创建和删除: 电赛软件/RTOS/FreeRTOS/任务创建和删除.md
+            - 任务调度: 电赛软件/RTOS/FreeRTOS/任务调度.md
+            - 任务通知: 电赛软件/RTOS/FreeRTOS/任务通知.md
+            - 内存管理: 电赛软件/RTOS/FreeRTOS/内存管理.md
+            - 同步、互斥与通信: 电赛软件/RTOS/FreeRTOS/同步、互斥与通信.md
+            - 队列: 电赛软件/RTOS/FreeRTOS/队列.md
+            - 队列集: 电赛软件/RTOS/FreeRTOS/队列集.md
+            - 中断管理: 电赛软件/RTOS/FreeRTOS/中断管理.md
+            - 移植: 电赛软件/RTOS/FreeRTOS/移植.md
+            # 排序：我将 FreeRTOS 文件按照逻辑顺序进行了调整，你可以根据需要修改。
+    
+    - STM32 HAL 库:
+        - 库介绍: 电赛软件/STM32 HAL库/STM32 HAL库.md
+        - GPIO 操作: 电赛软件/STM32 HAL库/GPIO操作.md
+        - NVIC: 电赛软件/STM32 HAL库/NVIC.md
+        - DMA: 电赛软件/STM32 HAL库/DMA.md
+        - ADC: 电赛软件/STM32 HAL库/ADC.md
+        - 定时器: 电赛软件/STM32 HAL库/定时器.md
+        - FLASH: 电赛软件/STM32 HAL库/FLASH.md
+        - BKP & RTC: 电赛软件/STM32 HAL库/BKP&RTC.md
+        - WDG: 电赛软件/STM32 HAL库/WDG.md
+        - 硬件通信协议: 电赛软件/STM32 HAL库/硬件通信协议.md
+    
+    - 通信协议:
+        - 简介: 电赛软件/通信协议/通信协议.md
+        - I2C: 电赛软件/通信协议/I2C.md
+        - SPI: 电赛软件/通信协议/SPI.md
+        - USART: 电赛软件/通信协议/USART.md
+        - CAN: 电赛软件/通信协议/CAN.md
+    
+    - 电控算法:
+        - 简介: 电赛软件/电控算法/电控算法.md
+        - PID: 电赛软件/电控算法/PID.md
+        - LQR: 电赛软件/电控算法/LQR.md
+        - SMC: 电赛软件/电控算法/SMC.md
+    
+    - 视觉应用:
+        - 视觉: 电赛软件/视觉/视觉.md
+        - Micropython & K230: 电赛软件/视觉/Micropython & K230.md
