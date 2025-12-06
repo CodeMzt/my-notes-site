@@ -3181,7 +3181,7 @@
 </code></pre>
 <h3 id="svc_setup"><code>SVC_Setup()</code></h3>
 <p>这一句 <code>SVC_Setup();</code> 在 CMSIS-RTOS2 的 <code>osKernelStart()</code> 函数中，主要目的是<strong>确保 SVC（Supervisor Call）异常的优先级被设置为复位后的默认值</strong>。
-关于<strong>异常</strong>可看[[中断管理]]</p>
+关于<strong>异常</strong>可看<a href="中断管理">中断管理</a></p>
 <h4 id="_2">详细解释：</h4>
 <h5 id="1-svc">1. SVC 异常的作用</h5>
 <ul>
@@ -3407,7 +3407,7 @@ void context_switch(Task* current, Task* next) {
 <h2 id="freertos_1">FreeRTOS 任务切换的触发条件</h2>
 <h3 id="_16">主动触发方式</h3>
 <p><strong>任务主动让出 CPU <code>portYIELD()/taskYIELD()</code>：</strong></p>
-<p>通过挂起PendSV启用PendSv异常，如何挂起见[[任务调度器的挂起和恢复]]</p>
+<p>通过挂起PendSV启用PendSv异常，如何挂起见<a href="任务调度器的挂起和恢复">任务调度器的挂起和恢复</a></p>
 <pre><code class="language-c">void vTaskA( void *pvParameters )
 {
     for( ;; )

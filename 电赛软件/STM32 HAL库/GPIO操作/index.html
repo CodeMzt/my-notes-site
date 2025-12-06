@@ -2258,9 +2258,9 @@
 <p><strong>GPIO</strong> (General Purpose Input/Output) 是微控制器与外部硬件进行交互的基础接口。在 STM32 中，每个 GPIO 引脚都可以独立配置为不同的模式和功能。</p>
 <h1 id="gpio">GPIO结构</h1>
 <h2 id="_1">片上结构</h2>
-<p>![[../图源/GPIO基本结构.png]]</p>
+<p><img alt="../图源/GPIO基本结构.png" src="../../%E5%9B%BE%E6%BA%90/GPIO%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84.png" /></p>
 <h2 id="_2">位结构</h2>
-<p>![[../图源/GPIO位结构.png]]</p>
+<p><img alt="../图源/GPIO位结构.png" src="../../%E5%9B%BE%E6%BA%90/GPIO%E4%BD%8D%E7%BB%93%E6%9E%84.png" /></p>
 <h2 id="cubemx"><strong>CubeMX 配置流程</strong></h2>
 <p>STM32CubeMX 是一个强大的图形化配置工具，用于生成初始化代码，极大地简化了 GPIO 的配置工作。</p>
 <ol>
@@ -2349,7 +2349,7 @@ if (HAL_GPIO_ReadPin(GPIOA, KEY_WKUP_Pin) == GPIO_PIN_RESET) {
 <h1 id="exti"><strong>外部中断（EXTI）与回调函数</strong></h1>
 <p>对于按键等需要实时响应的输入，通常配置为 <strong>外部中断（EXTI）</strong> 模式。</p>
 <h2 id="exti_1">EXTI基本结构</h2>
-<p>![[../图源/EXTI基本结构.png]]</p>
+<p><img alt="../图源/EXTI基本结构.png" src="../../%E5%9B%BE%E6%BA%90/EXTI%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84.png" /></p>
 <h2 id="afioio">AFIO（复用IO口）说明</h2>
 <ul>
 <li>
@@ -2360,7 +2360,7 @@ if (HAL_GPIO_ReadPin(GPIOA, KEY_WKUP_Pin) == GPIO_PIN_RESET) {
 </li>
 </ul>
 <h2 id="exti_2">EXTI框图</h2>
-<p>![[../图源/EXTI框图.png]]</p>
+<p><img alt="../图源/EXTI框图.png" src="../../%E5%9B%BE%E6%BA%90/EXTI%E6%A1%86%E5%9B%BE.png" /></p>
 <h2 id="exti_3"><strong>EXTI 配置要点</strong></h2>
 <ol>
 <li><strong>引脚模式</strong>：在 CubeMX 中将引脚配置为 <strong>GPIO_EXTIxx</strong>（例如 <code>GPIO_EXTI0</code>）。</li>
