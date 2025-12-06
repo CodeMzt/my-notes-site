@@ -2,7 +2,7 @@
 
 与之对应的概念是裸机。RTOS全称**Real Time OS** 即**实时操作系统**。通常用于需要在严格时间限制内对外部事件做出反应的嵌入式系统，有多任务处理、调度、实时调度等功能。特点：分而治之、延时下放、抢占式、任务堆栈······
 # 前置知识
-见[[../ARM架构/ARM架构|ARM架构]]
+见[../ARM架构/ARM架构|ARM架构](../ARM架构/ARM架构|ARM架构)
 # 基础知识
 ## 任务调度
 ### 方式
@@ -19,7 +19,7 @@
 2. **阻塞列表**：`pxDelayedTaskList`
 3. **挂起列表**：`xSuspendedTaskList`
 ## 任务堆栈
-- [[任务堆栈]]
+- [任务堆栈](任务堆栈)
 # 目录
-- [[任务切换]]
-- [[FreeRTOS/FreeRTOS|FreeRTOS]]
+- [任务切换](任务切换)
+- [FreeRTOS/FreeRTOS|FreeRTOS](FreeRTOS/FreeRTOS|FreeRTOS)

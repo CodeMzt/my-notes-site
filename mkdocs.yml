@@ -14,8 +14,8 @@ theme:
     
 # --- 插件设置 ---
 plugins:
-  - search # 启用搜索功能
-  - jupyter # 启用 Jupyter Notebook 渲染插件（必须安装 mkdocs-jupyter）
+  - search 
+  - mkdocs-jupyter
   
 # --- 导航菜单配置 (Nav) ---
 nav:

@@ -4,9 +4,9 @@
 **GPIO** (General Purpose Input/Output) 是微控制器与外部硬件进行交互的基础接口。在 STM32 中，每个 GPIO 引脚都可以独立配置为不同的模式和功能。
 # GPIO结构
 ## 片上结构
-![[../图源/GPIO基本结构.png]]
+![../图源/GPIO基本结构.png](../图源/GPIO基本结构.png)
 ## 位结构
-![[../图源/GPIO位结构.png]]
+![../图源/GPIO位结构.png](../图源/GPIO位结构.png)
 ## **CubeMX 配置流程**
 
 STM32CubeMX 是一个强大的图形化配置工具，用于生成初始化代码，极大地简化了 GPIO 的配置工作。
@@ -96,14 +96,14 @@ HAL 库提供了一套简洁、统一的 API 来操作 GPIO，其函数命名通
 对于按键等需要实时响应的输入，通常配置为 **外部中断（EXTI）** 模式。
 
 ## EXTI基本结构
-![[../图源/EXTI基本结构.png]]
+![../图源/EXTI基本结构.png](../图源/EXTI基本结构.png)
 ## AFIO（复用IO口）说明
 
 - AFIO主要用于引脚复用功能的选择和重定义
 
 - 在STM32中，AFIO主要完成两个任务：复用功能引脚重映射、中断引脚选择
 ## EXTI框图
-![[../图源/EXTI框图.png]]
+![../图源/EXTI框图.png](../图源/EXTI框图.png)
 ## **EXTI 配置要点**
 
 1. **引脚模式**：在 CubeMX 中将引脚配置为 **GPIO_EXTIxx**（例如 `GPIO_EXTI0`）。
