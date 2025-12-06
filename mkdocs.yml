@@ -4,13 +4,24 @@ copyright: Copyright &copy; 2025 马梓腾 # 替换为你的名字
 
 # --- 主题设置 ---
 theme:
-  name: readthedocs
-  language: zh # 设置主题语言为中文
-  features:
-    - navigation.expand # 展开所有父级导航
-    - navigation.indexes # 允许在父级导航中点击目录页
-    - search.suggest # 搜索建议
-    - search.highlight # 搜索结果高亮
+  name: material
+  palette:
+    # 浅色模式（系统偏好浅色时默认）
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: 切换到深色模式
+    # 深色模式（系统偏好深色时默认）
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue
+      accent: orange
+      toggle:
+        icon: material/toggle-switch
+        name: 切换到浅色模式
     
 # --- 插件设置 ---
 plugins:
