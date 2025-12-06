@@ -1,0 +1,37 @@
+name: Deploy MkDocs Documentation
+
+on:
+  push:
+    branches:
+      - master  # 当代码推送到 main 分支时触发
+  pull_request:
+    branches:
+      - master  # 也可以在 Pull Request 时运行测试
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # 使用最新的 Ubuntu 运行环境
+
+    steps:
+      # 步骤 1: 拉取代码
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 确保拉取完整的 Git 历史，方便 MkDocs 部署
+
+      # 步骤 2: 设置 Python 环境
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+
+      # 步骤 3: 安装依赖
+      - name: Install dependencies (MkDocs & Jupyter)
+        run: |
+          pip install mkdocs mkdocs-material 
+          pip install mkdocs-jupyter
+          # 如果你在笔记中使用了其他 Python 包，也在这里安装它们
+
+      # 步骤 4: 构建并部署 MkDocs
+      - name: Deploy MkDocs to GitHub Pages
+        run: mkdocs gh-deploy --force
+        # 使用 --force 确保覆盖旧的 gh-pages 内容
