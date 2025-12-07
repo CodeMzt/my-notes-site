@@ -11,24 +11,28 @@
       
       
       
+        <link rel="prev" href="../I2C/">
+      
+      
+        <link rel="next" href="../USART/">
       
       
         
       
       
-      <link rel="icon" href="/assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
-        <title>个人技术与学习笔记</title>
+        <title>SPI - 个人技术与学习笔记</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -47,7 +51,7 @@
       
     
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -71,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#spi" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -83,7 +92,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="个人技术与学习笔记" class="md-header__button md-logo" aria-label="个人技术与学习笔记" data-md-component="logo">
+    <a href="../../.." title="个人技术与学习笔记" class="md-header__button md-logo" aria-label="个人技术与学习笔记" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -103,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              SPI
             
           </span>
         </div>
@@ -209,7 +218,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="个人技术与学习笔记" class="md-nav__button md-logo" aria-label="个人技术与学习笔记" data-md-component="logo">
+    <a href="../../.." title="个人技术与学习笔记" class="md-nav__button md-logo" aria-label="个人技术与学习笔记" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -227,7 +236,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -309,7 +318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/MachineLearning/README.md" class="md-nav__link">
+      <a href="../../../MachineLearning/README.md" class="md-nav__link">
         
   
   
@@ -390,7 +399,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/MachineLearning/Pytorch_Learning/nn.ipynb" class="md-nav__link">
+      <a href="../../../MachineLearning/Pytorch_Learning/nn.ipynb" class="md-nav__link">
         
   
   
@@ -430,8 +439,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -451,13 +462,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -478,7 +487,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -496,7 +505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/EmbeddedSoft/" class="md-nav__link">
+      <a href="../../EmbeddedSoft/" class="md-nav__link">
         
   
   
@@ -638,7 +647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/ARM_Arch/ARM_Arch/" class="md-nav__link">
+      <a href="../../ARM_Arch/ARM_Arch/" class="md-nav__link">
         
   
   
@@ -666,7 +675,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/ARM_Arch/ARM%20Cortex-M%20CPU/" class="md-nav__link">
+      <a href="../../ARM_Arch/ARM%20Cortex-M%20CPU/" class="md-nav__link">
         
   
   
@@ -694,7 +703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/ARM_Arch/GeneralReg/" class="md-nav__link">
+      <a href="../../ARM_Arch/GeneralReg/" class="md-nav__link">
         
   
   
@@ -722,7 +731,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/ARM_Arch/SpecialReg_xPSR/" class="md-nav__link">
+      <a href="../../ARM_Arch/SpecialReg_xPSR/" class="md-nav__link">
         
   
   
@@ -825,7 +834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Assembly_Intro/Assembly_Intro/" class="md-nav__link">
+      <a href="../../Assembly_Intro/Assembly_Intro/" class="md-nav__link">
         
   
   
@@ -853,7 +862,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Assembly_Intro/Mem_Mgmt/" class="md-nav__link">
+      <a href="../../Assembly_Intro/Mem_Mgmt/" class="md-nav__link">
         
   
   
@@ -881,7 +890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Assembly_Intro/stack/" class="md-nav__link">
+      <a href="../../Assembly_Intro/stack/" class="md-nav__link">
         
   
   
@@ -909,7 +918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Assembly_Intro/heap/" class="md-nav__link">
+      <a href="../../Assembly_Intro/heap/" class="md-nav__link">
         
   
   
@@ -937,7 +946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Assembly_Intro/label/" class="md-nav__link">
+      <a href="../../Assembly_Intro/label/" class="md-nav__link">
         
   
   
@@ -965,7 +974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Assembly_Intro/PUSH/" class="md-nav__link">
+      <a href="../../Assembly_Intro/PUSH/" class="md-nav__link">
         
   
   
@@ -993,7 +1002,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Assembly_Intro/POP/" class="md-nav__link">
+      <a href="../../Assembly_Intro/POP/" class="md-nav__link">
         
   
   
@@ -1021,7 +1030,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Assembly_Intro/B%26BX/" class="md-nav__link">
+      <a href="../../Assembly_Intro/B%26BX/" class="md-nav__link">
         
   
   
@@ -1181,7 +1190,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/RTOS/" class="md-nav__link">
+      <a href="../../RTOS/RTOS/" class="md-nav__link">
         
   
   
@@ -1209,7 +1218,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/Tasks_Stack/" class="md-nav__link">
+      <a href="../../RTOS/Tasks_Stack/" class="md-nav__link">
         
   
   
@@ -1237,7 +1246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/Tasks_Switch/" class="md-nav__link">
+      <a href="../../RTOS/Tasks_Switch/" class="md-nav__link">
         
   
   
@@ -1338,7 +1347,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/FreeRTOS.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/FreeRTOS.md" class="md-nav__link">
         
   
   
@@ -1366,7 +1375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/Tasks_Create&Delete.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Tasks_Create&Delete.md" class="md-nav__link">
         
   
   
@@ -1394,7 +1403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/Scheduling.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Scheduling.md" class="md-nav__link">
         
   
   
@@ -1422,7 +1431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/Idle&Scheduling.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Idle&Scheduling.md" class="md-nav__link">
         
   
   
@@ -1450,7 +1459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/TaksPend&Resume.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/TaksPend&Resume.md" class="md-nav__link">
         
   
   
@@ -1478,7 +1487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/List&ListItem.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/List&ListItem.md" class="md-nav__link">
         
   
   
@@ -1506,7 +1515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/KernelPend.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/KernelPend.md" class="md-nav__link">
         
   
   
@@ -1609,7 +1618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/Sync_Comms.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Sync_Comms.md" class="md-nav__link">
         
   
   
@@ -1637,7 +1646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/Mem_Mgmt.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Mem_Mgmt.md" class="md-nav__link">
         
   
   
@@ -1665,7 +1674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/Semaphore.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Semaphore.md" class="md-nav__link">
         
   
   
@@ -1693,7 +1702,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/Mutex.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Mutex.md" class="md-nav__link">
         
   
   
@@ -1721,7 +1730,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/Queue.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Queue.md" class="md-nav__link">
         
   
   
@@ -1749,7 +1758,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/Queue_Set.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Queue_Set.md" class="md-nav__link">
         
   
   
@@ -1777,7 +1786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/TaskNote.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/TaskNote.md" class="md-nav__link">
         
   
   
@@ -1805,7 +1814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/Event_Group.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Event_Group.md" class="md-nav__link">
         
   
   
@@ -1896,7 +1905,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/Interrupt_Mgmt.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Interrupt_Mgmt.md" class="md-nav__link">
         
   
   
@@ -1924,7 +1933,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/Porting.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Porting.md" class="md-nav__link">
         
   
   
@@ -2039,7 +2048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/STM32_HAL/STM32_HAL/" class="md-nav__link">
+      <a href="../../STM32_HAL/STM32_HAL/" class="md-nav__link">
         
   
   
@@ -2067,7 +2076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/STM32_HAL/GPIO/" class="md-nav__link">
+      <a href="../../STM32_HAL/GPIO/" class="md-nav__link">
         
   
   
@@ -2095,7 +2104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/STM32_HAL/NVIC/" class="md-nav__link">
+      <a href="../../STM32_HAL/NVIC/" class="md-nav__link">
         
   
   
@@ -2123,7 +2132,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/STM32_HAL/DMA/" class="md-nav__link">
+      <a href="../../STM32_HAL/DMA/" class="md-nav__link">
         
   
   
@@ -2151,7 +2160,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/STM32_HAL/ADC/" class="md-nav__link">
+      <a href="../../STM32_HAL/ADC/" class="md-nav__link">
         
   
   
@@ -2179,7 +2188,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/STM32_HAL/TIM/" class="md-nav__link">
+      <a href="../../STM32_HAL/TIM/" class="md-nav__link">
         
   
   
@@ -2207,7 +2216,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/STM32_HAL/FLASH/" class="md-nav__link">
+      <a href="../../STM32_HAL/FLASH/" class="md-nav__link">
         
   
   
@@ -2235,7 +2244,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/STM32_HAL/BKP%26RTC/" class="md-nav__link">
+      <a href="../../STM32_HAL/BKP%26RTC/" class="md-nav__link">
         
   
   
@@ -2263,7 +2272,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/STM32_HAL/WDG/" class="md-nav__link">
+      <a href="../../STM32_HAL/WDG/" class="md-nav__link">
         
   
   
@@ -2291,7 +2300,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/STM32_HAL/connective/" class="md-nav__link">
+      <a href="../../STM32_HAL/connective/" class="md-nav__link">
         
   
   
@@ -2324,8 +2333,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -2343,13 +2354,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
         
           
           <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
@@ -2370,7 +2379,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2388,7 +2397,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Connective/Connective/" class="md-nav__link">
+      <a href="../Connective/" class="md-nav__link">
         
   
   
@@ -2416,7 +2425,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Connective/I2C/" class="md-nav__link">
+      <a href="../I2C/" class="md-nav__link">
         
   
   
@@ -2441,10 +2450,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Connective/SPI/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2460,6 +2478,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -2472,7 +2491,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Connective/USART/" class="md-nav__link">
+      <a href="../USART/" class="md-nav__link">
         
   
   
@@ -2500,7 +2519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Connective/CAN/" class="md-nav__link">
+      <a href="../CAN/" class="md-nav__link">
         
   
   
@@ -2650,7 +2669,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Control_Algos/Control_Algos/" class="md-nav__link">
+      <a href="../../Control_Algos/Control_Algos/" class="md-nav__link">
         
   
   
@@ -2678,7 +2697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Control_Algos/PID/" class="md-nav__link">
+      <a href="../../Control_Algos/PID/" class="md-nav__link">
         
   
   
@@ -2706,7 +2725,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Control_Algos/LQR/" class="md-nav__link">
+      <a href="../../Control_Algos/LQR/" class="md-nav__link">
         
   
   
@@ -2734,7 +2753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Control_Algos/SMC/" class="md-nav__link">
+      <a href="../../Control_Algos/SMC/" class="md-nav__link">
         
   
   
@@ -2825,7 +2844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/CV/CV/" class="md-nav__link">
+      <a href="../../CV/CV/" class="md-nav__link">
         
   
   
@@ -2853,7 +2872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/CV/Micropython%20%26%20K230/" class="md-nav__link">
+      <a href="../../CV/Micropython%20%26%20K230/" class="md-nav__link">
         
   
   
@@ -2914,6 +2933,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -2926,8 +2947,300 @@
               
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+
+<h1 id="spi">一、 SPI 协议简介</h1>
+<p>SPI（Serial Peripheral Interface）是由摩托罗拉公司开发的一种<strong>全双工、同步、四线制</strong>的串行通信总线。它以其<strong>简单性和高速度</strong>而闻名。</p>
+<ul>
+<li>
+<p><strong>全双工</strong>：数据可以同时在主设备和从设备之间双向传输。</p>
+</li>
+<li>
+<p><strong>同步</strong>：通信双方通过统一的时钟信号（SCLK）来同步数据位（MOSI, MISO）的传输节奏。</p>
+</li>
+<li>
+<p><strong>四线制</strong>：通常需要四根信号线（有时可精简为三线）。</p>
+</li>
+<li>
+<p><strong>高速</strong>：相比 I2C，SPI 可以达到很高的速度（几十 Mbps 甚至上百 Mbps），没有标准上限。（推挽输出能力强）</p>
+</li>
+<li>
+<p><strong>无寻址</strong>：通过硬件片选（CS）线选择从设备，不支持软件寻址。</p>
+</li>
+</ul>
+<h1 id="_1">二、 硬件连接与信号线</h1>
+<p><img alt="image-20251125232423129" src="../../photosource/SPI%E6%8E%A5%E7%BA%BF.png" />
+SPI 通信至少需要四根线：</p>
+<table>
+<thead>
+<tr>
+<th>信号线名称</th>
+<th>全称</th>
+<th>方向</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SCLK / SCK</strong></td>
+<td>Serial Clock</td>
+<td>主 → 从</td>
+<td>主设备产生的同步时钟信号。</td>
+</tr>
+<tr>
+<td><strong>MOSI / SDO</strong></td>
+<td>Master Out Slave In</td>
+<td>主 → 从</td>
+<td>数据从<strong>主设备</strong>输出，输入到<strong>从设备</strong>。</td>
+</tr>
+<tr>
+<td><strong>MISO / SDI</strong></td>
+<td>Master In Slave Out</td>
+<td>从 → 主</td>
+<td>数据从<strong>从设备</strong>输出，输入到<strong>主设备</strong>。</td>
+</tr>
+<tr>
+<td><strong>CS / SS</strong></td>
+<td>Chip Select / Slave Select</td>
+<td>主 → 从</td>
+<td>主设备用于<strong>选择</strong>目标从设备的信号（低电平有效）。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>[!NOTE]</p>
+<p>输出引脚配置为推挽输出，输入引脚配置为浮空或上拉输入。</p>
+<p>当从机未被选中时，其输出引脚MISO必须为高阻态（断开）</p>
+</blockquote>
+<h1 id="_2">三、 核心概念</h1>
+<h2 id="_3">移位示意</h2>
+<p><img alt="SPI移位示意" src="../../photosource/SPI%E7%A7%BB%E4%BD%8D%E7%A4%BA%E6%84%8F.png" /></p>
+<h2 id="1-cpolcpha">1. 时钟极性（CPOL）与时钟相位（CPHA）</h2>
+<p>这是 SPI 最核心也最容易混淆的概念，它们共同定义了<strong>时钟的稳定电平和数据采样的边沿</strong>。有四种可能的模式。</p>
+<ul>
+<li>
+<p><strong>时钟极性 CPOL</strong>：</p>
+<ul>
+<li>
+<p><strong>CPOL = 0</strong>： 时钟空闲状态（当 CS 有效但无数据传输时）为<strong>低电平</strong>。</p>
+</li>
+<li>
+<p><strong>CPOL = 1</strong>： 时钟空闲状态为<strong>高电平</strong>。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>时钟相位 CPHA</strong>：</p>
+<ul>
+<li>
+<p><strong>CPHA = 0</strong>： 数据在<strong>时钟的第一个边沿</strong>（即 SCK 从空闲状态变化的第一个边沿）被采样。</p>
+</li>
+<li>
+<p><strong>CPHA = 1</strong>： 数据在<strong>时钟的第二个边沿</strong>（即 SCK 从空闲状态变化的第二个边沿）被采样。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>四种 SPI 模式总结：</strong></p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>CPOL</th>
+<th>CPHA</th>
+<th>时钟空闲状态</th>
+<th>数据采样时刻</th>
+<th>数据移位/变化时刻</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Mode 0</strong></td>
+<td>0</td>
+<td>0</td>
+<td>Low</td>
+<td><strong>第一个时钟边沿（上升沿）</strong></td>
+<td>在下降沿（第二个边沿）</td>
+</tr>
+<tr>
+<td><strong>Mode 1</strong></td>
+<td>0</td>
+<td>1</td>
+<td>Low</td>
+<td><strong>第二个时钟边沿（下降沿）</strong></td>
+<td>在上升沿（第一个边沿）</td>
+</tr>
+<tr>
+<td><strong>Mode 2</strong></td>
+<td>1</td>
+<td>0</td>
+<td>High</td>
+<td><strong>第一个时钟边沿（下降沿）</strong></td>
+<td>在上升沿（第二个边沿）</td>
+</tr>
+<tr>
+<td><strong>Mode 3</strong></td>
+<td>1</td>
+<td>1</td>
+<td>High</td>
+<td><strong>第二个时钟边沿（上升沿）</strong></td>
+<td>在下降沿（第一个边沿）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>关键记忆点</strong>：<strong>Mode 0</strong> 和 <strong>Mode 3</strong> 是最常用的两种模式。<strong>主设备和从设备的 CPOL 与 CPHA 设置必须完全一致</strong>，否则无法正常通信。</p>
+</blockquote>
+<h2 id="2-bit-order">2. 数据顺序（Bit Order）</h2>
+<ul>
+<li>可以配置为 <strong>MSB First</strong>（最高位先行）或 <strong>LSB First</strong>（最低位先行）。MSB First 是默认和最常见的方式。</li>
+</ul>
+<h2 id="3-frame-size">3. 数据帧大小（Frame Size）</h2>
+<ul>
+<li>通常为 <strong>8位</strong>（1个字节），但许多现代控制器支持任意长度的数据帧（如 4位， 12位， 16位等）。</li>
+</ul>
+<h1 id="_4">四、 通信流程与帧格式</h1>
+<p>SPI 的通信流程非常简单，由主设备完全控制。</p>
+<h2 id="_5">基本通信流程</h2>
+<ol>
+<li><strong>初始化</strong>：主设备配置时钟极性（CPOL）和相位（CPHA）。</li>
+<li><strong>片选</strong>(开始)：主设备将目标从设备的 <strong>CS 线拉低</strong>（有效），激活该从设备。</li>
+</ol>
+<p><img alt="SPI起始条件" src="../../photosource/SPI%E8%B5%B7%E5%A7%8B%E6%9D%A1%E4%BB%B6.png" /></p>
+<ol>
+<li>
+<p><strong>数据传输</strong>：主设备在 SCLK 线上产生时钟脉冲，同时：</p>
+<ul>
+<li>
+<p>通过 <strong>MOSI</strong> 线将数据一位一位地发送给从设备。</p>
+</li>
+<li>
+<p>通过 <strong>MISO</strong> 线从从设备一位一位地接收数据。</p>
+</li>
+<li>
+<p>这是一个<strong>同时进行（全双工）</strong> 的过程。</p>
+</li>
+<li><strong>传输结束</strong>：主设备将 <strong>CS 线拉高</strong>（无效），结束通信。</li>
+</ul>
+</li>
+</ol>
+<h2 id="8">帧格式波形图（以 8 位数据传输为例）</h2>
+<p>由于 SPI 有四种模式，其波形也不同。下图清晰地展示了四种模式下的数据传输时序。</p>
+<p><strong>通用时序概念：</strong></p>
+<ul>
+<li><strong>数据采样时刻</strong>：接收端读取数据位的时机。</li>
+<li><strong>数据变化时刻</strong>：发送端改变数据位的时机。</li>
+</ul>
+<h3 id="0">模式0</h3>
+<p><img alt="SPI模式0" src="../../photosource/SPI%E6%A8%A1%E5%BC%8F0.png" /></p>
+<h3 id="1">模式1</h3>
+<p><img alt="SPI模式1" src="../../photosource/SPI%E6%A8%A1%E5%BC%8F1.png" /></p>
+<h3 id="2">模式2</h3>
+<p><img alt="SPI模式2" src="../../photosource/SPI%E6%A8%A1%E5%BC%8F2.png" /></p>
+<h3 id="3">模式3</h3>
+<p><img alt="SPI模式3" src="../../photosource/SPI%E6%A8%A1%E5%BC%8F3.png" /></p>
+<blockquote>
+<p>[!NOTE]</p>
+<p>双线交叉表示传输一个Bit。</p>
+<p>MISO为置于中间的一条线，表示高阻态，即断开。从此状态变为拉开的状态，表示从机被选中，允许开始通信。</p>
+<p>所有数据传完后，MOSI变换电平是为了回到默认电平，如果没有默认电平也可以不变换。</p>
+</blockquote>
+<h2 id="_6">多字节连续传输</h2>
+<p>SPI 可以非常容易地进行多字节连续传输。主设备只需在 CS 有效期间，持续产生 SCLK 时钟周期即可。每个 SCLK 周期传输一位数据。</p>
+<p><img alt="image-20251126132030371" src="../../photosource/SPI%E5%A4%9A%E5%AD%97%E8%8A%82.png" /></p>
+<h1 id="spi_1">五、 SPI 优缺点总结</h1>
+<table>
+<thead>
+<tr>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>全双工通信</strong>，效率高</td>
+<td><strong>需要4根线</strong>，比 I2C 占用更多 GPIO</td>
+</tr>
+<tr>
+<td><strong>协议非常简单</strong>，硬件实现容易</td>
+<td><strong>无硬件应答机制</strong>，无法确认数据是否被成功接收</td>
+</tr>
+<tr>
+<td><strong>通信速度非常高</strong>，没有标准上限</td>
+<td><strong>无标准的寻址机制</strong>，需要大量独立的 CS 线连接多从机</td>
+</tr>
+<tr>
+<td><strong>通信过程由主设备完全控制</strong>，无需复杂的仲裁和同步</td>
+<td><strong>没有官方的标准协议</strong>，不同厂商设备可能有不同要求</td>
+</tr>
+<tr>
+<td><strong>数据传输结构灵活</strong>，没有固定的数据帧格式</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="spi-i2c">六、 SPI 与 I2C 的快速对比</h1>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>SPI</th>
+<th>I2C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>线数</strong></td>
+<td>4 线（CS, SCLK, MOSI, MISO）</td>
+<td>2 线（SDA, SCL）</td>
+</tr>
+<tr>
+<td><strong>速度</strong></td>
+<td>高（通常 &gt;10 Mbps）</td>
+<td>中低速（标准模式 100kbps，快速模式 400kbps）</td>
+</tr>
+<tr>
+<td><strong>通信方式</strong></td>
+<td>全双工</td>
+<td>半双工</td>
+</tr>
+<tr>
+<td><strong>拓扑</strong></td>
+<td>点对点、独立CS、菊花链</td>
+<td>多主从、总线型、软件寻址</td>
+</tr>
+<tr>
+<td><strong>协议复杂度</strong></td>
+<td>简单</td>
+<td>相对复杂（有起始、停止、应答位）</td>
+</tr>
+<tr>
+<td><strong>流控/应答</strong></td>
+<td>无</td>
+<td>有（ACK/NACK 位）</td>
+</tr>
+<tr>
+<td><strong>硬件开销</strong></td>
+<td>主设备 CS 线随从设备数量增加</td>
+<td>硬件资源固定</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -2970,10 +3283,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "/", "features": ["navigation.expand", "navigation.indexes", "toc.follow", "content.tabs.link", "content.code.copy", "search.suggest", "search.highlight", "header.autohide"], "search": "/assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.expand", "navigation.indexes", "toc.follow", "content.tabs.link", "content.code.copy", "search.suggest", "search.highlight", "header.autohide"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="/assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
     
   </body>

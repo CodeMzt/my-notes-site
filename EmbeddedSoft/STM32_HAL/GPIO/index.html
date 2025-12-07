@@ -11,24 +11,28 @@
       
       
       
+        <link rel="prev" href="../STM32_HAL/">
+      
+      
+        <link rel="next" href="../NVIC/">
       
       
         
       
       
-      <link rel="icon" href="/assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
-        <title>个人技术与学习笔记</title>
+        <title>GPIO - 个人技术与学习笔记</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -47,7 +51,7 @@
       
     
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -71,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#gpio-cubemx" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -83,7 +92,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="个人技术与学习笔记" class="md-header__button md-logo" aria-label="个人技术与学习笔记" data-md-component="logo">
+    <a href="../../.." title="个人技术与学习笔记" class="md-header__button md-logo" aria-label="个人技术与学习笔记" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -103,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              GPIO
             
           </span>
         </div>
@@ -209,7 +218,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="个人技术与学习笔记" class="md-nav__button md-logo" aria-label="个人技术与学习笔记" data-md-component="logo">
+    <a href="../../.." title="个人技术与学习笔记" class="md-nav__button md-logo" aria-label="个人技术与学习笔记" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -227,7 +236,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -309,7 +318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/MachineLearning/README.md" class="md-nav__link">
+      <a href="../../../MachineLearning/README.md" class="md-nav__link">
         
   
   
@@ -390,7 +399,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/MachineLearning/Pytorch_Learning/nn.ipynb" class="md-nav__link">
+      <a href="../../../MachineLearning/Pytorch_Learning/nn.ipynb" class="md-nav__link">
         
   
   
@@ -430,8 +439,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -451,13 +462,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -478,7 +487,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -496,7 +505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/EmbeddedSoft/" class="md-nav__link">
+      <a href="../../EmbeddedSoft/" class="md-nav__link">
         
   
   
@@ -638,7 +647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/ARM_Arch/ARM_Arch/" class="md-nav__link">
+      <a href="../../ARM_Arch/ARM_Arch/" class="md-nav__link">
         
   
   
@@ -666,7 +675,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/ARM_Arch/ARM%20Cortex-M%20CPU/" class="md-nav__link">
+      <a href="../../ARM_Arch/ARM%20Cortex-M%20CPU/" class="md-nav__link">
         
   
   
@@ -694,7 +703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/ARM_Arch/GeneralReg/" class="md-nav__link">
+      <a href="../../ARM_Arch/GeneralReg/" class="md-nav__link">
         
   
   
@@ -722,7 +731,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/ARM_Arch/SpecialReg_xPSR/" class="md-nav__link">
+      <a href="../../ARM_Arch/SpecialReg_xPSR/" class="md-nav__link">
         
   
   
@@ -825,7 +834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Assembly_Intro/Assembly_Intro/" class="md-nav__link">
+      <a href="../../Assembly_Intro/Assembly_Intro/" class="md-nav__link">
         
   
   
@@ -853,7 +862,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Assembly_Intro/Mem_Mgmt/" class="md-nav__link">
+      <a href="../../Assembly_Intro/Mem_Mgmt/" class="md-nav__link">
         
   
   
@@ -881,7 +890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Assembly_Intro/stack/" class="md-nav__link">
+      <a href="../../Assembly_Intro/stack/" class="md-nav__link">
         
   
   
@@ -909,7 +918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Assembly_Intro/heap/" class="md-nav__link">
+      <a href="../../Assembly_Intro/heap/" class="md-nav__link">
         
   
   
@@ -937,7 +946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Assembly_Intro/label/" class="md-nav__link">
+      <a href="../../Assembly_Intro/label/" class="md-nav__link">
         
   
   
@@ -965,7 +974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Assembly_Intro/PUSH/" class="md-nav__link">
+      <a href="../../Assembly_Intro/PUSH/" class="md-nav__link">
         
   
   
@@ -993,7 +1002,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Assembly_Intro/POP/" class="md-nav__link">
+      <a href="../../Assembly_Intro/POP/" class="md-nav__link">
         
   
   
@@ -1021,7 +1030,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Assembly_Intro/B%26BX/" class="md-nav__link">
+      <a href="../../Assembly_Intro/B%26BX/" class="md-nav__link">
         
   
   
@@ -1181,7 +1190,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/RTOS/" class="md-nav__link">
+      <a href="../../RTOS/RTOS/" class="md-nav__link">
         
   
   
@@ -1209,7 +1218,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/Tasks_Stack/" class="md-nav__link">
+      <a href="../../RTOS/Tasks_Stack/" class="md-nav__link">
         
   
   
@@ -1237,7 +1246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/Tasks_Switch/" class="md-nav__link">
+      <a href="../../RTOS/Tasks_Switch/" class="md-nav__link">
         
   
   
@@ -1338,7 +1347,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/FreeRTOS.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/FreeRTOS.md" class="md-nav__link">
         
   
   
@@ -1366,7 +1375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/Tasks_Create&Delete.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Tasks_Create&Delete.md" class="md-nav__link">
         
   
   
@@ -1394,7 +1403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/Scheduling.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Scheduling.md" class="md-nav__link">
         
   
   
@@ -1422,7 +1431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/Idle&Scheduling.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Idle&Scheduling.md" class="md-nav__link">
         
   
   
@@ -1450,7 +1459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/TaksPend&Resume.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/TaksPend&Resume.md" class="md-nav__link">
         
   
   
@@ -1478,7 +1487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/List&ListItem.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/List&ListItem.md" class="md-nav__link">
         
   
   
@@ -1506,7 +1515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/KernelPend.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/KernelPend.md" class="md-nav__link">
         
   
   
@@ -1609,7 +1618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/Sync_Comms.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Sync_Comms.md" class="md-nav__link">
         
   
   
@@ -1637,7 +1646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/Mem_Mgmt.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Mem_Mgmt.md" class="md-nav__link">
         
   
   
@@ -1665,7 +1674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/Semaphore.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Semaphore.md" class="md-nav__link">
         
   
   
@@ -1693,7 +1702,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/Mutex.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Mutex.md" class="md-nav__link">
         
   
   
@@ -1721,7 +1730,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/Queue.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Queue.md" class="md-nav__link">
         
   
   
@@ -1749,7 +1758,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/Queue_Set.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Queue_Set.md" class="md-nav__link">
         
   
   
@@ -1777,7 +1786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/TaskNote.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/TaskNote.md" class="md-nav__link">
         
   
   
@@ -1805,7 +1814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/Event_Group.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Event_Group.md" class="md-nav__link">
         
   
   
@@ -1896,7 +1905,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/Interrupt_Mgmt.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Interrupt_Mgmt.md" class="md-nav__link">
         
   
   
@@ -1924,7 +1933,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/RTOS/FreeRTOS/Porting.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Porting.md" class="md-nav__link">
         
   
   
@@ -1965,8 +1974,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -1994,13 +2005,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
         
           
           <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
@@ -2021,7 +2030,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2039,7 +2048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/STM32_HAL/STM32_HAL/" class="md-nav__link">
+      <a href="../STM32_HAL/" class="md-nav__link">
         
   
   
@@ -2064,10 +2073,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/EmbeddedSoft/STM32_HAL/GPIO/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2083,6 +2101,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -2095,7 +2114,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/STM32_HAL/NVIC/" class="md-nav__link">
+      <a href="../NVIC/" class="md-nav__link">
         
   
   
@@ -2123,7 +2142,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/STM32_HAL/DMA/" class="md-nav__link">
+      <a href="../DMA/" class="md-nav__link">
         
   
   
@@ -2151,7 +2170,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/STM32_HAL/ADC/" class="md-nav__link">
+      <a href="../ADC/" class="md-nav__link">
         
   
   
@@ -2179,7 +2198,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/STM32_HAL/TIM/" class="md-nav__link">
+      <a href="../TIM/" class="md-nav__link">
         
   
   
@@ -2207,7 +2226,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/STM32_HAL/FLASH/" class="md-nav__link">
+      <a href="../FLASH/" class="md-nav__link">
         
   
   
@@ -2235,7 +2254,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/STM32_HAL/BKP%26RTC/" class="md-nav__link">
+      <a href="../BKP%26RTC/" class="md-nav__link">
         
   
   
@@ -2263,7 +2282,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/STM32_HAL/WDG/" class="md-nav__link">
+      <a href="../WDG/" class="md-nav__link">
         
   
   
@@ -2291,7 +2310,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/STM32_HAL/connective/" class="md-nav__link">
+      <a href="../connective/" class="md-nav__link">
         
   
   
@@ -2388,7 +2407,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Connective/Connective/" class="md-nav__link">
+      <a href="../../Connective/Connective/" class="md-nav__link">
         
   
   
@@ -2416,7 +2435,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Connective/I2C/" class="md-nav__link">
+      <a href="../../Connective/I2C/" class="md-nav__link">
         
   
   
@@ -2444,7 +2463,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Connective/SPI/" class="md-nav__link">
+      <a href="../../Connective/SPI/" class="md-nav__link">
         
   
   
@@ -2472,7 +2491,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Connective/USART/" class="md-nav__link">
+      <a href="../../Connective/USART/" class="md-nav__link">
         
   
   
@@ -2500,7 +2519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Connective/CAN/" class="md-nav__link">
+      <a href="../../Connective/CAN/" class="md-nav__link">
         
   
   
@@ -2650,7 +2669,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Control_Algos/Control_Algos/" class="md-nav__link">
+      <a href="../../Control_Algos/Control_Algos/" class="md-nav__link">
         
   
   
@@ -2678,7 +2697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Control_Algos/PID/" class="md-nav__link">
+      <a href="../../Control_Algos/PID/" class="md-nav__link">
         
   
   
@@ -2706,7 +2725,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Control_Algos/LQR/" class="md-nav__link">
+      <a href="../../Control_Algos/LQR/" class="md-nav__link">
         
   
   
@@ -2734,7 +2753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/Control_Algos/SMC/" class="md-nav__link">
+      <a href="../../Control_Algos/SMC/" class="md-nav__link">
         
   
   
@@ -2825,7 +2844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/CV/CV/" class="md-nav__link">
+      <a href="../../CV/CV/" class="md-nav__link">
         
   
   
@@ -2853,7 +2872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EmbeddedSoft/CV/Micropython%20%26%20K230/" class="md-nav__link">
+      <a href="../../CV/Micropython%20%26%20K230/" class="md-nav__link">
         
   
   
@@ -2914,6 +2933,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -2926,8 +2947,284 @@
               
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+
+<div class="toc">
+<ul>
+<li><a href="#gpio-cubemx">GPIO 基本概念与 CubeMX 配置流程</a></li>
+<li><a href="#gpio">GPIO结构</a><ul>
+<li><a href="#_1">片上结构</a></li>
+<li><a href="#_2">位结构</a></li>
+<li><a href="#cubemx">CubeMX 配置流程</a></li>
+<li><a href="#gpio_1">GPIO 工作模式</a></li>
+</ul>
+</li>
+<li><a href="#hal-gpio-api">HAL 库 GPIO 核心 API</a><ul>
+<li><a href="#_3">初始化</a></li>
+<li><a href="#_4">输出操作（写操作）</a></li>
+<li><a href="#_5">输入操作（读操作）</a></li>
+</ul>
+</li>
+<li><a href="#exti">外部中断（EXTI）与回调函数</a><ul>
+<li><a href="#exti_1">EXTI基本结构</a></li>
+<li><a href="#afioio">AFIO（复用IO口）说明</a></li>
+<li><a href="#exti_2">EXTI框图</a></li>
+<li><a href="#exti_3">EXTI 配置要点</a></li>
+<li><a href="#_6">中断回调函数</a><ul>
+<li><a href="#_7">说明</a><ul>
+<li><a href="#hal">HAL 库的抽象机制</a></li>
+<li><a href="#_8">如何区分不同的中断源？</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_9">注意事项</a></li>
+</ul>
+</li>
+<li><a href="#cubemx_1">使用了 CubeMX 后不用关心什么？</a></li>
+</ul>
+</div>
+<h1 id="gpio-cubemx"><strong>GPIO 基本概念与 CubeMX 配置流程</strong></h1>
+<p><strong>GPIO</strong> (General Purpose Input/Output) 是微控制器与外部硬件进行交互的基础接口。在 STM32 中，每个 GPIO 引脚都可以独立配置为不同的模式和功能。</p>
+<h1 id="gpio">GPIO结构</h1>
+<h2 id="_1">片上结构</h2>
+<p><img alt="../图源/GPIO基本结构.png" src="../../photosource/GPIO%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84.png" /></p>
+<h2 id="_2">位结构</h2>
+<p><img alt="../图源/GPIO位结构.png" src="../../photosource/GPIO%E4%BD%8D%E7%BB%93%E6%9E%84.png" /></p>
+<h2 id="cubemx"><strong>CubeMX 配置流程</strong></h2>
+<p>STM32CubeMX 是一个强大的图形化配置工具，用于生成初始化代码，极大地简化了 GPIO 的配置工作。</p>
+<ol>
+<li><strong>引脚模式选择</strong>：在芯片引脚图上，点击或右键点击要配置的引脚。</li>
+<li><strong>模式配置</strong>：选择所需的 GPIO 模式，例如：</li>
+<li><strong>GPIO_Output</strong>：通用推挽输出或开漏输出。</li>
+<li><strong>GPIO_Input</strong>：浮空输入、上拉输入或下拉输入。</li>
+<li><strong>Alternate Function</strong> (AF)：用于连接片上外设（如 USART、SPI、I2C 等）。</li>
+<li><strong>Analog</strong>：用于 ADC/DAC 等模拟功能。</li>
+<li><strong>参数设置 (Parameters Settings)</strong>：在左侧的 Pinout &amp; Configuration 栏目中，选择 <strong>GPIO</strong> 选项卡。对每个启用的 GPIO 端口（如 PA, PB, PC...）进行详细配置：</li>
+<li><strong>GPIO Mode</strong>：确认引脚的输入/输出/复用功能。</li>
+<li><strong>Pull-up/Pull-down</strong>：设置上拉/下拉电阻（适用于输入模式）。</li>
+<li><strong>Maximum Output Speed</strong>：设置输出速度（Low, Medium, High, Very High）。</li>
+<li><strong>User Label</strong>：<strong>强烈建议</strong>为每个引脚设置一个清晰的别名（例如 <code>LED_R_Pin</code>, <code>KEY_WKUP_Pin</code>），这将直接反映在生成的 HAL 库代码中，提高代码可读性。</li>
+</ol>
+<h2 id="gpio_1"><strong>GPIO 工作模式</strong></h2>
+<p>GPIO 有四大工作模式，CubeMX 中配置的是这些模式的子集：</p>
+<ol>
+<li><strong>输入模式 (Input Mode)</strong>：用于从外部读取电平。可配置为<strong>浮空</strong>、<strong>上拉</strong>或<strong>下拉</strong>。</li>
+<li><strong>输出模式 (Output Mode)</strong>：用于向外部输出电平。可配置为<strong>推挽</strong>（能输出高低电平）或<strong>开漏</strong>（只能输出低电平或高阻态）。</li>
+<li><strong>复用功能模式 (Alternate Function Mode)</strong>：用于将引脚连接到芯片内部外设（如定时器、串口等）。</li>
+<li><strong>模拟模式 (Analog Mode)</strong>：用于 ADC/DAC 等模拟信号处理。</li>
+</ol>
+<hr />
+<h1 id="hal-gpio-api"><strong>HAL 库 GPIO 核心 API</strong></h1>
+<p>HAL 库提供了一套简洁、统一的 API 来操作 GPIO，其函数命名通常遵循 <code>HAL_GPIO_...</code> 格式。</p>
+<h2 id="_3"><strong>初始化</strong></h2>
+<ul>
+<li><strong><code>HAL_GPIO_Init(GPIO_TypeDef \*GPIOx, GPIO_InitTypeDef \*GPIO_Init)</code></strong></li>
+<li><strong>功能</strong>：初始化指定的 GPIO 端口和引脚。</li>
+<li><strong>使用方式</strong>：这个函数由 CubeMX 根据你的配置自动生成，并在 <code>main.c</code> 中的 <code>MX_GPIO_Init()</code> 函数里被调用。<strong>你无需手动调用或修改它，除非需要动态重新配置。</strong></li>
+</ul>
+<h2 id="_4"><strong>输出操作（写操作）</strong></h2>
+<ul>
+<li>
+<p><strong><code>HAL_GPIO_WritePin(GPIO_TypeDef \*GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState)</code></strong></p>
+</li>
+<li>
+<p><strong>功能</strong>：设置指定引脚的输出电平。</p>
+</li>
+<li>
+<p><strong>参数</strong>：</p>
+<ul>
+<li><code>GPIOx</code>：GPIO 端口（如 <code>GPIOA</code>, <code>GPIOB</code> 等）。</li>
+<li><code>GPIO_Pin</code>：引脚号（使用 CubeMX 生成的别名，如 <code>LED_R_Pin</code>）。</li>
+<li><code>PinState</code>：电平状态（<code>GPIO_PIN_SET</code> 为高电平，<code>GPIO_PIN_RESET</code> 为低电平）。</li>
+</ul>
+</li>
+<li>
+<p><strong>示例（点亮 LED）</strong>：</p>
+<p><code>c
+HAL_GPIO_WritePin(GPIOB, LED_R_Pin, GPIO_PIN_RESET); // 假设低电平点亮</code></p>
+</li>
+<li>
+<p><strong><code>HAL_GPIO_TogglePin(GPIO_TypeDef \*GPIOx, uint16_t GPIO_Pin)</code></strong></p>
+</li>
+<li>
+<p><strong>功能</strong>：<strong>翻转</strong>指定引脚的输出电平。</p>
+</li>
+<li>
+<p><strong>示例（LED 闪烁）</strong>：</p>
+<p><code>c
+HAL_GPIO_TogglePin(GPIOB, LED_R_Pin);</code></p>
+</li>
+</ul>
+<h2 id="_5"><strong>输入操作（读操作）</strong></h2>
+<ul>
+<li>
+<p><strong><code>GPIO_PinState HAL_GPIO_ReadPin(GPIO_TypeDef \*GPIOx, uint16_t GPIO_Pin)</code></strong></p>
+</li>
+<li>
+<p><strong>功能</strong>：<strong>读取</strong>指定引脚的输入电平状态。</p>
+</li>
+<li>
+<p><strong>返回值</strong>：<code>GPIO_PinState</code> 类型（<code>GPIO_PIN_SET</code> 为高电平，<code>GPIO_PIN_RESET</code> 为低电平）。</p>
+</li>
+<li>
+<p><strong>示例（读取按键状态）</strong>：</p>
+<p><code>c
+if (HAL_GPIO_ReadPin(GPIOA, KEY_WKUP_Pin) == GPIO_PIN_RESET) {
+    // 按键被按下（假设按键是下拉输入，按下时连接到 GND，读取低电平）
+}</code></p>
+</li>
+</ul>
+<hr />
+<h1 id="exti"><strong>外部中断（EXTI）与回调函数</strong></h1>
+<p>对于按键等需要实时响应的输入，通常配置为 <strong>外部中断（EXTI）</strong> 模式。</p>
+<h2 id="exti_1">EXTI基本结构</h2>
+<p><img alt="../图源/EXTI基本结构.png" src="../../photosource/EXTI%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84.png" /></p>
+<h2 id="afioio">AFIO（复用IO口）说明</h2>
+<ul>
+<li>
+<p>AFIO主要用于引脚复用功能的选择和重定义</p>
+</li>
+<li>
+<p>在STM32中，AFIO主要完成两个任务：复用功能引脚重映射、中断引脚选择</p>
+</li>
+</ul>
+<h2 id="exti_2">EXTI框图</h2>
+<p><img alt="../图源/EXTI框图.png" src="../../photosource/EXTI%E6%A1%86%E5%9B%BE.png" /></p>
+<h2 id="exti_3"><strong>EXTI 配置要点</strong></h2>
+<ol>
+<li><strong>引脚模式</strong>：在 CubeMX 中将引脚配置为 <strong>GPIO_EXTIxx</strong>（例如 <code>GPIO_EXTI0</code>）。</li>
+<li><strong>边沿检测</strong>：配置中断触发的<strong>边沿</strong>（上升沿、下降沿或双边沿）。</li>
+<li><strong>NVIC 使能</strong>：在 <strong>NVIC Settings</strong> 中<strong>使能</strong>对应的 EXTI 中断线并设置优先级。</li>
+</ol>
+<h2 id="_6"><strong>中断回调函数</strong></h2>
+<ul>
+<li><strong>你需要实现的函数</strong>：</li>
+</ul>
+<p><code>c
+  void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+  {
+      if (GPIO_Pin == KEY_WKUP_Pin) {
+          // 在这里编写中断触发后的处理代码
+          // 推荐：只设置标志位或发送消息，将耗时操作留给主循环
+      }
+  }</code></p>
+<ul>
+<li><strong>说明</strong>：中断触发时，HAL 库会自动执行中断向量表中的 ISR（在 <code>stm32fxxx_it.c</code> 中），该 ISR 会调用一个通用的弱（<code>__weak</code>）回调函数。<strong>你只需要在你的代码中重写（实现）这个 <code>HAL_GPIO_EXTI_Callback</code> 函数即可。</strong></li>
+</ul>
+<h3 id="_7">说明</h3>
+<p>简而言之，<code>HAL_GPIO_EXTI_Callback</code> <strong>对所有通过 GPIO 引脚触发的外部中断 (EXTI) 都有效</strong>。</p>
+<p>它是一个 <strong>通用的、统一的回调函数</strong>，用于处理所有连接到 EXTI 线的 GPIO 中断事件。</p>
+<h4 id="hal"><strong>HAL 库的抽象机制</strong></h4>
+<p>HAL 库通过一种多层嵌套的函数调用结构，将底层不同的中断向量抽象成一个统一的回调函数，这就是为什么你只需要实现一个 <code>HAL_GPIO_EXTI_Callback</code>：</p>
+<ol>
+<li>底层：硬件中断向量 (ISR)：</li>
+</ol>
+<p>你提到不同的外部中断有不同的中断向量，这是正确的。例如，STM32 F4 系列芯片中：</p>
+<ul>
+<li>
+<p>EXTI 线 0 对应一个向量（例如 <code>EXTI0_IRQHandler</code>）。</p>
+</li>
+<li>
+<p>EXTI 线 1 对应一个向量（例如 <code>EXTI1_IRQHandler</code>）。</p>
+</li>
+<li>
+<p>EXTI 线 10 到 15 共用一个向量（例如 EXTI15_10_IRQHandler）。</p>
+<p>这些函数位于 CubeMX 生成的 stm32fxx_it.c 文件中。</p>
+</li>
+<li>
+<p>中间层：HAL 库中断处理函数：</p>
+</li>
+</ul>
+<p>在每个底层的中断服务程序 (ISR) 中，会调用 HAL 库提供的具体处理函数，例如：</p>
+<p><code>c
+   // 位于 stm32fxx_it.c
+   void EXTI0_IRQHandler(void)
+   {
+       HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0); // 调用HAL库处理函数
+   }</code></p>
+<p>HAL 库的这个处理函数会负责：</p>
+<ul>
+<li>清除对应的 <strong>EXTI 挂起寄存器 (PR)</strong> 标志。</li>
+<li>
+<p>检查中断源是否真的被使能和触发。</p>
+</li>
+<li>
+<p>顶层：通用回调函数：</p>
+</li>
+</ul>
+<p>HAL 库处理函数的最后一步，就是调用这个 弱（__weak） 声明的 HAL_GPIO_EXTI_Callback 函数，并将触发中断的引脚号作为参数传进去。</p>
+<ul>
+<li><code>__weak</code> 关键字允许你在你的应用代码（如 <code>main.c</code> 或驱动文件）中<strong>重写</strong>这个函数。</li>
+<li><strong>参数 <code>GPIO_Pin</code></strong>：通过检查这个参数，你可以在一个回调函数中判断是哪个引脚触发了中断，从而执行不同的逻辑。</li>
+</ul>
+<h4 id="_8"><strong>如何区分不同的中断源？</strong></h4>
+<p>虽然回调函数是统一的，但你需要根据传入的 <strong><code>GPIO_Pin</code></strong> 参数来区分和处理不同的外部中断事件：</p>
+<pre><code class="language-c">void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+    if (GPIO_Pin == KEY_START_Pin) {
+        // 处理开始按键的逻辑
+    } else if (GPIO_Pin == KEY_STOP_Pin) {
+        // 处理停止按键的逻辑
+    } else if (GPIO_Pin == RFID_DET_Pin) {
+        // 处理 RFID 检测的逻辑
+    }
+    // 注意：无需手动清除挂起标志，HAL 库中间层已经处理了
+}
+</code></pre>
+<h2 id="_9"><strong>注意事项</strong></h2>
+<ul>
+<li><strong>消抖 (Debouncing)</strong>：对于机械按键，务必在回调函数中或在后续处理中考虑软件消抖逻辑，防止引脚抖动导致多次误触发。</li>
+</ul>
+<hr />
+<h1 id="cubemx_1"><strong>使用了 CubeMX 后</strong>不用<strong>关心什么？</strong></h1>
+<p>当你使用 STM32CubeMX 和 HAL 库进行开发时，CubeMX 已经为你处理了大量的底层配置和初始化工作。因此，作为应用开发者，你<strong>几乎不用关心</strong>以下这些细节：</p>
+<table>
+<thead>
+<tr>
+<th><strong>细节类别</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GPIO 时钟使能</strong></td>
+<td><strong>CubeMX 自动处理。</strong> 在 <code>HAL_MspInit()</code> 函数中，CubeMX 已经自动生成了 <code>__HAL_RCC_GPIOx_CLK_ENABLE()</code> 调用，确保在使用端口前时钟已打开。</td>
+</tr>
+<tr>
+<td><strong>寄存器地址与位操作</strong></td>
+<td><strong>HAL 库封装了。</strong> 你不需要直接操作 <strong>MODER</strong>、<strong>OTYPER</strong>、<strong>PUPDR</strong> 等寄存器来设置模式、类型或上下拉，只需使用 <code>HAL_GPIO_WritePin()</code> 等 API 即可。</td>
+</tr>
+<tr>
+<td><strong>底层初始化函数调用</strong></td>
+<td><strong>CubeMX 自动生成并调用。</strong> <code>MX_GPIO_Init()</code> 函数会在 <code>main()</code> 函数中被调用。你无需关心它何时以及如何被调用。</td>
+</tr>
+<tr>
+<td><strong>NVIC 向量表配置</strong></td>
+<td><strong>CubeMX 自动配置。</strong> 对于 EXTI，CubeMX 会自动配置并使能对应的 NVIC 中断通道，你只需要实现你的 <strong>回调函数</strong> 即可。</td>
+</tr>
+<tr>
+<td><strong>复位值 (Reset Value)</strong></td>
+<td><strong>HAL 库负责初始化。</strong> 启动时 GPIO 默认处于模拟或浮空状态，但 <code>HAL_GPIO_Init()</code> 会将其设置为你在 CubeMX 中配置的状态。你不用关心启动时的默认状态。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总结：</strong> CubeMX 的目标就是让你专注于使用 <strong>HAL API</strong>（如 <code>HAL_GPIO_WritePin</code>、<code>HAL_GPIO_ReadPin</code>）和实现 <strong>回调函数</strong>（如 <code>HAL_GPIO_EXTI_Callback</code>），而不用花费时间处理底层寄存器的配置细节。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -2970,10 +3267,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "/", "features": ["navigation.expand", "navigation.indexes", "toc.follow", "content.tabs.link", "content.code.copy", "search.suggest", "search.highlight", "header.autohide"], "search": "/assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.expand", "navigation.indexes", "toc.follow", "content.tabs.link", "content.code.copy", "search.suggest", "search.highlight", "header.autohide"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="/assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
     
   </body>
