@@ -244,7 +244,7 @@ void vDynamicQueueManagement(void) {
 
 ## CMSIS-RTOS v2 的等效机制
 
-在CMSIS-RTOS v2中，队列集的功能由**事件标志（Event Flags)** 实现。事件标志提供类似的功能，但实现方式不同：CMSISv2提供[Event_Group](EmbeddedSoft/RTOS/FreeRTOS/Event_Group.md)
+在CMSIS-RTOS v2中，队列集的功能由**事件标志（Event Flags)** 实现。事件标志提供类似的功能，但实现方式不同：CMSISv2提供[Event_Group](Event_Group.md)
 ## RTOS 队列集 vs CMSIS-RTOS v2 事件标志机制对比
 
 | 特性 | FreeRTOS 队列集 | CMSIS-RTOS v2 事件标志 |

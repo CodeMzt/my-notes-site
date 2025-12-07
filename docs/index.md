@@ -1,6 +1,6 @@
 ## 🚀 欢迎来到我的嵌入式与机器学习笔记站
 
-**CodeMzt 的技术备忘录与学习记录**
+**Mzt2006 的技术备忘录与学习记录**
 
 ------
 
@@ -30,24 +30,24 @@
 
 从 **FreeRTOS** 的核心概念开始，理解多任务环境下的并发和同步机制。
 
-- [FreeRTOS 简介](https://www.google.com/search?q=/EmbeddedSoft/RTOS/FreeRTOS/FreeRTOS.md)
-- [同步、互斥与通信](https://www.google.com/search?q=/EmbeddedSoft/RTOS/FreeRTOS/Sync_Comms.md)
+- [FreeRTOS 简介](EmbeddedSoft/RTOS/FreeRTOS/FreeRTOS.md)
+- [同步、互斥与通信](EmbeddedSoft/RTOS/FreeRTOS/Sync_Comms.md)
 - [任务调度](https://www.google.com/search?q=/EmbeddedSoft/RTOS/FreeRTOS/Scheduling.md)
 
 #### 硬件架构基础
 
 从最底层理解处理器和编程的原理。
 
-- [ARM 架构概述](https://www.google.com/search?q=/EmbeddedSoft/ARM_Arch/ARM_Arch.md)
-- [汇编语言入门](https://www.google.com/search?q=/EmbeddedSoft/Assembly_Intro/Assembly_Intro.md)
-- [内存管理](https://www.google.com/search?q=/EmbeddedSoft/Assembly_Intro/Mem_Mgmt.md)
+- [ARM 架构概述](EmbeddedSoft/ARM_Arch/ARM_Arch.md)
+- [汇编语言入门](EmbeddedSoft/Assembly_Intro/Assembly_Intro.md)
+- [内存管理](EmbeddedSoft/Assembly_Intro/Mem_Mgmt.md)
 
 #### Pytorch 入门
 
 快速了解 Pytorch 框架的核心组件。
 
-- [Pytorch - 张量](https://www.google.com/search?q=/MachineLearning/Pytorch_Learning/tensor.ipynb)
-- [Pytorch - 神经网络](https://www.google.com/search?q=/MachineLearning/Pytorch_Learning/nn.ipynb)
+- [Pytorch - 张量](MachineLearning/Pytorch_Learning/tensor.ipynb)
+- [Pytorch - 神经网络](MachineLearning/Pytorch_Learning/nn.ipynb)
 
 ------
 

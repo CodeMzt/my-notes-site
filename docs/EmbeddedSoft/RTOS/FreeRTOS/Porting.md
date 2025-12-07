@@ -5,6 +5,8 @@
 ![](../../photosource/FreeRTOS移植1.png)
 ## 核心代码
 ![](../../photosource/FreeRTOS移植2.png)
+
+
 1. croutine.c：协程相关文件（不用）
 2. event_groups.c：事件相关（次要）
 3. list.c：列表（重要）
@@ -12,6 +14,7 @@
 5. stream_buffer.c：流式缓冲区（次要）
 6. tasks.c：任务文件(重要)
 7. timers.c：定时器相关（次要）
+
 ## portable文件夹
 用于移植
 ### MemMang(必须)

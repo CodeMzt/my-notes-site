@@ -321,7 +321,7 @@ void context_switch(Task* current, Task* next) {
 
 **任务主动让出 CPU `portYIELD()/taskYIELD()`：**
 
-通过挂起PendSV启用PendSv异常，如何挂起见[KernelPend](EmbeddedSoft/RTOS/FreeRTOS/KernelPend.md)
+通过挂起PendSV启用PendSv异常，如何挂起见[KernelPend](KernelPend.md)
 
 ```c
 void vTaskA( void *pvParameters )

@@ -1,3 +1,3 @@
-[PID](PID.md)
-[LQR](LQR.md)
-[SMC](SMC.md)
+- [PID](PID.md)
+- [LQR](LQR.md)
+- [SMC](SMC.md)
