@@ -3201,12 +3201,14 @@ ADD R2, R0, R1      @ R2 = R0 + R1 = 30
 </code></pre>
 <p>## 更多指令及详解 
 - <a href="../PUSH/">PUSH</a>
+- 
 - <a href="../POP/">POP</a>
+- 
 - <a href="../B%26BX/">B&amp;BX</a></p>
 <h1 id="c">C语言与反汇编</h1>
-<p>先了解
-- <a href="../Mem_Mgmt/">Mem_Mgmt</a>
-- <a href="../label/">label</a></p>
+<p>先了解</p>
+<h2 id="-mem_mgmt">- <a href="../Mem_Mgmt/">Mem_Mgmt</a></h2>
+<h2 id="-label">- <a href="../label/">label</a></h2>
 <h2 id="c_1">简单的C程序</h2>
 <pre><code class="language-c">// simple.c
 int add_numbers(int a, int b) {
@@ -3240,8 +3242,10 @@ int main() {
 }
 </code></pre>
 <h3 id="arm">对应的ARM汇编代码及分析</h3>
-<p>需要先了解：
-- <a href="ARM_Arch.md">ARM_Arch</a></p>
+<p>需要先了解：</p>
+<ul>
+<li><a href="ARM_Arch.md">ARM_Arch</a></li>
+</ul>
 <h4 id="add_numbers">add_numbers函数汇编（简单版本）</h4>
 <pre><code class="language-assembly">add_numbers:
     @ 简单函数 - 直接计算并返回

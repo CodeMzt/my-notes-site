@@ -4137,7 +4137,7 @@ void context_switch(Task* current, Task* next) {
 <h2 id="freertos_1">FreeRTOS 任务切换的触发条件</h2>
 <h3 id="_16">主动触发方式</h3>
 <p><strong>任务主动让出 CPU <code>portYIELD()/taskYIELD()</code>：</strong></p>
-<p>通过挂起PendSV启用PendSv异常，如何挂起见<a href="EmbeddedSoft/RTOS/FreeRTOS/KernelPend.md">KernelPend</a></p>
+<p>通过挂起PendSV启用PendSv异常，如何挂起见<a href="../KernelPend/">KernelPend</a></p>
 <pre><code class="language-c">void vTaskA( void *pvParameters )
 {
     for( ;; )
