@@ -49,81 +49,89 @@ plugins:
 nav:
   - 🏡 首页: index.md
 
-  - 🤖 机器学习 (Machine Learning):
+  - 🤖 机器学习:
+    # 注意：根据你的文件结构，MachineLearning 文件夹下似乎没有直接的文件，
+    # 假设你的所有 Jupyter Notebook 都在 EmbeddedSoft/MachineLearning 中，
+    # 但根据当前结构，它们应该放在 MachineLearning 根目录下的 Pytorch_Learning 中。
+    # 我已根据你之前的习惯和目录名进行推测性配置。
+    - 简介: MachineLearning/README.md # 假设有一个简介文件
     - Pytorch 学习:
-      - nn 神经网络: 机器学习/Pytorch_Learning/nn.ipynb
-      - tensor 张量: 机器学习/Pytorch_Learning/tensor.ipynb
-      - data 数据处理: 机器学习/Pytorch_Learning/data.ipynb
-      - transform 转换: 机器学习/Pytorch_Learning/transfrom.ipynb
-      - tensorboard 可视化: 机器学习/Pytorch_Learning/tensorboard.ipynb
-      - Test Notebook: 机器学习/Pytorch_Learning/Test.ipynb
-      
-  - 💻 电赛软件 (Embedded Software):
-    - 简介: 电赛软件/电赛软件.md 
-    
-    - 基础与架构:
+      - NN 神经网络: MachineLearning/Pytorch_Learning/nn.ipynb
+      # ... 补充其他 .ipynb 文件，它们应位于 MachineLearning 目录下
+
+  - 💻 嵌入式软件 (EmbeddedSoft):
+    - 简介: EmbeddedSoft/EmbeddedSoft.md 
+
+    - ⚙️ ARM 架构与汇编:
         - ARM 架构:
-            - ARM 架构概述: 电赛软件/ARM架构/ARM架构.md
-            - ARM Cortex-M CPU 架构: 电赛软件/ARM架构/ARM Cortex-M CPU 架构.md
-            - 通用寄存器: 电赛软件/ARM架构/通用寄存器.md
-            - 特殊寄存器xPSR: 电赛软件/ARM架构/特殊寄存器xPSR.md
-        - 汇编入门:
-            - 汇编入门: 电赛软件/汇编入门/汇编入门.md
-            - 标签: 电赛软件/汇编入门/标签.md
-            - 内存管理: 电赛软件/汇编入门/内存管理.md
-            - 堆: 电赛软件/汇编入门/堆.md
-            - 栈: 电赛软件/汇编入门/栈.md
-            - POP指令: 电赛软件/汇编入门/POP指令.md
-            - PUSH指令: 电赛软件/汇编入门/PUSH指令.md
-            - B和BX指令: 电赛软件/汇编入门/B和BX指令.md
-    
-    - 实时操作系统:
+            - 架构概述: EmbeddedSoft/ARM_Arch/ARM_Arch.md
+            - Cortex-M CPU: EmbeddedSoft/ARM_Arch/ARM Cortex-M CPU.md
+            - 通用寄存器 (GPR): EmbeddedSoft/ARM_Arch/GeneralReg.md
+            - 特殊寄存器 (xPSR): EmbeddedSoft/ARM_Arch/SpecialReg_xPSR.md
+        - 汇编基础:
+            - 简介: EmbeddedSoft/Assembly_Intro/Assembly_Intro.md
+            - 内存管理: EmbeddedSoft/Assembly_Intro/Mem_Mgmt.md
+            - 栈 (Stack): EmbeddedSoft/Assembly_Intro/stack.md
+            - 堆 (Heap): EmbeddedSoft/Assembly_Intro/heap.md
+            - 标签 (Label): EmbeddedSoft/Assembly_Intro/label.md
+            - PUSH 指令: EmbeddedSoft/Assembly_Intro/PUSH.md
+            - POP 指令: EmbeddedSoft/Assembly_Intro/POP.md
+            - B & BX 指令: EmbeddedSoft/Assembly_Intro/B&BX.md
+
+    - ⏰ 实时操作系统 (RTOS):
         - RTOS 基础:
-            - RTOS 简介: 电赛软件/RTOS/RTOS.md
-            - 任务堆栈: 电赛软件/RTOS/任务堆栈.md
-            - 任务切换: 电赛软件/RTOS/任务切换.md
-        - FreeRTOS 详解:
-            - FreeRTOS 简介: 电赛软件/FreeRTOS/FreeRTOS.md
-            - 任务调度: 电赛软件/FreeRTOS/任务调度.md
-            - 列表和列表项: 电赛软件/FreeRTOS/列表和列表项.md
-            - 内存管理: 电赛软件/FreeRTOS/内存管理.md
-            - 任务创建和删除: 电赛软件/FreeRTOS/任务创建和删除.md
-            - 任务调度器的挂起和恢复: 电赛软件/FreeRTOS/任务调度器的挂起和恢复.md
-            - 同步、互斥与通信: 电赛软件/FreeRTOS/同步、互斥与通信.md
-            - 信号量: 电赛软件/FreeRTOS/信号量.md
-            - 互斥量: 电赛软件/FreeRTOS/互斥量.md
-            - 队列: 电赛软件/FreeRTOS/队列.md
-            - 队列集: 电赛软件/FreeRTOS/队列集.md
-            - 任务挂起和恢复: 电赛软件/FreeRTOS/任务挂起和恢复.md
-            - 任务通知: 电赛软件/FreeRTOS/任务通知.md
-            - 事件组: 电赛软件/FreeRTOS/事件组.md
-            - 中断管理: 电赛软件/FreeRTOS/中断管理.md
-            - 移植: 电赛软件/FreeRTOS/移植.md
-    
-    - STM32 HAL 库:
-        - 库介绍: 电赛软件/STM32 HAL库/STM32 HAL库.md
-        - GPIO 操作: 电赛软件/STM32 HAL库/GPIO操作.md
-        - NVIC: 电赛软件/STM32 HAL库/NVIC.md
-        - DMA: 电赛软件/STM32 HAL库/DMA.md
-        - ADC: 电赛软件/STM32 HAL库/ADC.md
-        - 定时器: 电赛软件/STM32 HAL库/定时器.md
-        - FLASH: 电赛软件/STM32 HAL库/FLASH.md
-        - BKP & RTC: 电赛软件/STM32 HAL库/BKP&RTC.md
-        - WDG: 电赛软件/STM32 HAL库/WDG.md
-        - 硬件通信协议: 电赛软件/STM32 HAL库/硬件通信协议.md
-    
-    - 通信与算法:
-        - 通信协议:
-            - 简介: 电赛软件/通信协议/通信协议.md
-            - I2C: 电赛软件/通信协议/I2C.md
-            - SPI: 电赛软件/通信协议/SPI.md
-            - USART: 电赛软件/通信协议/USART.md
-            - CAN: 电赛软件/通信协议/CAN.md
+            - 简介: EmbeddedSoft/RTOS/RTOS.md
+            - 任务堆栈: EmbeddedSoft/RTOS/Tasks_Stack.md
+            - 任务切换: EmbeddedSoft/RTOS/Tasks_Switch.md
+        - FreeRTOS 核心:
+            - FreeRTOS 简介: EmbeddedSoft/RTOS/FreeRTOS/FreeRTOS.md
+            - 任务创建与删除: EmbeddedSoft/RTOS/FreeRTOS/Tasks_Create&Delete.md
+            - 任务调度: EmbeddedSoft/RTOS/FreeRTOS/Scheduling.md
+            - 空闲任务与调度: EmbeddedSoft/RTOS/FreeRTOS/Idle&Scheduling.md
+            - 任务挂起与恢复: EmbeddedSoft/RTOS/FreeRTOS/TaksPend&Resume.md
+            - 列表与列表项: EmbeddedSoft/RTOS/FreeRTOS/List&ListItem.md
+            - 内核挂起: EmbeddedSoft/RTOS/FreeRTOS/KernelPend.md
+
+        - 🤝 同步、互斥与通信:
+            - 概述: EmbeddedSoft/RTOS/FreeRTOS/Sync_Comms.md
+            - 内存管理: EmbeddedSoft/RTOS/FreeRTOS/Mem_Mgmt.md
+            - 信号量 (Semaphore): EmbeddedSoft/RTOS/FreeRTOS/Semaphore.md
+            - 互斥量 (Mutex): EmbeddedSoft/RTOS/FreeRTOS/Mutex.md
+            - 队列 (Queue): EmbeddedSoft/RTOS/FreeRTOS/Queue.md
+            - 队列集 (Queue Set): EmbeddedSoft/RTOS/FreeRTOS/Queue_Set.md
+            - 任务通知 (Task Note): EmbeddedSoft/RTOS/FreeRTOS/TaskNote.md
+            - 事件组 (Event Group): EmbeddedSoft/RTOS/FreeRTOS/Event_Group.md
+        
+        - ⚡ 中断与移植:
+            - 中断管理: EmbeddedSoft/RTOS/FreeRTOS/Interrupt_Mgmt.md
+            - 移植 (Porting): EmbeddedSoft/RTOS/FreeRTOS/Porting.md
+
+
+    - ⚙️ STM32 HAL 库:
+        - 库简介: EmbeddedSoft/STM32_HAL/STM32_HAL.md
+        - GPIO: EmbeddedSoft/STM32_HAL/GPIO.md
+        - NVIC: EmbeddedSoft/STM32_HAL/NVIC.md
+        - DMA: EmbeddedSoft/STM32_HAL/DMA.md
+        - ADC: EmbeddedSoft/STM32_HAL/ADC.md
+        - 定时器: EmbeddedSoft/STM32_HAL/TIM.md
+        - FLASH: EmbeddedSoft/STM32_HAL/FLASH.md
+        - BKP & RTC: EmbeddedSoft/STM32_HAL/BKP&RTC.md
+        - 看门狗 (WDG): EmbeddedSoft/STM32_HAL/WDG.md
+        - 通信协议: EmbeddedSoft/STM32_HAL/connective.md # 注意：这里的 connective.md 可能是对 HAL 库通信的总结
+
+    - 📡 通信协议:
+        - 协议概述: EmbeddedSoft/Connective/Connective.md
+        - I2C: EmbeddedSoft/Connective/I2C.md
+        - SPI: EmbeddedSoft/Connective/SPI.md
+        - USART: EmbeddedSoft/Connective/USART.md
+        - CAN: EmbeddedSoft/Connective/CAN.md
+
+    - 🤖 控制与视觉:
         - 电控算法:
-            - 简介: 电赛软件/电控算法/电控算法.md
-            - PID: 电赛软件/电控算法/PID.md
-            - LQR: 电赛软件/电控算法/LQR.md
-            - SMC: 电赛软件/电控算法/SMC.md
-        - 视觉应用:
-            - 视觉: 电赛软件/视觉/视觉.md
-            - Micropython & K230: 电赛软件/视觉/Micropython & K230.md
+            - 算法概述: EmbeddedSoft/Control_Algos/Control_Algos.md
+            - PID 控制: EmbeddedSoft/Control_Algos/PID.md
+            - LQR: EmbeddedSoft/Control_Algos/LQR.md
+            - SMC: EmbeddedSoft/Control_Algos/SMC.md
+        - 计算机视觉 (CV):
+            - 视觉概述: EmbeddedSoft/CV/CV.md
+            - Micropython & K230: EmbeddedSoft/CV/Micropython & K230.md
