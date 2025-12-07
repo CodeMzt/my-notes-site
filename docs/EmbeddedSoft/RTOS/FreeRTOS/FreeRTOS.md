@@ -5,7 +5,7 @@ FreeRTOS意为免费的RTOS，全开源免费，体积小、可裁剪、容易�
 # 目录
 
 - [移植](Porting.md)
-- [内存管理](../../Assembly_Intro/Mem_Mgmt)
+- [内存管理](../../Assembly_Intro/Mem_Mgmt.md)
 - [列表和列表项](List&ListItem.md)
 - [任务创建和删除](Tasks_Create&Delete.md)
 - [任务挂起和恢复](TaksPend&Resume.md)
