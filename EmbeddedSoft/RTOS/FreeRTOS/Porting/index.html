@@ -2953,9 +2953,9 @@
 <p><a href="https://www.freertos.org/">FreeRTOS</a></p>
 <h1 id="_2">文件说明</h1>
 <h2 id="_3"><strong>内核</strong>文件夹（重点关注）</h2>
-<p><img alt="" src="photosource/FreeRTOS移植1.png" /></p>
+<p><img alt="" src="../../../photosource/FreeRTOS%E7%A7%BB%E6%A4%8D1.png" /></p>
 <h2 id="_4">核心代码</h2>
-<p><img alt="../../图源/FreeRTOS移植2.png" src="photosource/FreeRTOS移植2.png" />
+<p><img alt="" src="../../../photosource/FreeRTOS%E7%A7%BB%E6%A4%8D2.png" />
 1. croutine.c：协程相关文件（不用）
 2. event_groups.c：事件相关（次要）
 3. list.c：列表（重要）
@@ -2973,7 +2973,7 @@
 <h1 id="_5">移植步骤</h1>
 <h2 id="cubemx">CubeMx一键配置</h2>
 <h3 id="_6">接口</h3>
-<p><img alt="../../图源/FreeRTOS移植3.png" src="photosource/FreeRTOS移植3.png" />
+<p><img alt="" src="../../../photosource/FreeRTOS%E7%A7%BB%E6%A4%8D3.png" />
 选择版本V2，更好。
 - 选择 FreeRTOS 后，右侧会多出一个 <code>FREERTOS</code> 的配置页签。</p>
 <ul>
@@ -2994,7 +2994,7 @@
 </li>
 </ul>
 <h3 id="_7">协处理器</h3>
-<p><img alt="../../图源/FreeRTOS移植4.png" src="photosource/FreeRTOS移植4.png" /></p>
+<p><img alt="" src="../../../photosource/FreeRTOS%E7%A7%BB%E6%A4%8D4.png" /></p>
 <h4 id="_8">内存保护</h4>
 <p>MPU 是一个硬件单元，它允许操作系统（如 FreeRTOS）为不同的任务或进程<strong>设置内存访问权限</strong>。你可以把它想象成一颗芯片内部的“内存卫士”。</p>
 <h4 id="_9">浮点运算</h4>
@@ -3005,7 +3005,7 @@
 <p>选择 FreeRTOS 后，右侧会多出一个 <code>FREERTOS</code> 的配置页签。在这里，你可以完全通过图形界面配置所有 FreeRTOS 参数，无需手动修改 <code>FreeRTOSConfig.h</code> 文件。</p>
 </li>
 </ul>
-<p>#### <u><strong>preemptive scheduler</strong></u></p>
+<p>#### <u>preemptive scheduler</u></p>
 <p>配置 <code>configUSE_PREEMPTION</code>（是否使用抢占式调度）、<code>configCPU_CLOCK_HZ</code>（CPU 频率，通常会自动设置好）、<code>configTICK_RATE_HZ</code>（系统时钟节拍频率，通常设为 1000Hz，即 1ms 一个节拍）。</p>
 <p>#### <strong><u>任务和队列</u></strong></p>
 <p>设置内核对象数量，如 <code>configTOTAL_HEAP_SIZE</code>（非常重要！）。</p>
