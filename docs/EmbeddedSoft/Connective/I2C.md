@@ -10,7 +10,7 @@ I2C（Inter-Integrated Circuit）是由飞利浦公司开发的一种简单的�
 
 ## 二、 硬件连接
 
-<img src="./../%E5%9B%BE%E6%BA%90/I2C%E8%BF%9E%E7%BA%BF.jpg" alt="I2C连线" style="zoom: 150%;" />
+![](EmbeddedSoft/photosource/I2C连线.jpg)
 
 ![I2C连线2](../photosource/I2C连线2.png)
 
@@ -62,12 +62,12 @@ I2C（Inter-Integrated Circuit）是由飞利浦公司开发的一种简单的�
 *   **起始条件（S）**： 当SCL为高电平时，SDA线出现一个**下降沿**。
     *   表示一次传输的开始。
 
-<img src="./../%E5%9B%BE%E6%BA%90/I2C%E8%B5%B7%E5%A7%8B%E6%9D%A1%E4%BB%B6.png" alt="I2C起始条件" style="zoom:50%;" />
+![](EmbeddedSoft/photosource/I2C起始条件.png)
 
 *   **停止条件（P）**： 当SCL为高电平时，SDA线出现一个**上升沿**。
     *   表示一次传输的结束。
+![](EmbeddedSoft/photosource/I2C终止条件.png)
 
-<img src="./../%E5%9B%BE%E6%BA%90/I2C%E7%BB%88%E6%AD%A2%E6%9D%A1%E4%BB%B6.png" alt="I2C终止条件" style="zoom:50%;" />
 
 > **注意**：在SCL为高期间，SDA的稳定变化被用于表示起始和停止条件，在数据传输期间，SDA的变化必须发生在SCL为低时。
 

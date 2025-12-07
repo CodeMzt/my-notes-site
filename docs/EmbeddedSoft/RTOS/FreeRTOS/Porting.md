@@ -2,9 +2,9 @@
 [FreeRTOS](https://www.freertos.org/)
 # 文件说明
 ## **内核**文件夹（重点关注）
-![../../图源/FreeRTOS移植1.png](EmbeddedSoft/photosource/FreeRTOS移植1.png)
+![](photosource/FreeRTOS移植1.png)
 ## 核心代码
-![../../图源/FreeRTOS移植2.png](EmbeddedSoft/photosource/FreeRTOS移植2.png)
+![../../图源/FreeRTOS移植2.png](photosource/FreeRTOS移植2.png)
 1. croutine.c：协程相关文件（不用）
 2. event_groups.c：事件相关（次要）
 3. list.c：列表（重要）
@@ -22,7 +22,7 @@ Keil或GCC的底层，不同内核芯片的移植文件
 # 移植步骤
 ## CubeMx一键配置
 ### 接口
-![../../图源/FreeRTOS移植3.png](EmbeddedSoft/photosource/FreeRTOS移植3.png)
+![../../图源/FreeRTOS移植3.png](photosource/FreeRTOS移植3.png)
 选择版本V2，更好。
 - 选择 FreeRTOS 后，右侧会多出一个 `FREERTOS` 的配置页签。
   
@@ -36,7 +36,7 @@ Keil或GCC的底层，不同内核芯片的移植文件
       
     - **Include parameters**：配置 `configUSE_PREEMPTION`（是否使用抢占式调度）、`configCPU_CLOCK_HZ`（CPU 频率，通常会自动设置好）、`configTICK_RATE_HZ`（系统时钟节拍频率，通常设为 1000Hz，即 1ms 一个节拍）。
 ### 协处理器
-![../../图源/FreeRTOS移植4.png](EmbeddedSoft/photosource/FreeRTOS移植4.png)
+![../../图源/FreeRTOS移植4.png](photosource/FreeRTOS移植4.png)
 #### 内存保护
 MPU 是一个硬件单元，它允许操作系统（如 FreeRTOS）为不同的任务或进程**设置内存访问权限**。你可以把它想象成一颗芯片内部的“内存卫士”。
 #### 浮点运算

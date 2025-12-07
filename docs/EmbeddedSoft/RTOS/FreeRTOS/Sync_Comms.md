@@ -87,22 +87,21 @@ R0->num //num=11
 
 # FreeRTOS的队列
 
-[Queue](EmbeddedSoft/RTOS/FreeRTOS/Queue.md)
+[Queue](Queue.md)
 # FreeRTOS的队列集
 
-[Queue_Set](EmbeddedSoft/RTOS/FreeRTOS/Queue_Set.md)
+[Queue_Set](Queue_Set.md)
 # FreeRTOS的信号量
 
-[Semaphore](EmbeddedSoft/RTOS/FreeRTOS/Semaphore.md)
+[Semaphore](Semaphore.md)
 # FreeRTOS的互斥量
-[Mutex](EmbeddedSoft/RTOS/FreeRTOS/Mutex.md)
-
+[Mutex](Mutex.md)
 # FreeRTOS的事件组
 
-[Event_Group](EmbeddedSoft/RTOS/FreeRTOS/Event_Group.md)
+[Event_Group](Event_Group.md)
 # 任务通知
 
-[TaskNote](EmbeddedSoft/RTOS/FreeRTOS/TaskNote.md)
+[TaskNote](TaskNote.md)
 # 实际应用中的选择建议
 
 ## 各种通信机制的比较

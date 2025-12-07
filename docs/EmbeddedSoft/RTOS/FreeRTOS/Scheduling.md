@@ -31,7 +31,7 @@ osStatus_t osKernelStart (void) {
 ### `SVC_Setup()`
 
 这一句 `SVC_Setup();` 在 CMSIS-RTOS2 的 `osKernelStart()` 函数中，主要目的是**确保 SVC（Supervisor Call）异常的优先级被设置为复位后的默认值**。
-关于**异常**可看[Interrupt_Mgmt](EmbeddedSoft/RTOS/FreeRTOS/Interrupt_Mgmt.md)
+关于**异常**可看[Interrupt_Mgmt](Interrupt_Mgmt.md)
 
 #### 详细解释：
 

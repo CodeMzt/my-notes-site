@@ -1,7 +1,7 @@
 [TOC]
 # 入门汇编指令
 
-见[汇编入门](EmbeddedSoft/Assembly_Intro/Assembly_Intro.md)
+见[Assembly_Intro](../Assembly_Intro/Assembly_Intro.md)
 # ARM64寄存器
 
 ## 什么是寄存器？

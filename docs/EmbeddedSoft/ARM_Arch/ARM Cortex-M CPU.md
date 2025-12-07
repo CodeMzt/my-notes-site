@@ -2,7 +2,7 @@
 
 ## 整体架构框图
 
-![image-20251128172801809](EmbeddedSoft/photosource/Cortex‐M3的一个简化视图.png)
+![](EmbeddedSoft/photosource/Cortex‐M3的一个简化视图.png)
 
 ```
 ARM Cortex-M 处理器核心架构：

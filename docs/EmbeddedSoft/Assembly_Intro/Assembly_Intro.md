@@ -53,13 +53,13 @@ MOV R1, #20         @ R1 = 20
 ADD R2, R0, R1      @ R2 = R0 + R1 = 30
 ```
  ## 更多指令及详解 
-- [[PUSH]]
-- [[POP]]
-- [[B&BX]]
+- [PUSH](PUSH.md)
+- [POP](POP.md)
+- [B&BX](B&BX.md)
 # C语言与反汇编
 先了解
-- [[EmbeddedSoft/RTOS/FreeRTOS/Mem_Mgmt]]
-- [[label]]
+- [Mem_Mgmt](Mem_Mgmt.md)
+- [label](label.md)
 ## 简单的C程序
 ```c
 // simple.c
@@ -101,7 +101,7 @@ int main() {
 
 ### 对应的ARM汇编代码及分析
 需要先了解：
-- [[../ARM_Arch/ARM_Arch|ARM架构]]
+- [ARM_Arch](ARM_Arch.md)
 #### add_numbers函数汇编（简单版本）
 ```assembly
 add_numbers:

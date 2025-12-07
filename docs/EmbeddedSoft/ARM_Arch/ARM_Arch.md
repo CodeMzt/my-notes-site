@@ -34,7 +34,7 @@ RISC（精简指令集计算机）是一种处理器设计哲学，与CISC（复
 
 # 核心部件：主控、内存、FLASH
 详见：
-- [ARM Cortex-M CPU](EmbeddedSoft/ARM_Arch/ARM%20Cortex-M%20CPU.md)
+- [ARM Cortex-M CPU](ARM%20Cortex-M%20CPU.md)
 ## 1. 主控芯片（CPU） - "大脑"
 主控芯片是设备的"大脑"，负责所有的计算和控制工作。
 
@@ -116,8 +116,8 @@ CPU的工作就是不断重复以下步骤：
 4. **存储**：将结果保存到内存或寄存器
 ## 指向指令
 CPU是靠机器码和寄存器操作来运行的，见：
-- [GeneralReg](EmbeddedSoft/ARM_Arch/GeneralReg.md)
-- [SpecialReg_xPSR](EmbeddedSoft/ARM_Arch/SpecialReg_xPSR.md)
+- [GeneralReg](GeneralReg.md)
+- [SpecialReg_xPSR](SpecialReg_xPSR.md)
 # 从C代码到CPU执行的完整流程
 
 ```
