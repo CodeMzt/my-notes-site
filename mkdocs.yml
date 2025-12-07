@@ -47,10 +47,40 @@ plugins:
   
 # --- 导航菜单配置 (Nav) ---
 nav:
-  - 🏡 首页: README.md
+  - 🏡 首页: README.md # 注意：根据你的文件树，根目录的首页现在是 README.md
 
-  - 🤖 机器学习:
-    - Pytorch 学习:
+  - 🧠 深度学习 (DeepLearning):
+    - 第一部分 (Part 1):
+      - 神经网络与层: DeepLearning/part1/Neurons_and_Layers.ipynb
+      - 咖啡烘焙 (NumPy): DeepLearning/part1/CoffeeRoasting_Numpy.ipynb
+      - 咖啡烘焙 (TF): DeepLearning/part1/CoffeeRoasting_TF.ipynb
+      - 编程作业: DeepLearning/part1/Assignment.ipynb
+    - 第二部分 (Part 2):
+      - ReLu 激活函数: DeepLearning/part2/Relu.ipynb
+      - SoftMax 分类: DeepLearning/part2/SoftMax.ipynb
+      - 多分类 (TF): DeepLearning/part2/Multiclass_TF.ipynb
+      - 反向传播: DeepLearning/part2/backprop/C2_W2_Backprop.ipynb
+      - 导数基础: DeepLearning/part2/backprop/C2_W2_Derivatives.ipynb
+      - 编程作业: DeepLearning/part2/Assignment.ipynb
+    - 机器学习基础 (Part 1): # 对应 MachineLearning/part1
+      - 模型表示: MachineLearning/part1/Model_Representation_Soln.ipynb
+      - 损失函数: MachineLearning/part1/Cost_function_Soln.ipynb
+      - 梯度下降: MachineLearning/part1/Gradient_Descent_Soln.ipynb
+    - 机器学习基础 (Part 2): # 对应 MachineLearning/part2
+      - 线性回归: MachineLearning/part2/Linear_Regression.ipynb
+      - 多变量: MachineLearning/part2/Multiple_Variable_Soln.ipynb
+      - 特征工程与多项式回归: MachineLearning/part2/FeatEng_PolyReg_Soln.ipynb
+      - 特征缩放与学习率: MachineLearning/part2/Feature_Scaling_and_Learning_Rate_Soln.ipynb
+      - Python/Numpy 向量化: MachineLearning/part2/Python_Numpy_Vectorization_Soln.ipynb
+    - 机器学习基础 (Part 3): # 对应 MachineLearning/part3
+      - 逻辑回归: MachineLearning/part3/Logistic_Regression.ipynb
+      - Sigmoid 函数: MachineLearning/part3/Sigmoid_function_Soln.ipynb
+      - 损失函数: MachineLearning/part3/Cost_Function_Soln.ipynb
+      - 决策边界: MachineLearning/part3/Decision_Boundary_Soln.ipynb
+      - 分类与预测: MachineLearning/part3/Classification_Soln.ipynb
+      - 过拟合: MachineLearning/part3/Overfitting_Soln.ipynb
+      - 正则化: MachineLearning/part3/Regularization_Soln.ipynb
+    - Pytorch 学习: # 对应 MachineLearning/Pytorch_Learning
       - NN 神经网络: MachineLearning/Pytorch_Learning/nn.ipynb
       - Tensor 张量: MachineLearning/Pytorch_Learning/tensor.ipynb
       - 数据处理: MachineLearning/Pytorch_Learning/data.ipynb
@@ -84,6 +114,7 @@ nav:
             - 任务切换: EmbeddedSoft/RTOS/Tasks_Switch.md
             
         - FreeRTOS 核心机制:
+            # 所有的 FreeRTOS 文件都在 EmbeddedSoft/RTOS/FreeRTOS/ 目录下
             - FreeRTOS 简介: EmbeddedSoft/RTOS/FreeRTOS/FreeRTOS.md
             - 任务创建与删除: EmbeddedSoft/RTOS/FreeRTOS/Tasks_Create&Delete.md
             - 任务调度: EmbeddedSoft/RTOS/FreeRTOS/Scheduling.md
@@ -92,7 +123,6 @@ nav:
             - 列表与列表项: EmbeddedSoft/RTOS/FreeRTOS/List&ListItem.md
             - 内存管理: EmbeddedSoft/RTOS/FreeRTOS/Mem_Mgmt.md
             - 内核挂起: EmbeddedSoft/RTOS/FreeRTOS/KernelPend.md
-            # 同步、互斥与通信（Sync_Comms.md 和其衍生的信号量/互斥量/队列/事件组等文件）
             - 同步、互斥与通信: EmbeddedSoft/RTOS/FreeRTOS/Sync_Comms.md
             - 信号量 (Semaphore): EmbeddedSoft/RTOS/FreeRTOS/Semaphore.md
             - 互斥量 (Mutex): EmbeddedSoft/RTOS/FreeRTOS/Mutex.md
@@ -100,7 +130,6 @@ nav:
             - 队列集 (Queue Set): EmbeddedSoft/RTOS/FreeRTOS/Queue_Set.md
             - 任务通知: EmbeddedSoft/RTOS/FreeRTOS/TaskNote.md
             - 事件组: EmbeddedSoft/RTOS/FreeRTOS/Event_Group.md
-            # 中断与移植（Interrupt_Mgmt.md 和 Porting.md）
             - 中断管理: EmbeddedSoft/RTOS/FreeRTOS/Interrupt_Mgmt.md
             - 移植 (Porting): EmbeddedSoft/RTOS/FreeRTOS/Porting.md
 
@@ -113,7 +142,7 @@ nav:
         - ADC: EmbeddedSoft/STM32_HAL/ADC.md
         - 定时器 (TIM): EmbeddedSoft/STM32_HAL/TIM.md
         - FLASH: EmbeddedSoft/STM32_HAL/FLASH.md
-        - BKP & RTC: EmbeddedSoft/STM32_HAL/BKP&RTC.md
+        - BKP/RTC/PWR: EmbeddedSoft/STM32_HAL/BKP、RTC&PWR.md # 注意：使用原始文件名
         - 看门狗 (WDG): EmbeddedSoft/STM32_HAL/WDG.md
         - 通信协议总结: EmbeddedSoft/STM32_HAL/connective.md 
 
