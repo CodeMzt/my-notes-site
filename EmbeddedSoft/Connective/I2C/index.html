@@ -1819,7 +1819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../RTOS/FreeRTOS/Queue_Set.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Queue_Set/" class="md-nav__link">
         
   
   
@@ -1875,7 +1875,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../RTOS/FreeRTOS/Event_Group.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Event_Group/" class="md-nav__link">
         
   
   
@@ -3410,7 +3410,7 @@
 <li><strong>低速</strong>：通常用于板内IC之间的短距离通信，速度从标准模式（100kbps）到超快速模式（5Mbps）不等。</li>
 </ul>
 <h2 id="_1">二、 硬件连接</h2>
-<p><img src="./../%E5%9B%BE%E6%BA%90/I2C%E8%BF%9E%E7%BA%BF.jpg" alt="I2C连线" style="zoom: 150%;" /></p>
+<p><img alt="" src="EmbeddedSoft/photosource/I2C连线.jpg" /></p>
 <p><img alt="I2C连线2" src="../../photosource/I2C%E8%BF%9E%E7%BA%BF2.png" /></p>
 <ul>
 <li><strong>SDA（Serial Data Line）</strong>：串行数据线，用于传输数据。</li>
@@ -3472,14 +3472,14 @@
 </ul>
 </li>
 </ul>
-<p><img src="./../%E5%9B%BE%E6%BA%90/I2C%E8%B5%B7%E5%A7%8B%E6%9D%A1%E4%BB%B6.png" alt="I2C起始条件" style="zoom:50%;" /></p>
+<p><img alt="" src="EmbeddedSoft/photosource/I2C起始条件.png" /></p>
 <ul>
 <li><strong>停止条件（P）</strong>： 当SCL为高电平时，SDA线出现一个<strong>上升沿</strong>。<ul>
-<li>表示一次传输的结束。</li>
+<li>表示一次传输的结束。
+<img alt="" src="EmbeddedSoft/photosource/I2C终止条件.png" /></li>
 </ul>
 </li>
 </ul>
-<p><img src="./../%E5%9B%BE%E6%BA%90/I2C%E7%BB%88%E6%AD%A2%E6%9D%A1%E4%BB%B6.png" alt="I2C终止条件" style="zoom:50%;" /></p>
 <blockquote>
 <p><strong>注意</strong>：在SCL为高期间，SDA的稳定变化被用于表示起始和停止条件，在数据传输期间，SDA的变化必须发生在SCL为低时。</p>
 </blockquote>

@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../Interrupt_Mgmt/">
+        <link rel="prev" href="../Queue/">
       
       
-        <link rel="next" href="../../../STM32_HAL/STM32_HAL/">
+        <link rel="next" href="../TaskNote/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>移植 (Porting) - 个人技术与学习笔记</title>
+        <title>队列集 (Queue Set) - 个人技术与学习笔记</title>
       
     
     
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              移植 (Porting)
+              队列集 (Queue Set)
             
           </span>
         </div>
@@ -1816,10 +1816,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../Queue_Set/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    队列集 (Queue Set)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1835,6 +1862,48 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        什么是队列集
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        队列集的核心价值
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1928,19 +1997,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Porting/" class="md-nav__link">
         
   
   
@@ -1956,7 +2016,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -2934,6 +2993,36 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        什么是队列集
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        队列集的核心价值
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2949,179 +3038,310 @@
 
 
 
-<h1 id="_1">下载官方文件</h1>
-<p><a href="https://www.freertos.org/">FreeRTOS</a></p>
-<h1 id="_2">文件说明</h1>
-<h2 id="_3"><strong>内核</strong>文件夹（重点关注）</h2>
-<p><img alt="" src="photosource/FreeRTOS移植1.png" /></p>
-<h2 id="_4">核心代码</h2>
-<p><img alt="../../图源/FreeRTOS移植2.png" src="photosource/FreeRTOS移植2.png" />
-1. croutine.c：协程相关文件（不用）
-2. event_groups.c：事件相关（次要）
-3. list.c：列表（重要）
-4. queue.c：队列（重要）
-5. stream_buffer.c：流式缓冲区（次要）
-6. tasks.c：任务文件(重要)
-7. timers.c：定时器相关（次要）</p>
-<h2 id="portable">portable文件夹</h2>
-<p>用于移植</p>
-<h3 id="memmang">MemMang(必须)</h3>
-<p>内存管理，一般选择版本4</p>
-<h3 id="keilgcc">Keil或GCC（必须）</h3>
-<h3 id="rvdskeil">RVDS(Keil必须)</h3>
-<p>Keil或GCC的底层，不同内核芯片的移植文件</p>
-<h1 id="_5">移植步骤</h1>
-<h2 id="cubemx">CubeMx一键配置</h2>
-<h3 id="_6">接口</h3>
-<p><img alt="../../图源/FreeRTOS移植3.png" src="photosource/FreeRTOS移植3.png" />
-选择版本V2，更好。
-- 选择 FreeRTOS 后，右侧会多出一个 <code>FREERTOS</code> 的配置页签。</p>
+<p>队列集可以传输多种数据类型的信息</p>
+<h1 id="_1">队列集的基本概念</h1>
+<h2 id="_2">什么是队列集</h2>
+<p>队列集（Queue Set）是一种高级同步机制，允许单个任务同时监视多个队列或信号量。想象一个监控中心：</p>
 <ul>
-<li>
-<p>在这里，你可以完全通过图形界面配置所有 FreeRTOS 参数，无需手动修改 <code>FreeRTOSConfig.h</code> 文件：</p>
-<ul>
-<li>
-<p><strong>任务和队列</strong>：设置内核对象数量，如 <code>configTOTAL_HEAP_SIZE</code>（非常重要！）。</p>
-</li>
-<li>
-<p><strong>钩子函数</strong>：使能或禁止空闲任务钩子、定时器钩子等。</p>
-</li>
-<li>
-<p><strong>内存管理</strong>：选择堆分配方案（Heap 1~5）。</p>
-</li>
-<li>
-<p><strong>Include parameters</strong>：配置 <code>configUSE_PREEMPTION</code>（是否使用抢占式调度）、<code>configCPU_CLOCK_HZ</code>（CPU 频率，通常会自动设置好）、<code>configTICK_RATE_HZ</code>（系统时钟节拍频率，通常设为 1000Hz，即 1ms 一个节拍）。</p>
-</li>
+<li><strong>多个传感器</strong>：每个队列就像一个传感器，产生不同类型的数据</li>
+<li><strong>中央监控台</strong>：队列集就是监控台，可以同时显示所有传感器的状态</li>
+<li><strong>值班人员</strong>：任务就像值班人员，只需要关注监控台，不需要轮流检查每个传感器</li>
 </ul>
-<h3 id="_7">协处理器</h3>
-<p><img alt="../../图源/FreeRTOS移植4.png" src="photosource/FreeRTOS移植4.png" /></p>
-<h4 id="_8">内存保护</h4>
-<p>MPU 是一个硬件单元，它允许操作系统（如 FreeRTOS）为不同的任务或进程<strong>设置内存访问权限</strong>。你可以把它想象成一颗芯片内部的“内存卫士”。</p>
-<h4 id="_9">浮点运算</h4>
-<p>FPU 是一个专门用于处理<strong>浮点数</strong>（小数）计算的硬件单元。没有 FPU 的 CPU 只能通过软件库来模拟浮点运算，这非常缓慢。FPU 则像是一个数学计算器，能直接在硬件上高速执行 <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> 甚至更复杂的三角函数、对数等运算。</p>
-<h3 id="kernal-settingsconfig">Kernal Settings(Config)</h3>
-</li>
-<li>
-<p>选择 FreeRTOS 后，右侧会多出一个 <code>FREERTOS</code> 的配置页签。在这里，你可以完全通过图形界面配置所有 FreeRTOS 参数，无需手动修改 <code>FreeRTOSConfig.h</code> 文件。</p>
-</li>
-</ul>
-<p>#### <u><strong>preemptive scheduler</strong></u></p>
-<p>配置 <code>configUSE_PREEMPTION</code>（是否使用抢占式调度）、<code>configCPU_CLOCK_HZ</code>（CPU 频率，通常会自动设置好）、<code>configTICK_RATE_HZ</code>（系统时钟节拍频率，通常设为 1000Hz，即 1ms 一个节拍）。</p>
-<p>#### <strong><u>任务和队列</u></strong></p>
-<p>设置内核对象数量，如 <code>configTOTAL_HEAP_SIZE</code>（非常重要！）。</p>
-<p>#### <strong><u>内存管理</u></strong></p>
-<p>选择堆分配方案（Heap 1~5）。</p>
-<p>#### <u><strong>USE_SB_COMPLETED_CALLBACK</strong></u></p>
-<p>"SB" 代表 "Space Block"。这个选项用于启用或禁用 <strong>"半传输完成回调函数"</strong>。</p>
-<p>#### <strong><u>USE_MINI_LIST_ITEM</strong></u> </p>
-<p>是否启用<strong>链表优化</strong></p>
-<p>FreeRTOS 内核大量使用<strong>链表</strong>来管理其内核对象，例如：</p>
-<ul>
-<li><strong>就绪列表</strong>：管理所有准备运行的任务。</li>
-<li><strong>阻塞列表</strong>：管理所有正在延迟或等待事件（如信号量、队列）的任务。</li>
-<li><strong>挂起列表</strong>：管理被挂起的任务。</li>
-</ul>
-<p>这些链表中的每一个元素都是一个 <code>ListItem_t</code> 结构体。每当一个任务被创建时，它都会包含多个 <code>ListItem_t</code> 成员（例如 <code>xStateListItem</code> 用于放入就序/阻塞/挂起列表，<code>xEventListItem</code> 用于事件列表）。</p>
-<p>##### 标准的 <code>ListItem_t</code></p>
-<p>一个标准的 <code>ListItem_t</code> 结构体（在 <code>list.h</code> 中定义）通常包含以下成员：</p>
-<p><code>c
-  // 标准的列表项结构
-  struct xLIST_ITEM {
-      TickType_t xItemValue;               // 主要值，用于在列表中排序（例如，唤醒时间戳）
-      struct xLIST_ITEM * pxNext;          // 指向链表中下一个列表项的指针
-      struct xLIST_ITEM * pxPrevious;      // 指向链表中上一个列表项的指针
-      void * pvOwner;                      // 指向拥有这个列表项的对象（通常是任务控制块 TCB）
-      void * pvContainer;                  // 指向这个列表项所属的列表
-  };
-  // 在 32 位架构上，这通常是 20 字节。</code></p>
-<p>##### <code>USE_MINI_LIST_ITEM</code> 是什么？</p>
-<p><code>USE_MINI_LIST_ITEM</code> 是一个在 <code>FreeRTOSConfig.h</code> 中定义的编译时配置选项。</p>
-<ul>
-<li><strong><code>#define USE_MINI_LIST_ITEM 0</code> （默认）</strong>：使用上面描述的<strong>标准</strong> <code>ListItem_t</code> 结构体。</li>
-<li><strong><code>#define USE_MINI_LIST_ITEM 1</code></strong>：使用一个<strong>精简版</strong>的 <code>ListItem_t</code> 结构体，通常被称为 <code>MiniListItem_t</code>。</li>
-</ul>
-<p>##### 精简版列表项</p>
-<p><code>MiniListItem_t</code> 移除了某些成员，以节省内存。它通常只包含：</p>
-<p><code>c
-  // 精简版列表项结构
-  struct xMINI_LIST_ITEM {
-      TickType_t xItemValue;               // 保留：用于排序的主要值
-      struct xLIST_ITEM * pxNext;          // 保留：指向下一个列表项
-      struct xLIST_ITEM * pxPrevious;      // 保留：指向上一个列表项
-  };
-  // 在 32 位架构上，这通常是 12 字节（比标准版节省了 8 字节）。</code>
-  你可能会注意到，它移除了：</p>
-<ul>
-<li><code>pvOwner</code>：指向拥有者的指针。</li>
-<li><code>pvContainer</code>：指向所属列表的指针。</li>
-</ul>
-<p>##### 用途和限制</p>
-<p><strong>为什么需要精简版列表项？</strong></p>
-<p>精简版列表项<strong>并非用于任务</strong>，而是专门用于<strong>列表的“末尾”或“结束”标记</strong>。</p>
-<p>在 FreeRTOS 的链表实现中，每个列表都有一个<strong>“列表尾”</strong> 或 <strong>“结束标记”</strong>。这个标记本身也是一个 <code>ListItem_t</code>，但它不归属于任何任务或内核对象。它的唯一作用是：</p>
-<ul>
-<li>表示列表的结束。</li>
-<li>其 <code>xItemValue</code> 被设置为可能的最大值（<code>portMAX_DELAY</code>），以确保它在按值排序的列表中始终处于末尾位置。</li>
-</ul>
-<p>因为这个“结束标记”列表项没有“拥有者”，也不关心自己属于哪个“容器”（它本身就是容器的一部分），所以使用完整的 <code>ListItem_t</code> 是对内存的浪费。因此，FreeRTOS 使用 <code>MiniListItem_t</code> 来创建这个结束标记，从而节省宝贵的内存。</p>
-<p>#### <u>MINIMAL_STACK_SIZE</u>
-  <code>MINIMAL_STACK_SIZE</code> 是 FreeRTOS 中一个非常重要且基础的配置选项。它定义了<strong>空闲任务</strong>和（在某些配置下）<strong>定时器服务任务</strong>所使用的<strong>最小栈深度</strong>。作为新手，我们只了解它经验值位128字。</p>
-<p>#### <u>IDLE_SHOULD_YIELD</u>
-  当有<strong>其他用户任务</strong>与空闲任务<strong>处于同一优先级（即优先级 0）</strong> 时，空闲任务在它的时间片结束后是否应该<strong>立即让出</strong> CPU。</p>
-<p>#### <u>ENABLE_BACKWARD_COMPATIBILITY</u>  </p>
-<p>是否启用<strong>向后版本兼容</strong>，启用则旧版本的代码能够正常使用。</p>
-<p>#### <u>USE_TICKLESS_IDLE</u></p>
-<p>tickless，通常被称为 <strong>"无滴答空闲模式"</strong> 或 <strong>"低功耗滴答模式"</strong>。新手不需要启用这个。</p>
-<p>#### <u>USE_TASK_NOTIFICATIONS</u></p>
-<p>是否启用 <strong>任务通知</strong> 功能，默认情况下，这个选项是启用的。 除非你出于极特殊的原因（比如要节省 TCB 中那几个字节的内存），否则永远不要禁用它。</p>
-<p>#### <u>RECORD_STACK_HIGH_ADDRESS</u>  </p>
-<p>提供了更精确的栈分析信息。先不管。</p>
-<p>### <strong>Hook Function  钩子函数</strong></p>
-<p>使能或禁止空闲任务钩子、定时器钩子等。</p>
-<p><strong>钩子函数</strong> 是 FreeRTOS 中一个非常强大的特性，它允许你在<strong>内核的关键执行点</strong>插入自己的回调函数。这为调试、性能分析、低功耗管理和功能扩展提供了极大的灵活性。</p>
-<p><code>c
-  configUSE_IDLE_HOOK //是否启用空闲任务钩子函数。这是一个由用户实现的回调函数，当 FreeRTOS 的空闲任务运行时，这个函数会被自动且反复地调用。
-  configUSE_TICK_HOOK //高级功能,在 SysTick 中断服务程序 内部被调用。
-  ...</code></p>
-<p>### Run time and task stats gathering  <strong>运行时和任务统计信息收集</strong></p>
-<p>#### 1. 启用任务统计 <strong><code>configUSE_TRACE_FACILITY</code></strong></p>
-<p>这是最基础的配置，它为任务控制块（TCB）添加了统计信息所需的字段。</p>
-<p><code>c
-  #define configUSE_TRACE_FACILITY 1</code></p>
-<p><strong>作用</strong>：</p>
-<ul>
-<li>在 TCB 中添加了 <code>ulRunTimeCounter</code> 字段，用于记录任务的累计运行时间。</li>
-<li>为调试器可视化提供更多任务状态信息。</li>
-</ul>
-<p>#### 2. 启用运行时统计 <strong><code>configGENERATE_RUN_TIME_STATS</code></strong></p>
-<p>这个宏控制是否计算每个任务的 CPU 使用率。</p>
-<p><code>c
-  #define configGENERATE_RUN_TIME_STATS 1</code></p>
-<p><strong>作用</strong>：</p>
-<ul>
-<li>启用任务运行时统计计算。</li>
-<li><strong>需要你实现两个宏</strong>来提供计时功能。</li>
-</ul>
-<p>#### 3. 启用任务状态查询 <strong><code>configUSE_STATS_FORMATTING_FUNCTIONS</code></strong></p>
-<p>这个宏启用了一些用于格式化输出统计信息的实用函数。</p>
-<p><code>c
-  #define configUSE_STATS_FORMATTING_FUNCTIONS 1</code></p>
-<p><strong>作用</strong>：</p>
-<ul>
-<li>启用了 <code>vTaskList()</code> 和 <code>vTaskGetRunTimeStats()</code> 等函数。</li>
-<li>这些函数可以将统计信息格式化为可读的字符串。</li>
-</ul>
-<p>### Software Timer</p>
-<p><strong>软件定时器</strong> 是 FreeRTOS 中一个非常重要的功能，它允许你在应用程序中创建和管理多个虚拟定时器，而无需使用硬件定时器外设</p>
-<p>CubeMx给我们优先级是2，只高于优先级1和空闲任务（优先级0），适于简单应用。一般这个优先级要调高一点。</p>
-<h2 id="_10">手动移植</h2>
-<h3 id="1-freertos">1. 添加FreeRTOS源码</h3>
-<p>将源码添加入工程，不同IDE不一样</p>
-<h3 id="2-freertosconfigh">2. FreeRTOSConfig.h</h3>
-<p>配置文件</p>
-<h3 id="3-system">3. 修改SYSTEM文件</h3>
-<h3 id="4">4. 修改中断相关文件</h3>
-<h3 id="5">5. 添加应用程序</h3>
+<h2 id="_3">队列集的核心价值</h2>
+<p><strong>解决多路监听问题</strong>：在没有队列集的情况下，任务需要轮流检查多个队列：</p>
+<pre><code class="language-c">// 低效的方式：轮流检查每个队列
+void vTaskInefficient(void) {
+    while(1) {
+        if(xQueueReceive(xQueue1, &amp;data1, 0) == pdPASS) {
+            process_data1(data1);
+        }
+        if(xQueueReceive(xQueue2, &amp;data2, 0) == pdPASS) {
+            process_data2(data2);
+        }
+        if(xQueueReceive(xQueue3, &amp;data3, 0) == pdPASS) {
+            process_data3(data3);
+        }
+        vTaskDelay(10); // 忙等待，浪费CPU
+    }
+}
+</code></pre>
+<p><strong>队列集的优势</strong>：
+- 任务可以阻塞等待任意队列有数据
+- 避免忙等待，提高CPU效率
+- 简化多队列监听逻辑</p>
+<h1 id="freertos">FreeRTOS 队列集特性</h1>
+<h2 id="_4">设计特点</h2>
+<p><strong>统一监听接口</strong>：任务只需要等待队列集，不需要关心具体哪个队列</p>
+<p><strong>支持混合类型</strong>：可以同时包含队列和信号量</p>
+<p><strong>非破坏性查看</strong>：从队列集读取不会移除原始队列中的数据</p>
+<p><strong>容量限制</strong>：队列集本身有容量限制，需要合理设计</p>
+<h2 id="_5">适用场景</h2>
+<p><strong>多数据源处理</strong>：监控多个传感器数据流</p>
+<p><strong>事件驱动系统</strong>：响应来自不同来源的事件</p>
+<p><strong>协议处理</strong>：处理来自多个通信通道的数据</p>
+<p><strong>GUI事件处理</strong>：监听用户输入、定时器、网络事件等</p>
+<h1 id="freertos_1">FreeRTOS 队列集函数详解</h1>
+<h2 id="xqueuecreateset-">xQueueCreateSet - 创建队列集</h2>
+<pre><code class="language-c">QueueSetHandle_t xQueueCreateSet(const UBaseType_t uxEventQueueLength);
+</code></pre>
+<p><strong>参数说明</strong>：
+- <code>uxEventQueueLength</code>：队列集的容量，即能够同时记录的最大事件数</p>
+<p><strong>返回值</strong>：
+- 成功：队列集句柄
+- 失败：NULL</p>
+<p><strong>容量设计原则</strong>：</p>
+<pre><code class="language-c">// 如果有3个队列需要监控，每个队列可能同时有多个数据
+// 建议容量 = 监控的队列数 × 每个队列的预期最大并发数据
+QueueSetHandle_t xQueueSet = xQueueCreateSet(10); // 容量为10个事件
+</code></pre>
+<h2 id="xqueueaddtoset-">xQueueAddToSet - 添加成员到队列集</h2>
+<pre><code class="language-c">BaseType_t xQueueAddToSet(QueueSetMemberHandle_t xQueueOrSemaphore,
+                         QueueSetHandle_t xQueueSet);
+</code></pre>
+<p><strong>参数说明</strong>：
+- <code>xQueueOrSemaphore</code>：要添加的队列或信号量句柄
+- <code>xQueueSet</code>：目标队列集句柄</p>
+<p><strong>返回值</strong>：
+- <code>pdPASS</code>：添加成功
+- <code>pdFAIL</code>：添加失败</p>
+<p><strong>添加示例</strong>：</p>
+<pre><code class="language-c">// 创建队列和队列集
+QueueHandle_t xSensorQueue = xQueueCreate(5, sizeof(SensorData_t));
+QueueHandle_t xCommandQueue = xQueueCreate(3, sizeof(Command_t));
+QueueSetHandle_t xMainQueueSet = xQueueCreateSet(8);
+
+// 添加队列到队列集
+xQueueAddToSet(xSensorQueue, xMainQueueSet);
+xQueueAddToSet(xCommandQueue, xMainQueueSet);
+</code></pre>
+<h2 id="xqueueremovefromset-">xQueueRemoveFromSet - 从队列集中移除成员</h2>
+<pre><code class="language-c">BaseType_t xQueueRemoveFromSet(QueueSetMemberHandle_t xQueueOrSemaphore,
+                              QueueSetHandle_t xQueueSet);
+</code></pre>
+<p><strong>使用场景</strong>：
+- 动态重新配置系统
+- 临时禁用某些数据源
+- 系统关闭时清理资源</p>
+<h2 id="xqueueselectfromset-">xQueueSelectFromSet - 从队列集选择就绪成员</h2>
+<pre><code class="language-c">QueueSetMemberHandle_t xQueueSelectFromSet(QueueSetHandle_t xQueueSet,
+                                          TickType_t const xTicksToWait);
+</code></pre>
+<p><strong>参数说明</strong>：
+- <code>xQueueSet</code>：要监听的队列集
+- <code>xTicksToWait</code>：阻塞超时时间</p>
+<p><strong>返回值</strong>：
+- 非NULL：就绪的队列或信号量句柄
+- NULL：超时没有就绪的成员</p>
+<h2 id="xqueueselectfromsetfromisr-">xQueueSelectFromSetFromISR - 中断安全版本</h2>
+<pre><code class="language-c">QueueSetMemberHandle_t xQueueSelectFromSetFromISR(QueueSetHandle_t xQueueSet);
+</code></pre>
+<p><strong>中断中使用注意事项</strong>：
+- 没有超时参数
+- 需要检查返回值是否为NULL
+- 通常配合<code>portYIELD_FROM_ISR</code>使用</p>
+<h1 id="freertos_2">FreeRTOS 队列集使用模式</h1>
+<h2 id="_6">基本使用流程</h2>
+<pre><code class="language-c">// 1. 创建队列集和成员队列
+QueueSetHandle_t xQueueSet = xQueueCreateSet(10);
+QueueHandle_t xQueue1 = xQueueCreate(5, sizeof(int));
+QueueHandle_t xQueue2 = xQueueCreate(5, sizeof(float));
+
+// 2. 添加队列到队列集
+xQueueAddToSet(xQueue1, xQueueSet);
+xQueueAddToSet(xQueue2, xQueueSet);
+
+// 3. 任务中监听队列集
+void vMonitorTask(void *pvParameters) {
+    QueueSetMemberHandle_t xActivatedMember;
+
+    while(1) {
+        // 等待任意队列有数据
+        xActivatedMember = xQueueSelectFromSet(xQueueSet, portMAX_DELAY);
+
+        if(xActivatedMember == xQueue1) {
+            int data;
+            xQueueReceive(xQueue1, &amp;data, 0);
+            process_queue1_data(data);
+        }
+        else if(xActivatedMember == xQueue2) {
+            float data;
+            xQueueReceive(xQueue2, &amp;data, 0);
+            process_queue2_data(data);
+        }
+    }
+}
+</code></pre>
+<h2 id="_7">信号量与队列混合监听</h2>
+<pre><code class="language-c">// 创建队列集和不同类型的成员
+QueueSetHandle_t xEventSet = xQueueCreateSet(8);
+QueueHandle_t xDataQueue = xQueueCreate(5, sizeof(Data_t));
+SemaphoreHandle_t xTimerSemaphore = xSemaphoreCreateBinary();
+SemaphoreHandle_t xButtonSemaphore = xSemaphoreCreateBinary();
+
+// 添加所有成员到队列集
+xQueueAddToSet(xDataQueue, xEventSet);
+xQueueAddToSet(xTimerSemaphore, xEventSet);
+xQueueAddToSet(xButtonSemaphore, xEventSet);
+
+// 统一事件处理
+void vEventHandler(void *pvParameters) {
+    QueueSetMemberHandle_t xEventSource;
+
+    while(1) {
+        xEventSource = xQueueSelectFromSet(xEventSet, portMAX_DELAY);
+
+        if(xEventSource == xDataQueue) {
+            Data_t data;
+            xQueueReceive(xDataQueue, &amp;data, 0);
+            handle_data_event(data);
+        }
+        else if(xEventSource == xTimerSemaphore) {
+            xSemaphoreTake(xTimerSemaphore, 0);
+            handle_timer_event();
+        }
+        else if(xEventSource == xButtonSemaphore) {
+            xSemaphoreTake(xButtonSemaphore, 0);
+            handle_button_event();
+        }
+    }
+}
+</code></pre>
+<h2 id="_8">动态成员管理</h2>
+<pre><code class="language-c">// 动态添加和移除队列集成员
+void vDynamicQueueManagement(void) {
+    QueueHandle_t xTempQueue = xQueueCreate(3, sizeof(float));
+
+    // 临时添加监控
+    if(xQueueAddToSet(xTempQueue, xMainQueueSet) == pdPASS) {
+        printf(&quot;Temporary queue added to set\n&quot;);
+
+        // 监控一段时间...
+        vTaskDelay(10000 / portTICK_PERIOD_MS);
+
+        // 移除监控
+        xQueueRemoveFromSet(xTempQueue, xMainQueueSet);
+    }
+
+    vQueueDelete(xTempQueue);
+}
+</code></pre>
+<h1 id="cmsis-rtos-v2">CMSIS-RTOS v2 事件标志</h1>
+<h2 id="cmsis-rtos-v2_1">CMSIS-RTOS v2 的等效机制</h2>
+<p>在CMSIS-RTOS v2中，队列集的功能由<strong>事件标志（Event Flags)</strong> 实现。事件标志提供类似的功能，但实现方式不同：CMSISv2提供<a href="EmbeddedSoft/RTOS/FreeRTOS/Event_Group.md">Event_Group</a></p>
+<h2 id="rtos-vs-cmsis-rtos-v2">RTOS 队列集 vs CMSIS-RTOS v2 事件标志机制对比</h2>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>FreeRTOS 队列集</th>
+<th>CMSIS-RTOS v2 事件标志</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实现基础</td>
+<td>队列集合监听</td>
+<td>位标志操作</td>
+</tr>
+<tr>
+<td>数据传递</td>
+<td>支持数据传输</td>
+<td>仅事件通知，无数据</td>
+</tr>
+<tr>
+<td>成员类型</td>
+<td>队列、信号量混合</td>
+<td>统一的事件标志位</td>
+</tr>
+<tr>
+<td>资源开销</td>
+<td>较高（需要队列集和成员队列）</td>
+<td>较低（单个事件标志对象）</td>
+</tr>
+<tr>
+<td>灵活性</td>
+<td>动态添加移除成员</td>
+<td>固定的标志位定义</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_9">适用场景对比</h2>
+<p><strong>FreeRTOS队列集更适合</strong>：
+- 需要传输实际数据的场景
+- 混合类型的同步对象（队列+信号量）
+- 动态变化的监听集合</p>
+<p><strong>CMSIS事件标志更适合</strong>：
+- 纯事件通知场景
+- 固定的事件类型集合
+- 资源受限的系统</p>
+<h2 id="_10">性能考虑</h2>
+<p><strong>FreeRTOS队列集</strong>：
+- 内存开销：队列集结构 + 所有成员队列
+- CPU开销：选择操作需要遍历成员
+- 灵活性：运行时动态配置</p>
+<p><strong>CMSIS事件标志</strong>：
+- 内存开销：单个事件标志对象
+- CPU开销：位操作，效率高
+- 灵活性：编译时确定事件类型</p>
+<h1 id="_11">设计注意事项</h1>
+<h2 id="freertos_3">FreeRTOS 队列集设计要点</h2>
+<p><strong>容量规划</strong>：</p>
+<pre><code class="language-c">// 错误：容量过小可能导致事件丢失
+QueueSetHandle_t xSet = xQueueCreateSet(2); // 太小！
+
+// 正确：根据并发需求设计容量
+// 假设有3个队列，每个队列可能同时有2个数据
+QueueSetHandle_t xSet = xQueueCreateSet(3 * 2); // 容量6
+</code></pre>
+<p><strong>成员管理</strong>：
+- 一个队列只能属于一个队列集
+- 添加前确保队列已创建
+- 移除前确保没有任务正在等待</p>
+<p><strong>错误处理</strong>：</p>
+<pre><code class="language-c">QueueSetMemberHandle_t xReadyMember = xQueueSelectFromSet(xSet, timeout);
+if(xReadyMember != NULL) {
+    if(xReadyMember == xQueue1) {
+        // 处理队列1数据
+        if(xQueueReceive(xQueue1, &amp;data, 0) != pdPASS) {
+            // 数据可能已被其他任务取走
+        }
+    }
+}
+</code></pre>
+<h2 id="cmsis-rtos-v2_2">CMSIS-RTOS v2 事件标志设计要点</h2>
+<p><strong>标志位规划</strong>：</p>
+<pre><code class="language-c">// 使用位域清晰定义事件
+typedef enum {
+    EVT_SENSOR1_READY = (1UL &lt;&lt; 0),
+    EVT_SENSOR2_READY = (1UL &lt;&lt; 1),
+    EVT_USER_INPUT   = (1UL &lt;&lt; 2),
+    EVT_SYSTEM_ERROR = (1UL &lt;&lt; 3),
+    EVT_ALL_SENSORS  = EVT_SENSOR1_READY | EVT_SENSOR2_READY
+} system_events_t;
+</code></pre>
+<p><strong>等待策略</strong>：</p>
+<pre><code class="language-c">// 等待任意传感器数据
+flags = osEventFlagsWait(events, EVT_ALL_SENSORS, osFlagsWaitAny, timeout);
+
+// 等待所有传感器数据就绪
+flags = osEventFlagsWait(events, EVT_ALL_SENSORS, osFlagsWaitAll, timeout);
+
+// 等待但不清除标志（用于监控）
+flags = osEventFlagsWait(events, EVT_SYSTEM_ERROR, osFlagsWaitAny | osFlagsNoClear, timeout);
+</code></pre>
+<h2 id="_12">共同的最佳实践</h2>
+<p><strong>超时设置</strong>：
+- 关键任务：<code>portMAX_DELAY</code> / <code>osWaitForever</code>
+- 非关键任务：合理超时，避免永久阻塞
+- 监控任务：短超时，定期执行其他工作</p>
+<p><strong>资源清理</strong>：
+- 删除前确保没有任务在等待
+- 按创建顺序逆序删除
+- 处理删除失败的情况</p>
+<p><strong>错误恢复</strong>：
+- 检查所有API返回值
+- 实现优雅降级策略
+- 记录错误信息用于调试</p>
 
 
 

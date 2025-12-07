@@ -11,28 +11,24 @@
       
       
       
-        <link rel="prev" href="../Interrupt_Mgmt/">
-      
-      
-        <link rel="next" href="../../../STM32_HAL/STM32_HAL/">
       
       
         
       
       
-      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
-        <title>移植 (Porting) - 个人技术与学习笔记</title>
+        <title>1. RTC (Real-Time Clock) 实时时钟 - 个人技术与学习笔记</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -51,7 +47,7 @@
       
     
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#1-rtc-real-time-clock" class="md-skip">
           Skip to content
         </a>
       
@@ -92,7 +88,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="个人技术与学习笔记" class="md-header__button md-logo" aria-label="个人技术与学习笔记" data-md-component="logo">
+    <a href="../../.." title="个人技术与学习笔记" class="md-header__button md-logo" aria-label="个人技术与学习笔记" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -112,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              移植 (Porting)
+              1. RTC (Real-Time Clock) 实时时钟
             
           </span>
         </div>
@@ -218,7 +214,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="个人技术与学习笔记" class="md-nav__button md-logo" aria-label="个人技术与学习笔记" data-md-component="logo">
+    <a href="../../.." title="个人技术与学习笔记" class="md-nav__button md-logo" aria-label="个人技术与学习笔记" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -236,7 +232,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -379,7 +375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../MachineLearning/Pytorch_Learning/nn/" class="md-nav__link">
+      <a href="../../../MachineLearning/Pytorch_Learning/nn/" class="md-nav__link">
         
   
   
@@ -407,7 +403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../MachineLearning/Pytorch_Learning/tensor/" class="md-nav__link">
+      <a href="../../../MachineLearning/Pytorch_Learning/tensor/" class="md-nav__link">
         
   
   
@@ -435,7 +431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../MachineLearning/Pytorch_Learning/data/" class="md-nav__link">
+      <a href="../../../MachineLearning/Pytorch_Learning/data/" class="md-nav__link">
         
   
   
@@ -463,7 +459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../MachineLearning/Pytorch_Learning/transfrom/" class="md-nav__link">
+      <a href="../../../MachineLearning/Pytorch_Learning/transfrom/" class="md-nav__link">
         
   
   
@@ -491,7 +487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../MachineLearning/Pytorch_Learning/tensorboard/" class="md-nav__link">
+      <a href="../../../MachineLearning/Pytorch_Learning/tensorboard/" class="md-nav__link">
         
   
   
@@ -519,7 +515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../MachineLearning/Pytorch_Learning/Test/" class="md-nav__link">
+      <a href="../../../MachineLearning/Pytorch_Learning/Test/" class="md-nav__link">
         
   
   
@@ -559,10 +555,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -582,11 +576,13 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -607,7 +603,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -625,7 +621,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EmbeddedSoft/" class="md-nav__link">
+      <a href="../../EmbeddedSoft/" class="md-nav__link">
         
   
   
@@ -767,7 +763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ARM_Arch/ARM_Arch/" class="md-nav__link">
+      <a href="../../ARM_Arch/ARM_Arch/" class="md-nav__link">
         
   
   
@@ -795,7 +791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ARM_Arch/ARM%20Cortex-M%20CPU/" class="md-nav__link">
+      <a href="../../ARM_Arch/ARM%20Cortex-M%20CPU/" class="md-nav__link">
         
   
   
@@ -823,7 +819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ARM_Arch/GeneralReg/" class="md-nav__link">
+      <a href="../../ARM_Arch/GeneralReg/" class="md-nav__link">
         
   
   
@@ -851,7 +847,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ARM_Arch/SpecialReg_xPSR/" class="md-nav__link">
+      <a href="../../ARM_Arch/SpecialReg_xPSR/" class="md-nav__link">
         
   
   
@@ -954,7 +950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Assembly_Intro/Assembly_Intro/" class="md-nav__link">
+      <a href="../../Assembly_Intro/Assembly_Intro/" class="md-nav__link">
         
   
   
@@ -982,7 +978,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Assembly_Intro/Mem_Mgmt/" class="md-nav__link">
+      <a href="../../Assembly_Intro/Mem_Mgmt/" class="md-nav__link">
         
   
   
@@ -1010,7 +1006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Assembly_Intro/stack/" class="md-nav__link">
+      <a href="../../Assembly_Intro/stack/" class="md-nav__link">
         
   
   
@@ -1038,7 +1034,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Assembly_Intro/heap/" class="md-nav__link">
+      <a href="../../Assembly_Intro/heap/" class="md-nav__link">
         
   
   
@@ -1066,7 +1062,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Assembly_Intro/label/" class="md-nav__link">
+      <a href="../../Assembly_Intro/label/" class="md-nav__link">
         
   
   
@@ -1094,7 +1090,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Assembly_Intro/PUSH/" class="md-nav__link">
+      <a href="../../Assembly_Intro/PUSH/" class="md-nav__link">
         
   
   
@@ -1122,7 +1118,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Assembly_Intro/POP/" class="md-nav__link">
+      <a href="../../Assembly_Intro/POP/" class="md-nav__link">
         
   
   
@@ -1150,7 +1146,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Assembly_Intro/B%26BX/" class="md-nav__link">
+      <a href="../../Assembly_Intro/B%26BX/" class="md-nav__link">
         
   
   
@@ -1191,10 +1187,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -1206,11 +1200,13 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
         
           
           <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
@@ -1231,7 +1227,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1306,7 +1302,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../RTOS/" class="md-nav__link">
+      <a href="../../RTOS/RTOS/" class="md-nav__link">
         
   
   
@@ -1334,7 +1330,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Tasks_Stack/" class="md-nav__link">
+      <a href="../../RTOS/Tasks_Stack/" class="md-nav__link">
         
   
   
@@ -1362,7 +1358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Tasks_Switch/" class="md-nav__link">
+      <a href="../../RTOS/Tasks_Switch/" class="md-nav__link">
         
   
   
@@ -1395,10 +1391,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -1440,11 +1434,13 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3_2" >
         
           
           <label class="md-nav__link" for="__nav_3_3_2" id="__nav_3_3_2_label" tabindex="0">
@@ -1465,7 +1461,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_3_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1483,7 +1479,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../FreeRTOS/" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/FreeRTOS/" class="md-nav__link">
         
   
   
@@ -1511,7 +1507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Tasks_Create%26Delete/" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Tasks_Create%26Delete/" class="md-nav__link">
         
   
   
@@ -1539,7 +1535,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Scheduling/" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Scheduling/" class="md-nav__link">
         
   
   
@@ -1567,7 +1563,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Idle%26Scheduling/" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Idle%26Scheduling/" class="md-nav__link">
         
   
   
@@ -1595,7 +1591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../TaksPend%26Resume/" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/TaksPend%26Resume/" class="md-nav__link">
         
   
   
@@ -1623,7 +1619,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../List%26ListItem/" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/List%26ListItem/" class="md-nav__link">
         
   
   
@@ -1651,7 +1647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Mem_Mgmt/" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Mem_Mgmt/" class="md-nav__link">
         
   
   
@@ -1679,7 +1675,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../KernelPend/" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/KernelPend/" class="md-nav__link">
         
   
   
@@ -1707,7 +1703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Sync_Comms/" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Sync_Comms/" class="md-nav__link">
         
   
   
@@ -1735,7 +1731,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Semaphore/" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Semaphore/" class="md-nav__link">
         
   
   
@@ -1763,7 +1759,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Mutex/" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Mutex/" class="md-nav__link">
         
   
   
@@ -1791,7 +1787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Queue/" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Queue/" class="md-nav__link">
         
   
   
@@ -1819,7 +1815,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Queue_Set/" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Queue_Set/" class="md-nav__link">
         
   
   
@@ -1847,7 +1843,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../TaskNote/" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/TaskNote/" class="md-nav__link">
         
   
   
@@ -1875,7 +1871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Event_Group/" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Event_Group/" class="md-nav__link">
         
   
   
@@ -1903,7 +1899,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Interrupt_Mgmt/" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Interrupt_Mgmt/" class="md-nav__link">
         
   
   
@@ -1928,19 +1924,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../RTOS/FreeRTOS/Porting/" class="md-nav__link">
         
   
   
@@ -1956,7 +1943,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -2056,7 +2042,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../STM32_HAL/STM32_HAL/" class="md-nav__link">
+      <a href="../STM32_HAL/" class="md-nav__link">
         
   
   
@@ -2084,7 +2070,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../STM32_HAL/GPIO/" class="md-nav__link">
+      <a href="../GPIO/" class="md-nav__link">
         
   
   
@@ -2112,7 +2098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../STM32_HAL/NVIC/" class="md-nav__link">
+      <a href="../NVIC/" class="md-nav__link">
         
   
   
@@ -2140,7 +2126,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../STM32_HAL/DMA/" class="md-nav__link">
+      <a href="../DMA/" class="md-nav__link">
         
   
   
@@ -2168,7 +2154,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../STM32_HAL/ADC/" class="md-nav__link">
+      <a href="../ADC/" class="md-nav__link">
         
   
   
@@ -2196,7 +2182,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../STM32_HAL/TIM/" class="md-nav__link">
+      <a href="../TIM/" class="md-nav__link">
         
   
   
@@ -2224,7 +2210,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../STM32_HAL/FLASH/" class="md-nav__link">
+      <a href="../FLASH/" class="md-nav__link">
         
   
   
@@ -2252,7 +2238,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../STM32_HAL/BKP%26RTC/" class="md-nav__link">
+      <a href="../BKP%26RTC/" class="md-nav__link">
         
   
   
@@ -2280,7 +2266,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../STM32_HAL/WDG/" class="md-nav__link">
+      <a href="../WDG/" class="md-nav__link">
         
   
   
@@ -2308,7 +2294,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../STM32_HAL/connective/" class="md-nav__link">
+      <a href="../connective/" class="md-nav__link">
         
   
   
@@ -2405,7 +2391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Connective/Connective/" class="md-nav__link">
+      <a href="../../Connective/Connective/" class="md-nav__link">
         
   
   
@@ -2433,7 +2419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Connective/I2C/" class="md-nav__link">
+      <a href="../../Connective/I2C/" class="md-nav__link">
         
   
   
@@ -2461,7 +2447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Connective/SPI/" class="md-nav__link">
+      <a href="../../Connective/SPI/" class="md-nav__link">
         
   
   
@@ -2489,7 +2475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Connective/USART/" class="md-nav__link">
+      <a href="../../Connective/USART/" class="md-nav__link">
         
   
   
@@ -2517,7 +2503,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Connective/CAN/" class="md-nav__link">
+      <a href="../../Connective/CAN/" class="md-nav__link">
         
   
   
@@ -2667,7 +2653,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Control_Algos/Control_Algos/" class="md-nav__link">
+      <a href="../../Control_Algos/Control_Algos/" class="md-nav__link">
         
   
   
@@ -2695,7 +2681,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Control_Algos/PID/" class="md-nav__link">
+      <a href="../../Control_Algos/PID/" class="md-nav__link">
         
   
   
@@ -2723,7 +2709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Control_Algos/LQR/" class="md-nav__link">
+      <a href="../../Control_Algos/LQR/" class="md-nav__link">
         
   
   
@@ -2751,7 +2737,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Control_Algos/SMC/" class="md-nav__link">
+      <a href="../../Control_Algos/SMC/" class="md-nav__link">
         
   
   
@@ -2842,7 +2828,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../CV/CV/" class="md-nav__link">
+      <a href="../../CV/CV/" class="md-nav__link">
         
   
   
@@ -2870,7 +2856,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../CV/Micropython%20%26%20K230/" class="md-nav__link">
+      <a href="../../CV/Micropython%20%26%20K230/" class="md-nav__link">
         
   
   
@@ -2934,6 +2920,153 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rtc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RTC 结构与工作原理
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RTC 结构与工作原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心结构组成
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cubemx-rtc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CubeMX RTC 配置与实现
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CubeMX RTC 配置与实现">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-rcc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 时钟源配置 (RCC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-rtc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. RTC 模式配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-nvic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. NVIC 配置（如果需要中断）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hal-rtc-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HAL 库 RTC 核心 API 与实现
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HAL 库 RTC 核心 API 与实现">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-rtc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. RTC 初始化与设置时间
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 读取时间和日期
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 报警功能设置 (中断)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 报警中断回调函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2949,179 +3082,520 @@
 
 
 
-<h1 id="_1">下载官方文件</h1>
-<p><a href="https://www.freertos.org/">FreeRTOS</a></p>
-<h1 id="_2">文件说明</h1>
-<h2 id="_3"><strong>内核</strong>文件夹（重点关注）</h2>
-<p><img alt="" src="photosource/FreeRTOS移植1.png" /></p>
-<h2 id="_4">核心代码</h2>
-<p><img alt="../../图源/FreeRTOS移植2.png" src="photosource/FreeRTOS移植2.png" />
-1. croutine.c：协程相关文件（不用）
-2. event_groups.c：事件相关（次要）
-3. list.c：列表（重要）
-4. queue.c：队列（重要）
-5. stream_buffer.c：流式缓冲区（次要）
-6. tasks.c：任务文件(重要)
-7. timers.c：定时器相关（次要）</p>
-<h2 id="portable">portable文件夹</h2>
-<p>用于移植</p>
-<h3 id="memmang">MemMang(必须)</h3>
-<p>内存管理，一般选择版本4</p>
-<h3 id="keilgcc">Keil或GCC（必须）</h3>
-<h3 id="rvdskeil">RVDS(Keil必须)</h3>
-<p>Keil或GCC的底层，不同内核芯片的移植文件</p>
-<h1 id="_5">移植步骤</h1>
-<h2 id="cubemx">CubeMx一键配置</h2>
-<h3 id="_6">接口</h3>
-<p><img alt="../../图源/FreeRTOS移植3.png" src="photosource/FreeRTOS移植3.png" />
-选择版本V2，更好。
-- 选择 FreeRTOS 后，右侧会多出一个 <code>FREERTOS</code> 的配置页签。</p>
+<h1 id="1-rtc-real-time-clock"><strong>1. RTC (Real-Time Clock) 实时时钟</strong></h1>
+<h2 id="rtc"><strong>RTC 结构与工作原理</strong></h2>
+<p>RTC 模块是 STM32 芯片中一个独立且高度专业的计数器，其设计核心是围绕<strong>低功耗</strong>和<strong>掉电保持</strong>。</p>
+<h3 id="_1"><strong>核心结构组成</strong></h3>
+<ol>
+<li><strong>时钟源 (RTC Clock Source)</strong>：</li>
+<li>通常选择 <strong>LSE (Low Speed External)</strong> 32.768 kHz 晶振，因为它具有高精度和低功耗特性。</li>
+<li>也可以选择 LSI（内部低速 RC 振荡器）或 HSE/128（通常为8MHz/128）。</li>
+<li><strong>计数器</strong></li>
+<li>32位的可编程计数器，可对应Unix时间戳的秒计数器。（1s增加1次，理论上很久很久才会溢出）</li>
+<li><strong>预分频器 (RTC Prescalers)</strong>：</li>
+<li>包含 <strong>异步预分频器 (Asynchronous Prescaler)</strong> 和 <strong>同步预分频器 (Synchronous Prescaler)</strong>。</li>
+<li>20位的可编程预分频器。</li>
+<li>它们的任务是将 32.768 kHz 输入时钟精确分频，最终得到 <strong>1 Hz 的时基</strong>（每秒产生一次脉冲）。</li>
+<li>$$f_{\text{out}} = \frac{f_{\text{in}}}{(\text{Asynch} + 1) \times (\text{Synch} + 1)} = 1 \text{ Hz}$$</li>
+<li><strong>时间/日历寄存器</strong>：</li>
+<li>直接存储秒、分、时、日、月、年、星期等 BCD (Binary Coded Decimal) 格式的数据。</li>
+<li><strong>报警/唤醒逻辑</strong>：</li>
+<li>包含报警寄存器（Alarm A/B）和唤醒定时器，用于在特定时间或周期性地产生事件。</li>
+</ol>
+<h2 id="cubemx-rtc"><strong>CubeMX RTC 配置与实现</strong></h2>
+<table>
+<thead>
+<tr>
+<th><strong>概念</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>独立电源</strong></td>
+<td>RTC 模块由专用的 <strong>VBAT</strong> 引脚供电（通常是纽扣电池）。即使主电源 $V_{DD}$ 断电，RTC 也能保持运行和计时。</td>
+</tr>
+<tr>
+<td><strong>时钟源</strong></td>
+<td>RTC 可以选择多种时钟源，最常用的是 <strong>LSE (Low Speed External)</strong>，即 32.768 kHz 外部晶振，精度最高。</td>
+</tr>
+<tr>
+<td><strong>日历功能</strong></td>
+<td>RTC 模块内部可以存储秒、分、时、日、月、年、星期等信息，并支持闰年自动补偿。</td>
+</tr>
+<tr>
+<td><strong>报警功能</strong></td>
+<td>可以设置两个独立的报警时间（Alarm A 和 Alarm B），当时间匹配时产生中断。</td>
+</tr>
+<tr>
+<td><strong>唤醒功能</strong></td>
+<td>周期性地唤醒系统或产生中断。</td>
+</tr>
+</tbody>
+</table>
+<p>配置 RTC 往往是配置整个备份域的第一步。</p>
+<h3 id="1-rcc"><strong>1. 时钟源配置 (RCC)</strong></h3>
+<ol>
+<li><strong>Pinout &amp; Configuration $\rightarrow$ System Core $\rightarrow$ RCC</strong>。</li>
+<li>在 <strong>LSE</strong> 选项中，选择 <code>Crystal/Ceramic Resonator</code> (使用外部 32.768 kHz 晶振)。</li>
+</ol>
+<h3 id="2-rtc"><strong>2. RTC 模式配置</strong></h3>
+<ol>
+<li><strong>Pinout &amp; Configuration $\rightarrow$ Timers $\rightarrow$ RTC</strong>。</li>
+<li><strong>Activate Clock Source</strong>：<strong>必须勾选</strong>。</li>
+<li><strong>Parameter Settings (关键)</strong>：</li>
+<li><strong>Asynchronous Predivider</strong> 和 <strong>Synchronous Predivider</strong>：这两个预分频器将 32.768 kHz 时钟源分频，最终得到 <strong>1 Hz</strong>（1秒钟计数一次）。<ul>
+<li><strong>公式</strong>: $\text{LSE} / ((\text{Asynch} + 1) \times (\text{Synch} + 1)) = 1 \text{ Hz}$</li>
+<li>CubeMX 会自动计算，确保结果为 1 Hz。</li>
+</ul>
+</li>
+<li><strong>Hour Format</strong>：选择 12 小时制 (<code>12 Hour Format</code>) 或 24 小时制 (<code>24 Hour Format</code>)。</li>
+</ol>
+<h3 id="3-nvic"><strong>3. NVIC 配置（如果需要中断）</strong></h3>
+<ol>
+<li>在 RTC 配置页面的 <strong>NVIC Settings</strong> 中。</li>
+<li>勾选 <code>RTC global interrupt</code>（RTC 报警或唤醒中断）。</li>
+<li>设置优先级。</li>
+</ol>
+<h3 id="hal-rtc-api"><strong>HAL 库 RTC 核心 API 与实现</strong></h3>
+<h4 id="1-rtc"><strong>1. RTC 初始化与设置时间</strong></h4>
+<p>在 <code>main()</code> 函数中，通常在 <code>MX_RTC_Init()</code> 之后调用以下函数来设置初始时间和日期。</p>
+<pre><code class="language-c">// 定义时间结构体和日期结构体
+RTC_TimeTypeDef sTime = {0};
+RTC_DateTypeDef sDate = {0};
+
+// 设置时间（例如 14:30:00）
+sTime.Hours = 14;
+sTime.Minutes = 30;
+sTime.Seconds = 0;
+// sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE; // 夏令时，通常不用
+// sTime.StoreOperation = RTC_STOREOPERATION_RESET;
+
+// 设置日期（例如 2025年12月7日，星期日）
+sDate.WeekDay = RTC_WEEKDAY_SUNDAY;
+sDate.Month = RTC_MONTH_DECEMBER;
+sDate.Date = 7;
+sDate.Year = 25; // HAL 库中只用后两位
+
+// 将时间信息写入 RTC
+HAL_RTC_SetTime(&amp;hrtc, &amp;sTime, RTC_FORMAT_BIN);
+HAL_RTC_SetDate(&amp;hrtc, &amp;sDate, RTC_FORMAT_BIN);
+</code></pre>
+<h4 id="2"><strong>2. 读取时间和日期</strong></h4>
+<p>读取时必须<strong>先读取时间，再读取日期</strong>，因为 RTC 在读取时间时会锁存日期寄存器，防止读数过程中的更新。</p>
+<pre><code class="language-c">// 临时变量用于存储读出的结果
+RTC_TimeTypeDef gTime = {0};
+RTC_DateTypeDef gDate = {0};
+
+// 先读取时间（会锁存日期）
+if (HAL_RTC_GetTime(&amp;hrtc, &amp;gTime, RTC_FORMAT_BIN) == HAL_OK) {
+    // 后读取日期
+    HAL_RTC_GetDate(&amp;hrtc, &amp;gDate, RTC_FORMAT_BIN);
+
+    // 打印或使用 gTime 和 gDate
+    printf(&quot;Current Time: %02d:%02d:%02d\n&quot;, gTime.Hours, gTime.Minutes, gTime.Seconds);
+}
+</code></pre>
+<h4 id="3"><strong>3. 报警功能设置 (中断)</strong></h4>
+<p>使用 <code>HAL_RTC_SetAlarm_IT</code> 设置报警时间并启用中断。</p>
+<pre><code class="language-c">RTC_AlarmTypeDef sAlarm = {0};
+
+// 假设我们设置 Alarm A 在每天的 15:00:00 报警
+sAlarm.AlarmTime.Hours = 15;
+sAlarm.AlarmTime.Minutes = 0;
+sAlarm.AlarmTime.Seconds = 0;
+
+// 配置报警匹配方式：只匹配时/分/秒，日期和星期不匹配
+sAlarm.AlarmMask = RTC_ALARMMASK_DATEWEEKDAY; 
+sAlarm.Alarm = RTC_ALARM_A;
+
+// 设置报警并启动中断
+HAL_RTC_SetAlarm_IT(&amp;hrtc, &amp;sAlarm, RTC_FORMAT_BIN);
+</code></pre>
+<h4 id="4"><strong>4. 报警中断回调函数</strong></h4>
+<pre><code class="language-c">void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc)
+{
+    // 报警 A 事件发生，执行任务
+    printf(&quot;Alarm A Triggered!\n&quot;);
+}
+</code></pre>
+<hr />
+<h1 id="2-bkp-backup-registers"><strong>2. BKP (Backup Registers) 备份寄存器</strong></h1>
+<h2 id="bkp"><strong>BKP 结构与访问</strong></h2>
+<p>BKP 寄存器是位于 <strong>RTC 域</strong> 的一组 SRAM 单元，用于存储用户数据，其最大的特点是<strong>独立于主电源供电</strong>。</p>
+<h2 id="bkp_1"><strong>BKP 核心特性</strong></h2>
 <ul>
+<li><strong>非易失性存储</strong>：BKP 寄存器同样由 <strong>VBAT</strong> 供电，因此即使主电源断电，存储在其中的数据也不会丢失。</li>
+<li><strong>容量</strong>：不同系列的 STM32 芯片容量不同，例如 F1 系列有 42 个 16 位寄存器，而 F4/F7/H7 系列有数百个 32 位寄存器（称为 RTC-BKP 寄存器）。</li>
+<li><strong>用途</strong>：存储系统状态、校准参数、上电计数器、或用于判断系统是<strong>正常重启</strong>还是<strong>首次上电</strong>。</li>
+</ul>
+<h3 id="_2"><strong>核心结构组成</strong></h3>
+<ol>
+<li><strong>供电</strong>：与 RTC 共享 <strong>VBAT</strong> 电源。</li>
+<li><strong>存储单元</strong>：由一系列 <strong>32 位</strong>（或老系列中的 16 位）通用寄存器 (<code>RTC_BKP_DRx</code>) 组成。</li>
+<li><strong>写保护</strong>：由 <strong>DBP (Disable Backup Protection)</strong> 位控制。在任何写入 BKP 寄存器或 RTC 相关的配置时，必须先清除写保护。</li>
+</ol>
+<h2 id="bkp_2"><strong>访问 BKP 区域的特殊要求</strong></h2>
+<p>由于 BKP 区域与 RTC 共享电源和时钟，访问 BKP 寄存器需要特殊的步骤：</p>
+<ol>
+<li><strong>使能时钟</strong>：(设置RCC_APB1ENR的PWREN和BKPEN,)使能 <strong>PWR（电源）</strong> 和 <strong>BKP（或 DBP）</strong> 域的时钟。</li>
+<li><strong>失能写入保护</strong>：STM32 默认对备份域开启了<strong>写保护</strong>，必须禁用该保护才能写入数据。(设置PWR_CR的DBP)</li>
+<li>若在读取RTC寄存器时，RTC的APB1接口曾经处于禁止状态，则软件首先必须等待RTC_CRL寄存器中的RSF位（寄存器同步标志）被硬件置1</li>
+<li>必须设置RTC_CRL寄存器中的CNF位，使RTC进入配置模式后，才能写入RTC_PRL、RTC_CNT、RTC_ALR寄存器</li>
+<li>对RTC任何寄存器的写操作，都必须在前一次写操作结束后进行。可以通过查询RTC_CR寄存器中的RTOFF状态位，判断RTC寄存器是否处于更新中。仅当RTOFF状态位是1时，才可以写入RTC寄存器</li>
+</ol>
+<h2 id="hal-bkp-api"><strong>HAL 库 BKP 核心 API 与实现</strong></h2>
+<h3 id="1-bkp-hal"><strong>1. 访问 BKP 区域的通用步骤 (HAL 库自动封装)</strong></h3>
+<p>在 HAL 库中，操作 RTC 和 BKP 寄存器时，通常需要以下步骤：</p>
+<pre><code class="language-c">// 1. 启动电源接口时钟
+__HAL_RCC_PWR_CLK_ENABLE(); 
+// 2. 使能对备份域的访问（禁用写保护）
+HAL_PWR_EnableBkUpAccess(); 
+
+// ... 执行 BKP 或 RTC 读写操作 ...
+
+// 3. 禁用对备份域的访问（重新启用写保护，可选）
+HAL_PWR_DisableBkUpAccess();
+</code></pre>
+<blockquote>
+<p><strong>注意</strong>: 在 CubeMX 生成的代码中，<code>HAL_PWR_EnableBkUpAccess()</code> 已经被封装在 <code>HAL_RTC_Init()</code> 的开头，所以通常不需要手动调用。</p>
+</blockquote>
+<h3 id="2-bkp"><strong>2. 写入 BKP 寄存器</strong></h3>
+<p>BKP 寄存器在 HAL 库中被抽象为 <code>RTC_BKP_DRx</code>（x 为寄存器编号）。</p>
+<pre><code class="language-c">// 假设我们要向 BKP 寄存器 DR1 写入一个魔数（Magic Number）
+#define BKP_MAGIC_NUMBER 0xABCDABCD
+#define BKP_INDEX RTC_BKP_DR1
+
+// 确保备份域写保护已禁用（通过 HAL_PWR_EnableBkUpAccess()）
+
+// 写入数据
+HAL_RTCEx_BKUPWrite(&amp;hrtc, BKP_INDEX, BKP_MAGIC_NUMBER);
+</code></pre>
+<h3 id="3-bkp"><strong>3. 读取 BKP 寄存器</strong></h3>
+<p>读取操作不需要禁用写保护。</p>
+<pre><code class="language-c">uint32_t read_value;
+
+// 读取 BKP 寄存器 DR1 的值
+read_value = HAL_RTCEx_BKUPRead(&amp;hrtc, BKP_INDEX);
+
+if (read_value == BKP_MAGIC_NUMBER) {
+    // BKP 数据有效，系统是正常重启
+    printf(&quot;System rebooted normally.\n&quot;);
+} else {
+    // BKP 数据无效（例如第一次上电或 VBAT 断电），需要重新初始化
+    printf(&quot;First power on or VBAT lost. Initializing BKP.\n&quot;);
+}
+</code></pre>
+<h3 id="4_1"><strong>4. 综合应用：判断首次上电</strong></h3>
+<p>这是 BKP 寄存器最经典的应用场景。</p>
+<ol>
 <li>
-<p>在这里，你可以完全通过图形界面配置所有 FreeRTOS 参数，无需手动修改 <code>FreeRTOSConfig.h</code> 文件：</p>
-<ul>
-<li>
-<p><strong>任务和队列</strong>：设置内核对象数量，如 <code>configTOTAL_HEAP_SIZE</code>（非常重要！）。</p>
+<p><strong>初始化流程</strong>:</p>
 </li>
 <li>
-<p><strong>钩子函数</strong>：使能或禁止空闲任务钩子、定时器钩子等。</p>
+<p>读取 BKP 寄存器（如 DR1）。</p>
+</li>
+<li>如果读出的值不等于预设的魔数（即随机设定的数，例如 0x1234），说明这是<strong>首次上电</strong>或 <strong>VBAT 断电</strong>。<ul>
+<li>此时，调用 <code>HAL_RTC_SetTime/SetDate</code> 设置初始时间。</li>
+<li>向 BKP 写入魔数 0x1234。</li>
+</ul>
 </li>
 <li>
-<p><strong>内存管理</strong>：选择堆分配方案（Heap 1~5）。</p>
+<p>如果读出的值等于魔数，说明 RTC 时间是有效的，<strong>无需重新设置</strong>。</p>
 </li>
 <li>
-<p><strong>Include parameters</strong>：配置 <code>configUSE_PREEMPTION</code>（是否使用抢占式调度）、<code>configCPU_CLOCK_HZ</code>（CPU 频率，通常会自动设置好）、<code>configTICK_RATE_HZ</code>（系统时钟节拍频率，通常设为 1000Hz，即 1ms 一个节拍）。</p>
+<p><strong>代码骨架</strong>:</p>
 </li>
+</ol>
+<p>```c
+   #define VALID_FLAG 0x1234</p>
+<p>// 在 main() 函数中，初始化 RTC 句柄后：
+   if (HAL_RTCEx_BKUPRead(&amp;hrtc, RTC_BKP_DR1) != VALID_FLAG)
+   {
+       // 第一次启动，设置RTC时间和BKP
+       Set_Initial_RTC_Time(); 
+       HAL_RTCEx_BKUPWrite(&amp;hrtc, RTC_BKP_DR1, VALID_FLAG);
+   }
+   // 否则，RTC会继续计时
+   ```</p>
+<hr />
+<h1 id="3-pwr-power-control"><strong>3. PWR (Power Control) 电源控制模块详解</strong></h1>
+<p><strong>PWR</strong> 模块是配置和控制整个芯片电源域（包括备份域）的关键。RTC 和 BKP 的所有操作都依赖于 PWR 模块的授权。</p>
+<h2 id="pwr"><strong>PWR 核心作用</strong></h2>
+<ol>
+<li><strong>备份域控制</strong>：控制对 RTC 和 BKP 寄存器区域的<strong>写访问保护</strong>。</li>
+<li><strong>低功耗模式</strong>：PWR负责管理STM32内部的电源供电部分，可以实现可编程电压监测器和低功耗模式的功能。低功耗模式包括睡眠模式（Sleep）、停机模式（Stop）和待机模式（Standby），可在系统空闲时，降低STM32的功耗，延长设备使用时间</li>
+<li><strong>电压监测</strong>：管理 PVD (Programmable Voltage Detector) 功能。可编程电压监测器（PVD）可以监控VDD电源电压，当VDD下降到PVD阀值以下或上升到PVD阀值之上时，PVD会触发中断，用于执行紧急关闭任务</li>
+</ol>
+<h2 id="cubemx-pwr"><strong>CubeMX PWR 配置细节</strong></h2>
+<ol>
+<li><strong>Pinout &amp; Configuration $\rightarrow$ System Core $\rightarrow$ PWR</strong>。</li>
+<li><strong>Parameter Settings</strong>:</li>
+<li><strong>Voltage Regulator Output</strong>: 通常设置为 <code>Reset</code>（默认操作）。</li>
+<li><strong>PVD (Programmable Voltage Detector)</strong>：可选配置，用于在电源电压低于设定阈值时产生中断或复位。</li>
+<li><strong>Low Power Settings</strong>: 用于配置进入 Stop/Standby 模式的选项。</li>
+</ol>
+<h2 id="hal-pwr-api-rtc-bkp"><strong>HAL 库 PWR 关键 API (RTC &amp; BKP 依赖)</strong></h2>
+<p>在 HAL 库中，对 RTC 和 BKP 的操作（写入）必须执行以下两个核心步骤，通常由 HAL 库自动封装或在 <code>MX_RTC_Init()</code> 中完成：</p>
+<h3 id="1-pwr-rcc"><strong>1. 启动 PWR 时钟 (RCC)</strong></h3>
+<p>在任何操作 PWR 或备份域之前，必须确保 PWR 模块的时钟已开启。</p>
+<p>C</p>
+<pre><code>// 确保 PWR 模块的时钟已开启
+__HAL_RCC_PWR_CLK_ENABLE(); 
+</code></pre>
+<h3 id="2-dbp"><strong>2. 启用备份域访问 (DBP 位控制)</strong></h3>
+<p>这是操作 RTC 和 BKP 寄存器的<strong>必备步骤</strong>。</p>
+<ul>
+<li><strong>功能</strong>：清除 <strong>DBP</strong> (Disable Backup Protection) 位，打开 RTC 和 BKP 域的写入通道。</li>
 </ul>
-<h3 id="_7">协处理器</h3>
-<p><img alt="../../图源/FreeRTOS移植4.png" src="photosource/FreeRTOS移植4.png" /></p>
-<h4 id="_8">内存保护</h4>
-<p>MPU 是一个硬件单元，它允许操作系统（如 FreeRTOS）为不同的任务或进程<strong>设置内存访问权限</strong>。你可以把它想象成一颗芯片内部的“内存卫士”。</p>
-<h4 id="_9">浮点运算</h4>
-<p>FPU 是一个专门用于处理<strong>浮点数</strong>（小数）计算的硬件单元。没有 FPU 的 CPU 只能通过软件库来模拟浮点运算，这非常缓慢。FPU 则像是一个数学计算器，能直接在硬件上高速执行 <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> 甚至更复杂的三角函数、对数等运算。</p>
-<h3 id="kernal-settingsconfig">Kernal Settings(Config)</h3>
+<p>C</p>
+<pre><code>// 启用对备份域的写访问（禁用写保护）
+HAL_PWR_EnableBkUpAccess(); 
+
+// ... 执行写入 RTC 或 BKP 的操作 ...
+
+// 禁用对备份域的写访问（重新启用写保护，可选）
+HAL_PWR_DisableBkUpAccess();
+</code></pre>
+<blockquote>
+<p>注意：</p>
+<p>几乎所有 HAL_RTC_SetTime、HAL_RTC_SetDate、HAL_RTCEx_BKUPWrite 等涉及写入 RTC/BKP 的 HAL 函数，在其内部都会临时调用 HAL_PWR_EnableBkUpAccess() 和 HAL_PWR_DisableBkUpAccess()，因此多数情况下你不需要手动操作。只有当你在 HAL 函数外部直接操作寄存器时才需要注意。</p>
+</blockquote>
+<hr />
+<h2 id="rtcbkppwr"><strong>总结：RTC/BKP/PWR 的联动关系</strong></h2>
+<table>
+<thead>
+<tr>
+<th><strong>模块</strong></th>
+<th><strong>角色</strong></th>
+<th><strong>关键配置点</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RTC</strong></td>
+<td><strong>核心功能</strong>：计时、日历、报警。</td>
+<td>LSE 时钟、预分频器（确保 1 Hz）。</td>
+</tr>
+<tr>
+<td><strong>BKP</strong></td>
+<td><strong>数据存储</strong>：存储非易失性数据。</td>
+<td>读写 <code>RTC_BKP_DRx</code> 寄存器。</td>
+</tr>
+<tr>
+<td><strong>PWR</strong></td>
+<td><strong>权限管理</strong>：控制对 RTC/BKP 域的写入权限。</td>
+<td>调用 <code>HAL_PWR_EnableBkUpAccess()</code>。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="4_2">4. 低功耗模式详解</h1>
+<p>好的，我为你整理一份关于 <strong>STM32 低功耗模式</strong> 的详细笔记。这份笔记将由浅入深地介绍 STM32 的低功耗原理、各个模式的特性、以及在 <strong>STM32CubeMX 和 HAL 库</strong> 中如何配置和使用。</p>
+<h2 id="1"><strong>1. 低功耗基础概念与目的</strong></h2>
+<h3 id="_3"><strong>为什么需要低功耗模式？</strong></h3>
+<p>在嵌入式系统中，尤其是在电池供电（如物联网设备、可穿戴设备、远程传感器）的应用中，大部分时间芯片处于等待状态。低功耗模式的目的是：</p>
+<ol>
+<li><strong>延长电池寿命</strong>：在不执行关键任务时，关闭或降低不必要的时钟和电源，将平均电流降至微安（$\mu\text{A}$）甚至纳安（$\text{nA}$）级别。</li>
+<li><strong>保持关键状态</strong>：在深度睡眠时，保留 RAM 中的数据或 RTC（实时时钟）的运行。</li>
+<li><strong>快速唤醒</strong>：确保系统能够在需要时（例如，外部事件、定时器中断）快速返回到运行状态。</li>
+</ol>
+<h3 id="_4"><strong>功耗的主要来源</strong></h3>
+<ul>
+<li><strong>动态功耗</strong>：由晶体管开关引起的功耗，与<strong>时钟频率 ($f$)</strong> 和 <strong>电压 ($V$)</strong> 的平方成正比。$\text{P}_{\text{dynamic}} \propto f \cdot V^2$。这是主动降低时钟频率和工作电压的原因。</li>
+<li><strong>静态功耗</strong>：由漏电流引起的功耗。这是通过关闭电源域（如进入 Standby 模式）来解决的。</li>
+</ul>
+<hr />
+<h2 id="2-stm32"><strong>2. STM32 主要低功耗模式对比</strong></h2>
+<p>STM32 的低功耗模式可以根据其功耗深度、唤醒时间和保留的数据分为三大类：</p>
+<table>
+<thead>
+<tr>
+<th><strong>模式名称</strong></th>
+<th><strong>功耗深度</strong></th>
+<th><strong>CPU 状态</strong></th>
+<th><strong>时钟源状态</strong></th>
+<th><strong>唤醒时间</strong></th>
+<th><strong>典型电流 (μA)</strong></th>
+<th><strong>保留数据</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Run Mode</strong></td>
+<td><strong>最高</strong></td>
+<td><strong>执行代码</strong></td>
+<td>全速运行</td>
+<td>N/A</td>
+<td>1000 - 5000</td>
+<td>所有</td>
+</tr>
+<tr>
+<td><strong>Sleep Mode (C-Sleep)</strong></td>
+<td>中等</td>
+<td><strong>停止</strong></td>
+<td>CPU 时钟停止</td>
+<td>极快 (0)</td>
+<td>1000 - 500</td>
+<td>所有</td>
+</tr>
+<tr>
+<td><strong>Stop Mode (P-Stop)</strong></td>
+<td>低</td>
+<td>停止</td>
+<td>PLL/HSE/HSI 停止</td>
+<td>快 ($\sim 5 \mu\text{s}$)</td>
+<td>5 - 50</td>
+<td>RAM, 寄存器</td>
+</tr>
+<tr>
+<td><strong>Standby Mode</strong></td>
+<td><strong>最低</strong></td>
+<td>停止</td>
+<td>所有时钟停止</td>
+<td>慢 ($\sim 60 \mu\text{s}$)</td>
+<td><strong>&lt; 1</strong></td>
+<td><strong>RTC, BKP 寄存器</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><em>注：</em><em>C-Sleep</em><em> (Core Sleep)，</em><em>P-Stop</em><em> (Peripheral Stop)。电流值仅为示例，实际值取决于芯片系列和外设配置。</em></p>
+</blockquote>
+<hr />
+<h2 id="3_1"><strong>3. 各低功耗模式详解与配置</strong></h2>
+<h3 id="a-sleep-mode"><strong>A. Sleep Mode (睡眠模式)</strong></h3>
+<h4 id="_5"><strong>原理</strong></h4>
+<p>仅关闭 <strong>Cortex-M 内核时钟</strong>，所有外设和 SRAM 依然带电运行，时钟保持开启。</p>
+<h4 id="_6"><strong>唤醒源</strong></h4>
+<p>任何启用的中断。</p>
+<h4 id="cubemxhal"><strong>CubeMX/HAL 配置</strong></h4>
+<ol>
+<li>
+<p><strong>配置</strong>：在外设（如 UART、TIM、GPIO EXTI）中配置并启用中断。</p>
 </li>
 <li>
-<p>选择 FreeRTOS 后，右侧会多出一个 <code>FREERTOS</code> 的配置页签。在这里，你可以完全通过图形界面配置所有 FreeRTOS 参数，无需手动修改 <code>FreeRTOSConfig.h</code> 文件。</p>
+<p><strong>HAL API</strong>：</p>
 </li>
-</ul>
-<p>#### <u><strong>preemptive scheduler</strong></u></p>
-<p>配置 <code>configUSE_PREEMPTION</code>（是否使用抢占式调度）、<code>configCPU_CLOCK_HZ</code>（CPU 频率，通常会自动设置好）、<code>configTICK_RATE_HZ</code>（系统时钟节拍频率，通常设为 1000Hz，即 1ms 一个节拍）。</p>
-<p>#### <strong><u>任务和队列</u></strong></p>
-<p>设置内核对象数量，如 <code>configTOTAL_HEAP_SIZE</code>（非常重要！）。</p>
-<p>#### <strong><u>内存管理</u></strong></p>
-<p>选择堆分配方案（Heap 1~5）。</p>
-<p>#### <u><strong>USE_SB_COMPLETED_CALLBACK</strong></u></p>
-<p>"SB" 代表 "Space Block"。这个选项用于启用或禁用 <strong>"半传输完成回调函数"</strong>。</p>
-<p>#### <strong><u>USE_MINI_LIST_ITEM</strong></u> </p>
-<p>是否启用<strong>链表优化</strong></p>
-<p>FreeRTOS 内核大量使用<strong>链表</strong>来管理其内核对象，例如：</p>
-<ul>
-<li><strong>就绪列表</strong>：管理所有准备运行的任务。</li>
-<li><strong>阻塞列表</strong>：管理所有正在延迟或等待事件（如信号量、队列）的任务。</li>
-<li><strong>挂起列表</strong>：管理被挂起的任务。</li>
-</ul>
-<p>这些链表中的每一个元素都是一个 <code>ListItem_t</code> 结构体。每当一个任务被创建时，它都会包含多个 <code>ListItem_t</code> 成员（例如 <code>xStateListItem</code> 用于放入就序/阻塞/挂起列表，<code>xEventListItem</code> 用于事件列表）。</p>
-<p>##### 标准的 <code>ListItem_t</code></p>
-<p>一个标准的 <code>ListItem_t</code> 结构体（在 <code>list.h</code> 中定义）通常包含以下成员：</p>
+</ol>
 <p><code>c
-  // 标准的列表项结构
-  struct xLIST_ITEM {
-      TickType_t xItemValue;               // 主要值，用于在列表中排序（例如，唤醒时间戳）
-      struct xLIST_ITEM * pxNext;          // 指向链表中下一个列表项的指针
-      struct xLIST_ITEM * pxPrevious;      // 指向链表中上一个列表项的指针
-      void * pvOwner;                      // 指向拥有这个列表项的对象（通常是任务控制块 TCB）
-      void * pvContainer;                  // 指向这个列表项所属的列表
-  };
-  // 在 32 位架构上，这通常是 20 字节。</code></p>
-<p>##### <code>USE_MINI_LIST_ITEM</code> 是什么？</p>
-<p><code>USE_MINI_LIST_ITEM</code> 是一个在 <code>FreeRTOSConfig.h</code> 中定义的编译时配置选项。</p>
+   // 进入 Sleep Mode (WFI: Wait For Interrupt)
+   HAL_PWR_EnterSLEEPMode(PWR_MAINREGULATOR_ON, PWR_SLEEPENTRY_WFI); 
+   // PWR_MAINREGULATOR_ON: 使用主调压器，快速唤醒。
+   // PWR_SLEEPENTRY_WFI: 等待中断。</code></p>
+<h3 id="b-stop-mode"><strong>B. Stop Mode (停止模式)</strong></h3>
+<h3 id="_7"><strong>原理</strong></h3>
+<p>在 Sleep 模式的基础上，关闭了高性能时钟（PLL、HSE、HSI）。大部分 SRAM 和所有寄存器内容得以保留。功耗主要由 SRAM 的保持电流决定。</p>
+<h3 id="_8"><strong>唤醒源</strong></h3>
 <ul>
-<li><strong><code>#define USE_MINI_LIST_ITEM 0</code> （默认）</strong>：使用上面描述的<strong>标准</strong> <code>ListItem_t</code> 结构体。</li>
-<li><strong><code>#define USE_MINI_LIST_ITEM 1</code></strong>：使用一个<strong>精简版</strong>的 <code>ListItem_t</code> 结构体，通常被称为 <code>MiniListItem_t</code>。</li>
+<li><strong>EXTI (外部中断)</strong>：任何连接到 EXTI 线的 GPIO 信号。</li>
+<li><strong>RTC 报警/唤醒</strong>。</li>
+<li><strong>LSE (低速外部时钟)</strong> 依然可以运行。</li>
 </ul>
-<p>##### 精简版列表项</p>
-<p><code>MiniListItem_t</code> 移除了某些成员，以节省内存。它通常只包含：</p>
-<p><code>c
-  // 精简版列表项结构
-  struct xMINI_LIST_ITEM {
-      TickType_t xItemValue;               // 保留：用于排序的主要值
-      struct xLIST_ITEM * pxNext;          // 保留：指向下一个列表项
-      struct xLIST_ITEM * pxPrevious;      // 保留：指向上一个列表项
-  };
-  // 在 32 位架构上，这通常是 12 字节（比标准版节省了 8 字节）。</code>
-  你可能会注意到，它移除了：</p>
+<h3 id="cubemxhal_1"><strong>CubeMX/HAL 配置</strong></h3>
+<ol>
+<li>
+<p><strong>配置</strong>：配置唤醒源（例如，配置 GPIO 为 EXTI 模式并使能 NVIC）。</p>
+</li>
+<li>
+<p><strong>HAL API</strong>：</p>
+</li>
+</ol>
+<p>```c
+   // 1. 配置唤醒引脚（如果使用 GPIO/EXTI 唤醒）
+   // 2. 进入 Stop Mode
+   HAL_PWR_EnterSTOPMode(PWR_MAINREGULATOR_ON, PWR_STOPENTRY_WFI); </p>
+<p>// 3. 唤醒后，需要重新配置系统时钟（PLL/HSE/HSI 已被关闭）
+   SystemClock_Config(); 
+   ```</p>
+<h3 id="c-standby-mode"><strong>C. Standby Mode (待机模式)</strong></h3>
+<h4 id="_9"><strong>原理</strong></h4>
+<p><strong>最深的低功耗模式</strong>。所有电源域都被关闭，<strong>只有</strong> <code>VBAT</code> 供电的 RTC 域（包括 RTC 和 BKP 寄存器）保持运行。所有 SRAM 内容和 CPU/外设寄存器内容<strong>全部丢失</strong>。</p>
+<h4 id="_10"><strong>唤醒源</strong></h4>
+<p>唤醒后相当于 <strong>一次复位 (Reset)</strong>。</p>
 <ul>
-<li><code>pvOwner</code>：指向拥有者的指针。</li>
-<li><code>pvContainer</code>：指向所属列表的指针。</li>
+<li><strong>WKUP Pin</strong>：专用的唤醒引脚（如 PA0）。</li>
+<li><strong>RTC 事件</strong>：RTC 报警或唤醒定时器事件。</li>
+<li><strong>NRST Pin</strong>：外部复位。</li>
+<li><strong>IWDG</strong>：独立看门狗复位。</li>
 </ul>
-<p>##### 用途和限制</p>
-<p><strong>为什么需要精简版列表项？</strong></p>
-<p>精简版列表项<strong>并非用于任务</strong>，而是专门用于<strong>列表的“末尾”或“结束”标记</strong>。</p>
-<p>在 FreeRTOS 的链表实现中，每个列表都有一个<strong>“列表尾”</strong> 或 <strong>“结束标记”</strong>。这个标记本身也是一个 <code>ListItem_t</code>，但它不归属于任何任务或内核对象。它的唯一作用是：</p>
+<h4 id="cubemxhal_2"><strong>CubeMX/HAL 配置</strong></h4>
+<ol>
+<li>
+<p><strong>CubeMX 配置唤醒源</strong>：</p>
+</li>
+<li>
+<p><strong>Pinout &amp; Configuration $\rightarrow$ System Core $\rightarrow$ PWR</strong>。</p>
+</li>
+<li>
+<p><strong>Low Power Settings</strong>：勾选 <code>WKUP Pin</code> 或配置 RTC 唤醒。</p>
+</li>
+<li>
+<p><strong>HAL API</strong>：</p>
+</li>
+</ol>
+<p>```c
+   // 1. 使能 WKUP 引脚（如果使用）
+   HAL_PWR_EnableWakeUpPin(PWR_WAKEUP_PIN1_HIGH); </p>
+<p>// 2. 进入 Standby Mode
+   HAL_PWR_EnterSTANDBYMode(); </p>
+<p>// <strong>注意</strong>：程序执行到这里后，芯片会立即停止，直到唤醒并复位。
+   ```</p>
+<hr />
+<h2 id="4-stm32cubemx"><strong>4. STM32CubeMX 低功耗配置流程总结</strong></h2>
+<p>配置低功耗模式的关键在于<strong>管理时钟和唤醒源</strong>。</p>
+<h3 id="step-1-rcc"><strong>Step 1: 时钟源选择 (RCC)</strong></h3>
 <ul>
-<li>表示列表的结束。</li>
-<li>其 <code>xItemValue</code> 被设置为可能的最大值（<code>portMAX_DELAY</code>），以确保它在按值排序的列表中始终处于末尾位置。</li>
+<li>如果需要进入 Stop 或 Standby 模式，建议使用 <strong>LSE (32.768 kHz)</strong> 作为 RTC 时钟源，因为它可以在深度睡眠中保持运行，并作为可靠的唤醒定时器。</li>
 </ul>
-<p>因为这个“结束标记”列表项没有“拥有者”，也不关心自己属于哪个“容器”（它本身就是容器的一部分），所以使用完整的 <code>ListItem_t</code> 是对内存的浪费。因此，FreeRTOS 使用 <code>MiniListItem_t</code> 来创建这个结束标记，从而节省宝贵的内存。</p>
-<p>#### <u>MINIMAL_STACK_SIZE</u>
-  <code>MINIMAL_STACK_SIZE</code> 是 FreeRTOS 中一个非常重要且基础的配置选项。它定义了<strong>空闲任务</strong>和（在某些配置下）<strong>定时器服务任务</strong>所使用的<strong>最小栈深度</strong>。作为新手，我们只了解它经验值位128字。</p>
-<p>#### <u>IDLE_SHOULD_YIELD</u>
-  当有<strong>其他用户任务</strong>与空闲任务<strong>处于同一优先级（即优先级 0）</strong> 时，空闲任务在它的时间片结束后是否应该<strong>立即让出</strong> CPU。</p>
-<p>#### <u>ENABLE_BACKWARD_COMPATIBILITY</u>  </p>
-<p>是否启用<strong>向后版本兼容</strong>，启用则旧版本的代码能够正常使用。</p>
-<p>#### <u>USE_TICKLESS_IDLE</u></p>
-<p>tickless，通常被称为 <strong>"无滴答空闲模式"</strong> 或 <strong>"低功耗滴答模式"</strong>。新手不需要启用这个。</p>
-<p>#### <u>USE_TASK_NOTIFICATIONS</u></p>
-<p>是否启用 <strong>任务通知</strong> 功能，默认情况下，这个选项是启用的。 除非你出于极特殊的原因（比如要节省 TCB 中那几个字节的内存），否则永远不要禁用它。</p>
-<p>#### <u>RECORD_STACK_HIGH_ADDRESS</u>  </p>
-<p>提供了更精确的栈分析信息。先不管。</p>
-<p>### <strong>Hook Function  钩子函数</strong></p>
-<p>使能或禁止空闲任务钩子、定时器钩子等。</p>
-<p><strong>钩子函数</strong> 是 FreeRTOS 中一个非常强大的特性，它允许你在<strong>内核的关键执行点</strong>插入自己的回调函数。这为调试、性能分析、低功耗管理和功能扩展提供了极大的灵活性。</p>
-<p><code>c
-  configUSE_IDLE_HOOK //是否启用空闲任务钩子函数。这是一个由用户实现的回调函数，当 FreeRTOS 的空闲任务运行时，这个函数会被自动且反复地调用。
-  configUSE_TICK_HOOK //高级功能,在 SysTick 中断服务程序 内部被调用。
-  ...</code></p>
-<p>### Run time and task stats gathering  <strong>运行时和任务统计信息收集</strong></p>
-<p>#### 1. 启用任务统计 <strong><code>configUSE_TRACE_FACILITY</code></strong></p>
-<p>这是最基础的配置，它为任务控制块（TCB）添加了统计信息所需的字段。</p>
-<p><code>c
-  #define configUSE_TRACE_FACILITY 1</code></p>
-<p><strong>作用</strong>：</p>
+<h3 id="step-2-wakeup-sources"><strong>Step 2: 外设配置 (Wakeup Sources)</strong></h3>
 <ul>
-<li>在 TCB 中添加了 <code>ulRunTimeCounter</code> 字段，用于记录任务的累计运行时间。</li>
-<li>为调试器可视化提供更多任务状态信息。</li>
+<li><strong>EXTI/GPIO 唤醒</strong>：配置一个 GPIO 引脚为 <strong>EXTI Mode</strong>，并启用其 NVIC 中断。</li>
+<li><strong>RTC 唤醒</strong>：配置 RTC 模块，并启用 <strong>Wakeup Timer</strong>，设置周期性唤醒时间。</li>
 </ul>
-<p>#### 2. 启用运行时统计 <strong><code>configGENERATE_RUN_TIME_STATS</code></strong></p>
-<p>这个宏控制是否计算每个任务的 CPU 使用率。</p>
-<p><code>c
-  #define configGENERATE_RUN_TIME_STATS 1</code></p>
-<p><strong>作用</strong>：</p>
+<h3 id="step-3-pwr"><strong>Step 3: 低功耗模式选择 (PWR)</strong></h3>
 <ul>
-<li>启用任务运行时统计计算。</li>
-<li><strong>需要你实现两个宏</strong>来提供计时功能。</li>
+<li><strong>路径</strong>：Pinout &amp; Configuration $\rightarrow$ <strong>System Core</strong> $\rightarrow$ <strong>PWR</strong>。</li>
+<li>根据目标模式（Stop 或 Standby）配置相关选项（例如，启用 WKUP 引脚）。</li>
 </ul>
-<p>#### 3. 启用任务状态查询 <strong><code>configUSE_STATS_FORMATTING_FUNCTIONS</code></strong></p>
-<p>这个宏启用了一些用于格式化输出统计信息的实用函数。</p>
-<p><code>c
-  #define configUSE_STATS_FORMATTING_FUNCTIONS 1</code></p>
-<p><strong>作用</strong>：</p>
+<h3 id="step-4-hal-api"><strong>Step 4: 软件实现 (HAL API)</strong></h3>
+<p>在主程序逻辑中，将系统配置好后，调用对应的 <code>HAL_PWR_EnterXXXXMode()</code> API 进入休眠。</p>
+<h3 id="step-5"><strong>Step 5: 唤醒后的处理</strong></h3>
 <ul>
-<li>启用了 <code>vTaskList()</code> 和 <code>vTaskGetRunTimeStats()</code> 等函数。</li>
-<li>这些函数可以将统计信息格式化为可读的字符串。</li>
+<li><strong>Sleep/Stop Mode</strong>：唤醒后代码从休眠 API 的<strong>下一行</strong>继续执行。在 Stop Mode 唤醒后，<strong>必须</strong>重新调用 <code>SystemClock_Config()</code> 恢复系统主时钟。</li>
+<li><strong>Standby Mode</strong>：唤醒后执行 <strong>冷启动 (Cold Start)</strong>，相当于上电复位，代码从 <code>main()</code> 函数的开头执行。通常需要检查 <strong>BKP 寄存器</strong> 或 <strong>RTC 标志位</strong> 来判断是否为 Standby 唤醒。</li>
 </ul>
-<p>### Software Timer</p>
-<p><strong>软件定时器</strong> 是 FreeRTOS 中一个非常重要的功能，它允许你在应用程序中创建和管理多个虚拟定时器，而无需使用硬件定时器外设</p>
-<p>CubeMx给我们优先级是2，只高于优先级1和空闲任务（优先级0），适于简单应用。一般这个优先级要调高一点。</p>
-<h2 id="_10">手动移植</h2>
-<h3 id="1-freertos">1. 添加FreeRTOS源码</h3>
-<p>将源码添加入工程，不同IDE不一样</p>
-<h3 id="2-freertosconfigh">2. FreeRTOSConfig.h</h3>
-<p>配置文件</p>
-<h3 id="3-system">3. 修改SYSTEM文件</h3>
-<h3 id="4">4. 修改中断相关文件</h3>
-<h3 id="5">5. 添加应用程序</h3>
+<hr />
+<h2 id="5-rtc-standby"><strong>5. 深度应用：利用 RTC 唤醒 Standby</strong></h2>
+<p>这是最常见的低功耗应用场景：在极低功耗下周期性唤醒，执行任务，然后再次休眠。</p>
+<h3 id="cubemxhal_3"><strong>CubeMX/HAL 步骤</strong></h3>
+<ol>
+<li><strong>RTC 配置</strong>：配置 LSE，并计算好 1 Hz 时基。</li>
+<li><strong>RTC Wakeup 配置</strong>：</li>
+<li>启用 <code>RTC global interrupt</code> (NVIC)。</li>
+<li>在 RTC 参数中设置 <strong>Wakeup Clock</strong> (如 <code>RTCCLK/16</code>)。</li>
+<li><strong>Standby 流程代码</strong>：</li>
+</ol>
+<pre><code class="language-c">// Step 1: 检查是否是 RTC 唤醒
+if (__HAL_PWR_GET_FLAG(PWR_FLAG_SB) != RESET) {
+    // 1. 清除 Standby 标志
+    __HAL_PWR_CLEAR_FLAG(PWR_FLAG_SB); 
+    // 2. 清除 RTC 唤醒标志
+    __HAL_RTC_WAKEUPTIMER_CLEAR_FLAG(&amp;hrtc, RTC_FLAG_WUTF); 
+    // 3. 执行唤醒任务
+    printf(&quot;Woke up from Standby via RTC!\n&quot;);
+} else {
+    // 首次上电或其他复位
+    printf(&quot;System Cold Start.\n&quot;);
+}
+
+// Step 2: 启动 RTC 唤醒定时器（设置 10 秒后唤醒）
+HAL_RTCEx_SetWakeUpTimer_IT(&amp;hrtc, 10, RTC_WAKEUPCLOCK_RTCCLK_DIV16);
+
+// Step 3: 配置并进入 Standby Mode
+HAL_PWR_EnterSTANDBYMode(); 
+
+// **注意：程序执行到这里就会停止，直到 10 秒后复位，从 main() 重新开始执行**
+</code></pre>
 
 
 
@@ -3177,10 +3651,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.expand", "navigation.indexes", "toc.follow", "content.tabs.link", "content.code.copy", "search.suggest", "search.highlight", "header.autohide"], "search": "../../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.expand", "navigation.indexes", "toc.follow", "content.tabs.link", "content.code.copy", "search.suggest", "search.highlight", "header.autohide"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
     
   </body>

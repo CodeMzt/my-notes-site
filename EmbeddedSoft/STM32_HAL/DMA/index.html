@@ -75,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -1814,7 +1819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../RTOS/FreeRTOS/Queue_Set.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Queue_Set/" class="md-nav__link">
         
   
   
@@ -1870,7 +1875,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../RTOS/FreeRTOS/Event_Group.md" class="md-nav__link">
+      <a href="../../RTOS/FreeRTOS/Event_Group/" class="md-nav__link">
         
   
   
@@ -2130,6 +2135,8 @@
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
+      
+        
       
       
       <a href="./" class="md-nav__link md-nav__link--active">
@@ -2924,6 +2931,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -2940,9 +2949,401 @@
 
 
 
-  <h1>DMA</h1>
+<h1 id="_1">存储器映像</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">类型</th>
+<th>起始地址</th>
+<th>存储器</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">ROM</td>
+<td>0x0800 0000</td>
+<td>程序存储器Flash</td>
+<td>存储C语言编译后的程序代码</td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td>0x1FFF F000</td>
+<td>系统存储器</td>
+<td>存储BootLoader，用于串口下载</td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td>0x1FFF F800</td>
+<td>选项字节</td>
+<td>存储一些独立于程序代码的配置参数</td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;">RAM</td>
+<td>0x2000 0000</td>
+<td>运行内存SRAM</td>
+<td>存储运行过程中的临时变量</td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td>0x4000 0000</td>
+<td>外设寄存器</td>
+<td>存储各个外设的配置参数</td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td>0xE000 0000</td>
+<td>内核外设寄存器</td>
+<td>存储内核各个外设的配置参数</td>
+</tr>
+</tbody>
+</table>
+<h1 id="dma"><strong>DMA 基础概念与工作原理</strong></h1>
+<h2 id="1-dma"><strong>1. DMA 是什么？</strong></h2>
+<p>DMA（Direct Memory Access，直接内存存取）是一种硬件机制，允许外设（如 UART、SPI、ADC、TIM 等）与内存（SRAM、Flash）之间<strong>直接进行数据传输</strong>，而无需 CPU 的干预。</p>
+<ul>
+<li><strong>核心目的</strong>：将数据传输任务从 CPU 上解放出来，让 CPU 可以专注于执行应用程序代码，大幅提高系统的<strong>效率</strong>和<strong>实时性</strong>。</li>
+</ul>
+<h2 id="2"><strong>2. 工作流程</strong></h2>
+<ol>
+<li>
+<p><strong>CPU 配置</strong>：CPU 负责初始化 DMA 控制器，设置数据源地址、目标地址、数据传输量和传输方向。</p>
+</li>
+<li>
+<p><strong>DMA 请求</strong>：当外设准备好数据（例如 UART 接收到一个字节）或需要发送数据时，它会向 DMA 控制器发出请求（Trigger Event Selection）。</p>
+</li>
+<li>
+<p><strong>总线仲裁</strong>：DMA 控制器向 Cortex-M 内核申请总线控制权。</p>
+</li>
+<li>
+<p><strong>数据传输</strong>：DMA 控制器直接控制总线，完成数据传输。</p>
+</li>
+<li>
+<p><strong>传输完成</strong>：当设定的数据量传输完毕后，DMA 控制器会向 NVIC 发送中断信号（可选），通知 CPU 任务完成。</p>
+</li>
+</ol>
+<hr />
+<h2 id="3">3. 框图</h2>
+<p><img alt="" src="../../photosource/DMA%E6%A1%86%E5%9B%BE.png" /></p>
+<h1 id="stm32-dma-hal"><strong>STM32 DMA 核心特性与 HAL 库抽象</strong></h1>
+<h2 id="0">0. 基本结构</h2>
+<p><img alt="" src="../../photosource/DMA%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84.png" /></p>
+<h2 id="1-dma-channel-stream"><strong>1. DMA 通道和流 (Channel &amp; Stream)</strong></h2>
+<ul>
+<li>
+<p>STM32 芯片通常有多个 DMA 控制器（DMA1 和 DMA2）。</p>
+</li>
+<li>
+<p>每个控制器包含多个<strong>流 (Stream)</strong>（通常 4 到 8 个），每个流可以独立配置。</p>
+</li>
+<li>
+<p>每个流可以通过<strong>通道 (Channel)</strong> 映射到特定的外设请求。</p>
+</li>
+</ul>
+<p><img alt="" src="../../photosource/DMA%E8%AF%B7%E6%B1%82.png" /></p>
+<h2 id="2_1"><strong>2. 传输方向与模式</strong></h2>
+<table>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><strong>模式 (CubeMX/HAL)</strong></th>
+<th><strong>描述</strong></th>
+<th><strong>典型应用</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>传输方向</strong></td>
+<td><code>Memory to Peripheral</code></td>
+<td>从内存到外设。</td>
+<td>UART 发送、SPI 发送。</td>
+</tr>
+<tr>
+<td></td>
+<td><code>Peripheral to Memory</code></td>
+<td>从外设到内存。</td>
+<td>UART 接收、ADC 采样。</td>
+</tr>
+<tr>
+<td></td>
+<td><code>Memory to Memory</code></td>
+<td>内存块复制（软件触发）。</td>
+<td>数据块快速初始化/复制。</td>
+</tr>
+<tr>
+<td><strong>增量模式</strong></td>
+<td><code>Memory Increment</code></td>
+<td>传输数据后，内存地址递增。</td>
+<td>传输数组。</td>
+</tr>
+<tr>
+<td></td>
+<td><code>Peripheral Increment</code></td>
+<td>传输数据后，外设地址递增（通常禁用）。</td>
+<td>用于 F4/F7 的 FIFO 模式。</td>
+</tr>
+<tr>
+<td><strong>循环模式</strong></td>
+<td><code>Circular</code></td>
+<td>传输完成后，DMA 计数器自动重装载，<strong>持续</strong>进行传输。</td>
+<td>连续 ADC 采样、持续 UART 接收。</td>
+</tr>
+<tr>
+<td></td>
+<td><code>Normal</code></td>
+<td>传输完成后停止。</td>
+<td>一次性数据块传输。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-data-width"><strong>3. 数据宽度 (Data Width)</strong></h2>
+<p>HAL 库允许配置数据传输的宽度，通常与外设的数据位宽保持一致：</p>
+<ul>
+<li>
+<p><strong>Byte (8-bit)</strong>: 适用于 UART、SPI。</p>
+</li>
+<li>
+<p><strong>Half Word (16-bit)</strong>: 适用于 12 位 ADC 结果。</p>
+</li>
+<li>
+<p><strong>Word (32-bit)</strong>: 适用于内存到内存传输、ADC 双模式结果。</p>
+</li>
+</ul>
+<p><img alt="" src="../../photosource/DMA%E6%95%B0%E6%8D%AE%E5%AE%BD%E5%BA%A6%E4%B8%8E%E5%AF%B9%E9%BD%90.png" /></p>
+<h1 id="stm32cubemx-dma"><strong>STM32CubeMX DMA 配置流程</strong></h1>
+<h2 id="1uart-peripheral-to-memory-normal-mode"><strong>配置示例1：UART 接收（Peripheral to Memory, Normal Mode）</strong></h2>
+<p>这是最基础的 DMA 应用，用于在接收固定长度数据时解放 CPU。</p>
+<h3 id="cubemx"><strong>CubeMX 步骤</strong></h3>
+<ol>
+<li>
+<p><strong>启用外设</strong>：在 Pinout &amp; Configuration 中配置 <strong>USART1</strong>（异步模式，设置波特率等）。</p>
+</li>
+<li>
+<p><strong>DMA 请求添加</strong>：</p>
+<ul>
+<li>
+<p>在 <strong>USART1</strong> 的配置页面中，切换到 <strong>DMA Settings</strong> 选项卡。</p>
+</li>
+<li>
+<p>点击 <strong>Add</strong> $\rightarrow$ 弹出窗口中选择 <code>USART1_RX</code>。</p>
+</li>
+<li>
+<p><strong>Direction</strong>：<code>Peripheral to Memory</code>。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>DMA 配置细节</strong>：</p>
+<ul>
+<li>
+<p><strong>Mode</strong>：<code>Normal</code>。</p>
+</li>
+<li>
+<p><strong>Priority</strong>：<code>Low</code> (默认)。</p>
+</li>
+<li>
+<p><strong>Data Width (Memory)</strong>：<code>Byte</code> (8 bit)。</p>
+</li>
+<li>
+<p><strong>Data Width (Peripheral)</strong>：<code>Byte</code> (8 bit)。</p>
+</li>
+<li>
+<p><strong>Increment Address (Memory)</strong>：<code>Enable</code> (接收数据要写入数组的不同地址)。</p>
+</li>
+<li>
+<p><strong>Increment Address (Peripheral)</strong>：<code>Disable</code> (USART 的数据寄存器地址固定)。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>NVIC</strong>：<strong>通常不启用 DMA 中断</strong>，而是使用外设（如 UART 空闲中断）或 HAL 库提供的回调机制。</p>
+</li>
+</ol>
+<h3 id="hal"><strong>HAL 库代码实现</strong></h3>
+<pre><code class="language-c">#define RX_BUFFER_SIZE 100
+uint8_t rx_data_buffer[RX_BUFFER_SIZE];
 
+// 在 main() 函数中启动 DMA 接收
+// 启动 DMA 接收：接收来自 &amp;huart1 的数据，存入 rx_data_buffer，长度为 RX_BUFFER_SIZE
+HAL_UART_Receive_DMA(&amp;huart1, rx_data_buffer, RX_BUFFER_SIZE); 
 
+// **接收完成回调函数（HAL 库抽象）**
+// 当 100 字节数据全部接收完毕后，会触发此回调
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+    if (huart-&gt;Instance == USART1) {
+        // 100 字节数据已完整接收，在此处理数据
+        // 注意：DMA 已停止，需要再次启动以接收下一批数据
+        HAL_UART_Receive_DMA(&amp;huart1, rx_data_buffer, RX_BUFFER_SIZE); 
+    }
+}
+</code></pre>
+<h2 id="2adc-peripheral-to-memory-circular-mode"><strong>配置示例2：ADC 连续采样 (Peripheral to Memory, Circular Mode)</strong></h2>
+<p>用于连续、不间断地采集传感器数据，并将结果存入内存缓冲区。</p>
+<h3 id="cubemx_1"><strong>CubeMX 步骤</strong></h3>
+<ol>
+<li>
+<p><strong>ADC 配置</strong>：配置 ADC（通道、采样时间等）。</p>
+</li>
+<li>
+<p><strong>DMA 请求添加</strong>：</p>
+<ul>
+<li>
+<p>在 <strong>ADC1</strong> 的配置页面中，切换到 <strong>DMA Settings</strong> 选项卡。</p>
+</li>
+<li>
+<p>点击 <strong>Add</strong> $\rightarrow$ 选择 <code>ADC1</code>。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>DMA 配置细节</strong>：</p>
+<ul>
+<li>
+<p><strong>Mode</strong>：<code>Circular</code> (循环模式)。</p>
+</li>
+<li>
+<p><strong>Data Width (Memory)</strong>：<code>Half Word</code> (16 bit，因为 ADC 是 12 位输出)。</p>
+</li>
+<li>
+<p><strong>Data Width (Peripheral)</strong>：<code>Half Word</code> (16 bit)。</p>
+</li>
+<li>
+<p><strong>Increment Address (Memory)</strong>：<code>Enable</code>。</p>
+</li>
+<li>
+<p><strong>Increment Address (Peripheral)</strong>：<code>Disable</code>。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>NVIC</strong>：可以启用 DMA 中断（如 <code>DMA1 stream 0 global interrupt</code>），用于在<strong>半传输</strong>和<strong>全传输</strong>完成时触发回调。</p>
+</li>
+</ol>
+<h3 id="hal_1"><strong>HAL 库代码实现</strong></h3>
+<pre><code class="language-c">#define ADC_BUF_SIZE 50
+uint16_t adc_values[ADC_BUF_SIZE];
+
+// 启动 DMA 连续采样
+// 将 ADC 结果连续存入 adc_values 数组，长度为 ADC_BUF_SIZE
+HAL_ADC_Start_DMA(&amp;hadc1, (uint32_t*)adc_values, ADC_BUF_SIZE); 
+
+// **全传输完成回调（Full Transfer Complete Callback）**
+// 当数组填满时（50个数据）
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
+{
+    if (hadc-&gt;Instance == ADC1) {
+        // 在循环模式下，DMA 自动重装载并继续，从头覆盖写入，无需再次启动
+        // 处理 adc_values 数组中后半部分数据（如果使用了双缓冲或仅处理所有数据）
+    }
+}
+
+// **半传输完成回调（Half Transfer Complete Callback）**
+// 当数组填充到一半时（25个数据）
+void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef *hadc)
+{
+    if (hadc-&gt;Instance == ADC1) {
+        // DMA 仍在传输，处理 adc_values 数组中的前半部分数据（实现双缓冲）
+    }
+}
+</code></pre>
+<h2 id="3-memory-to-memory"><strong>配置示例3：内存到内存 (Memory to Memory)</strong></h2>
+<p>用于在不需要外设请求的情况下，快速在内存区域之间复制数据。即软件触发。</p>
+<h3 id="cubemx_2"><strong>CubeMX 步骤</strong></h3>
+<ol>
+<li>
+<p><strong>DMA 配置</strong>：在左侧配置栏的 <strong>DMA1/DMA2</strong> 选项下，点击 <strong>Add</strong>。</p>
+</li>
+<li>
+<p><strong>请求源</strong>：选择 <code>MemToMem</code>。</p>
+</li>
+<li>
+<p><strong>配置细节</strong>：</p>
+<ul>
+<li>
+<p><strong>Direction</strong>：<code>Memory to Memory</code>。</p>
+</li>
+<li>
+<p><strong>Increment Address (Memory)</strong>：<code>Enable</code> (源和目标都需要递增)。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="hal_2"><strong>HAL 库代码实现</strong></h3>
+<pre><code class="language-c">uint8_t source_data[20] = {1, 2, ..., 20};
+uint8_t dest_data[20];
+
+// 在 main() 函数中启动 MemToMem 传输
+HAL_DMA_Start_IT(hdma_mem2mem, 
+                 (uint32_t)source_data, 
+                 (uint32_t)dest_data, 
+                 20); // 传输 20 个字节
+
+// 传输完成回调
+void HAL_DMA_TxCpltCallback(DMA_HandleTypeDef *hdma)
+{
+    if (hdma-&gt;Instance == DMA1_Stream1) {
+        // 数据复制完成
+    }
+}
+</code></pre>
+<hr />
+<h1 id="_2"><strong>不用关心</strong></h1>
+<p>DMA 和 HAL 库为你抽象了大量的底层细节，因此你<strong>不用关心</strong>：</p>
+<ol>
+<li>
+<p><strong>DMA 寄存器地址</strong>：你不用直接操作 <code>DMA_SxCR</code>（控制寄存器）、<code>DMA_SxNDTR</code>（数据长度寄存器）等来配置流。HAL 库通过配置句柄（<code>hdma_...</code>）自动处理。</p>
+</li>
+<li>
+<p><strong>外设触发信号</strong>：你不用关心外设（如 UART）在硬件上如何向 DMA 控制器发送请求（Request ID）。CubeMX 自动完成了 <strong>Trigger Event Selection</strong> 到 DMA 通道/流的映射。</p>
+</li>
+<li>
+<p><strong>总线仲裁</strong>：你不需要编写代码来处理 DMA 和 CPU 之间的总线竞争。这是由 DMA 硬件逻辑自动管理的。</p>
+</li>
+<li>
+<p><strong>中断标志位清除</strong>：HAL 库的通用 DMA 中断处理函数（<code>HAL_DMA_IRQHandler</code>）会自动清除 DMA 相关的中断标志位（如 TCIF, HTIF），然后才调用你的回调函数。</p>
+</li>
+</ol>
+<hr />
+<h1 id="dma_1"><strong>延伸：DMA 中断与错误处理</strong></h1>
+<p>虽然在 <code>Normal</code> 模式下可以不使用 DMA 中断，但在 <code>Circular</code> 模式或需要高可靠性时，DMA 中断非常重要。</p>
+<table>
+<thead>
+<tr>
+<th><strong>中断类型</strong></th>
+<th><strong>描述</strong></th>
+<th><strong>HAL 回调函数</strong></th>
+<th><strong>应用场景</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>全传输完成 (TC)</strong></td>
+<td>传输所有数据完成。</td>
+<td><code>HAL_DMA_TxCpltCallback</code></td>
+<td>数据处理、任务切换。</td>
+</tr>
+<tr>
+<td><strong>半传输完成 (HT)</strong></td>
+<td>传输一半数据完成。</td>
+<td><code>HAL_DMA_TxHalfCpltCallback</code></td>
+<td>双缓冲/Ping-Pong 缓冲。</td>
+</tr>
+<tr>
+<td><strong>传输错误 (TE)</strong></td>
+<td>传输过程中出现错误（如总线错误）。</td>
+<td><code>HAL_DMA_AbortCallback</code></td>
+<td>系统告警、错误恢复。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>在 CubeMX 中，你只需启用 DMA 对应的 Stream 的 NVIC，HAL 库会自动将这些硬件中断映射到上述回调函数中。</strong></p>
 
 
 
