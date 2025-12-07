@@ -30,7 +30,7 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/Mzt2006/tech-notes.git
+git clone https://github.com/CodeMzt/my-notes-site.git
 cd tech-notes
 
 # 安装文档工具（可选）
@@ -62,7 +62,7 @@ tech-notes/
    ```bash
    # 点击 GitHub 右上角 Fork 按钮
    # 克隆你的 fork
-   git clone https://github.com/你的用户名/tech-notes.git
+   git clone https://github.com/你的用户名/my-notes-site.git
    ```
 
 2. **创建分支**
@@ -155,7 +155,7 @@ tech-notes/
 
 ## 📮 联系与反馈
 
-- **问题反馈**: [GitHub Issues](https://github.com/Mzt2006/tech-notes/issues)
+- **问题反馈**: [GitHub Issues](https://github.com/CodeMzt/my-notes-site/issues)
 - **技术讨论**: 欢迎在 Issues 中发起讨论
 - **内容建议**: 直接提交 Pull Request 或 Issue
 
