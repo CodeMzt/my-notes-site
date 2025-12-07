@@ -50,19 +50,18 @@ nav:
   - 🏡 首页: index.md
 
   - 🤖 机器学习:
-    # 注意：根据你的文件结构，MachineLearning 文件夹下似乎没有直接的文件，
-    # 假设你的所有 Jupyter Notebook 都在 EmbeddedSoft/MachineLearning 中，
-    # 但根据当前结构，它们应该放在 MachineLearning 根目录下的 Pytorch_Learning 中。
-    # 我已根据你之前的习惯和目录名进行推测性配置。
-    - 简介: MachineLearning/README.md # 假设有一个简介文件
     - Pytorch 学习:
       - NN 神经网络: MachineLearning/Pytorch_Learning/nn.ipynb
-      # ... 补充其他 .ipynb 文件，它们应位于 MachineLearning 目录下
+      - Tensor 张量: MachineLearning/Pytorch_Learning/tensor.ipynb
+      - 数据处理: MachineLearning/Pytorch_Learning/data.ipynb
+      - 转换 (Transform): MachineLearning/Pytorch_Learning/transfrom.ipynb
+      - Tensorboard: MachineLearning/Pytorch_Learning/tensorboard.ipynb
+      - Test (ipynb): MachineLearning/Pytorch_Learning/Test.ipynb
 
   - 💻 嵌入式软件 (EmbeddedSoft):
     - 简介: EmbeddedSoft/EmbeddedSoft.md 
 
-    - ⚙️ ARM 架构与汇编:
+    - ⚙️ 架构与底层:
         - ARM 架构:
             - 架构概述: EmbeddedSoft/ARM_Arch/ARM_Arch.md
             - Cortex-M CPU: EmbeddedSoft/ARM_Arch/ARM Cortex-M CPU.md
@@ -79,45 +78,44 @@ nav:
             - B & BX 指令: EmbeddedSoft/Assembly_Intro/B&BX.md
 
     - ⏰ 实时操作系统 (RTOS):
-        - RTOS 基础:
+        - RTOS 基础概念:
             - 简介: EmbeddedSoft/RTOS/RTOS.md
             - 任务堆栈: EmbeddedSoft/RTOS/Tasks_Stack.md
             - 任务切换: EmbeddedSoft/RTOS/Tasks_Switch.md
-        - FreeRTOS 核心:
+            
+        - FreeRTOS 核心机制:
             - FreeRTOS 简介: EmbeddedSoft/RTOS/FreeRTOS/FreeRTOS.md
             - 任务创建与删除: EmbeddedSoft/RTOS/FreeRTOS/Tasks_Create&Delete.md
             - 任务调度: EmbeddedSoft/RTOS/FreeRTOS/Scheduling.md
             - 空闲任务与调度: EmbeddedSoft/RTOS/FreeRTOS/Idle&Scheduling.md
             - 任务挂起与恢复: EmbeddedSoft/RTOS/FreeRTOS/TaksPend&Resume.md
             - 列表与列表项: EmbeddedSoft/RTOS/FreeRTOS/List&ListItem.md
-            - 内核挂起: EmbeddedSoft/RTOS/FreeRTOS/KernelPend.md
-
-        - 🤝 同步、互斥与通信:
-            - 概述: EmbeddedSoft/RTOS/FreeRTOS/Sync_Comms.md
             - 内存管理: EmbeddedSoft/RTOS/FreeRTOS/Mem_Mgmt.md
+            - 内核挂起: EmbeddedSoft/RTOS/FreeRTOS/KernelPend.md
+            # 同步、互斥与通信（Sync_Comms.md 和其衍生的信号量/互斥量/队列/事件组等文件）
+            - 同步、互斥与通信: EmbeddedSoft/RTOS/FreeRTOS/Sync_Comms.md
             - 信号量 (Semaphore): EmbeddedSoft/RTOS/FreeRTOS/Semaphore.md
             - 互斥量 (Mutex): EmbeddedSoft/RTOS/FreeRTOS/Mutex.md
             - 队列 (Queue): EmbeddedSoft/RTOS/FreeRTOS/Queue.md
             - 队列集 (Queue Set): EmbeddedSoft/RTOS/FreeRTOS/Queue_Set.md
-            - 任务通知 (Task Note): EmbeddedSoft/RTOS/FreeRTOS/TaskNote.md
-            - 事件组 (Event Group): EmbeddedSoft/RTOS/FreeRTOS/Event_Group.md
-        
-        - ⚡ 中断与移植:
+            - 任务通知: EmbeddedSoft/RTOS/FreeRTOS/TaskNote.md
+            - 事件组: EmbeddedSoft/RTOS/FreeRTOS/Event_Group.md
+            # 中断与移植（Interrupt_Mgmt.md 和 Porting.md）
             - 中断管理: EmbeddedSoft/RTOS/FreeRTOS/Interrupt_Mgmt.md
             - 移植 (Porting): EmbeddedSoft/RTOS/FreeRTOS/Porting.md
 
 
-    - ⚙️ STM32 HAL 库:
+    - 💻 STM32 HAL 库:
         - 库简介: EmbeddedSoft/STM32_HAL/STM32_HAL.md
         - GPIO: EmbeddedSoft/STM32_HAL/GPIO.md
         - NVIC: EmbeddedSoft/STM32_HAL/NVIC.md
         - DMA: EmbeddedSoft/STM32_HAL/DMA.md
         - ADC: EmbeddedSoft/STM32_HAL/ADC.md
-        - 定时器: EmbeddedSoft/STM32_HAL/TIM.md
+        - 定时器 (TIM): EmbeddedSoft/STM32_HAL/TIM.md
         - FLASH: EmbeddedSoft/STM32_HAL/FLASH.md
         - BKP & RTC: EmbeddedSoft/STM32_HAL/BKP&RTC.md
         - 看门狗 (WDG): EmbeddedSoft/STM32_HAL/WDG.md
-        - 通信协议: EmbeddedSoft/STM32_HAL/connective.md # 注意：这里的 connective.md 可能是对 HAL 库通信的总结
+        - 通信协议总结: EmbeddedSoft/STM32_HAL/connective.md 
 
     - 📡 通信协议:
         - 协议概述: EmbeddedSoft/Connective/Connective.md
