@@ -98,7 +98,7 @@ nav:
             - 任务通知: 电赛软件/FreeRTOS/任务通知.md
             - 事件组: 电赛软件/FreeRTOS/事件组.md
             - 中断管理: 电赛软件/FreeRTOS/中断管理.md
-            - 移植: 电赛软件/FreeRTOS/移植.
+            - 移植: 电赛软件/FreeRTOS/移植.md
     
     - STM32 HAL 库:
         - 库介绍: 电赛软件/STM32 HAL库/STM32 HAL库.md
