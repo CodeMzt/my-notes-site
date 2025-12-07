@@ -1,0 +1,3888 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="机器学习与嵌入式开发笔记">
+      
+      
+      
+      
+        <link rel="prev" href="../Sync_Comms/">
+      
+      
+        <link rel="next" href="../Mutex/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>信号量 (Semaphore) - 个人技术与学习笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="个人技术与学习笔记" class="md-header__button md-logo" aria-label="个人技术与学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            个人技术与学习笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              信号量 (Semaphore)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="teal"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="orange"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="个人技术与学习笔记" class="md-nav__button md-logo" aria-label="个人技术与学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    个人技术与学习笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏡 首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🤖 机器学习
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🤖 机器学习
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pytorch 学习
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pytorch 学习
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MachineLearning/Pytorch_Learning/nn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NN 神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MachineLearning/Pytorch_Learning/tensor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tensor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MachineLearning/Pytorch_Learning/data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MachineLearning/Pytorch_Learning/transfrom/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    transform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MachineLearning/Pytorch_Learning/tensorboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tensorboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MachineLearning/Pytorch_Learning/Test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test (ipynb)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💻 嵌入式软件 (EmbeddedSoft)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    💻 嵌入式软件 (EmbeddedSoft)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EmbeddedSoft/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ⚙️ 架构与底层
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ⚙️ 架构与底层
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ARM 架构
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ARM 架构
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ARM_Arch/ARM_Arch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    架构概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ARM_Arch/ARM%20Cortex-M%20CPU/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cortex-M CPU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ARM_Arch/GeneralReg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通用寄存器 (GPR)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ARM_Arch/SpecialReg_xPSR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    特殊寄存器 (xPSR)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    汇编基础
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    汇编基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Assembly_Intro/Assembly_Intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Assembly_Intro/Mem_Mgmt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    内存管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Assembly_Intro/stack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    栈 (Stack)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Assembly_Intro/heap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    堆 (Heap)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Assembly_Intro/label/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    标签 (Label)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Assembly_Intro/PUSH/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PUSH 指令
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Assembly_Intro/POP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    POP 指令
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Assembly_Intro/B%26BX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    B & BX 指令
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ⏰ 实时操作系统 (RTOS)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ⏰ 实时操作系统 (RTOS)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_1" id="__nav_3_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RTOS 基础概念
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RTOS 基础概念
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RTOS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tasks_Stack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    任务堆栈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tasks_Switch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    任务切换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2" id="__nav_3_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FreeRTOS 核心机制
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    FreeRTOS 核心机制
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FreeRTOS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FreeRTOS 简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tasks_Create%26Delete/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    任务创建与删除
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    任务调度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Idle%26Scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    空闲任务与调度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TaksPend%26Resume/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    任务挂起与恢复
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../List%26ListItem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    列表与列表项
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Mem_Mgmt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    内存管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../KernelPend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    内核挂起
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sync_Comms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    同步、互斥与通信
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    信号量 (Semaphore)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Mutex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    互斥量 (Mutex)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Queue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    队列 (Queue)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Queue_Set.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    队列集 (Queue Set)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TaskNote/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    任务通知
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Event_Group.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    事件组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Interrupt_Mgmt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中断管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Porting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    移植 (Porting)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💻 STM32 HAL 库
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    💻 STM32 HAL 库
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../STM32_HAL/STM32_HAL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    库简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../STM32_HAL/GPIO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPIO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../STM32_HAL/NVIC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NVIC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../STM32_HAL/DMA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DMA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../STM32_HAL/ADC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../STM32_HAL/TIM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    定时器 (TIM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../STM32_HAL/FLASH/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FLASH
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../STM32_HAL/BKP%26RTC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BKP & RTC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../STM32_HAL/WDG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    看门狗 (WDG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../STM32_HAL/connective/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通信协议总结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📡 通信协议
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📡 通信协议
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Connective/Connective/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    协议概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Connective/I2C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I2C
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Connective/SPI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SPI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Connective/USART/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    USART
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Connective/CAN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🤖 控制与视觉
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🤖 控制与视觉
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6_1" id="__nav_3_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    电控算法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    电控算法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Control_Algos/Control_Algos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Control_Algos/PID/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PID 控制
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Control_Algos/LQR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LQR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Control_Algos/SMC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SMC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6_2" id="__nav_3_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机视觉 (CV)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算机视觉 (CV)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CV/CV/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    视觉概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CV/Micropython%20%26%20K230/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Micropython & K230
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<div class="toc">
+<ul>
+<li><a href="#_1">信号量的基本概念与特性</a></li>
+<li><a href="#_2">信号量基本操作</a><ul>
+<li><a href="#_3">类比：游乐场门票管理员</a></li>
+<li><a href="#_4">信号量的两大核心操作</a><ul>
+<li><a href="#1-take-">1. take() 操作 - “获取门票”</a></li>
+<li><a href="#2-give-">2. give() 操作 - “归还门票”</a></li>
+</ul>
+</li>
+<li><a href="#_5">其他相关操作</a></li>
+<li><a href="#_6">总结表格</a></li>
+</ul>
+</li>
+<li><a href="#_7">二进制信号量详解</a><ul>
+<li><a href="#_8">二进制信号量特性</a></li>
+<li><a href="#_9">创建二进制信号量</a><ul>
+<li><a href="#xsemaphorecreatebinary">xSemaphoreCreateBinary</a></li>
+<li><a href="#xsemaphorecreatebinarystatic">xSemaphoreCreateBinaryStatic</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_10">计数信号量详解</a><ul>
+<li><a href="#_11">计数信号量特性</a></li>
+<li><a href="#_12">创建计数信号量</a><ul>
+<li><a href="#xsemaphorecreatecounting">xSemaphoreCreateCounting</a></li>
+<li><a href="#xsemaphorecreatecountingstatic">xSemaphoreCreateCountingStatic</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_13">信号量基本操作函数</a><ul>
+<li><a href="#xsemaphoretake-">xSemaphoreTake - 获取信号量</a></li>
+<li><a href="#xsemaphoregive-">xSemaphoreGive - 释放信号量</a></li>
+<li><a href="#_14">中断安全操作函数</a><ul>
+<li><a href="#xsemaphoretakefromisr">xSemaphoreTakeFromISR</a></li>
+<li><a href="#xsemaphoregivefromisr">xSemaphoreGiveFromISR</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_15">信号量删除函数</a><ul>
+<li><a href="#vsemaphoredelete">vSemaphoreDelete</a></li>
+</ul>
+</li>
+<li><a href="#_16">信号量查询函数</a><ul>
+<li><a href="#uxsemaphoregetcount-">uxSemaphoreGetCount - 获取信号量计数</a></li>
+</ul>
+</li>
+<li><a href="#_17">信号量综合实验案例：停车场管理系统</a></li>
+<li><a href="#_18">信号量使用最佳实践</a><ul>
+<li><a href="#_19">信号量类型选择指南</a></li>
+<li><a href="#_20">错误处理策略</a><ul>
+<li><a href="#_21">获取超时处理</a></li>
+<li><a href="#_22">信号量创建检查</a></li>
+</ul>
+</li>
+<li><a href="#_23">性能优化建议</a></li>
+</ul>
+</li>
+<li><a href="#_24">优先级反转</a><ul>
+<li><a href="#_25">核心概念：什么是优先级反转？</a></li>
+<li><a href="#_26">一个经典的优先级反转场景（举例说明）</a></li>
+<li><a href="#_27">优先级反转的危害</a></li>
+<li><a href="#_28">解决方案</a><ul>
+<li><a href="#_29">方案一：优先级继承</a></li>
+<li><a href="#_30">方案二：优先级天花板</a></li>
+</ul>
+</li>
+<li><a href="#_31">总结</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="_1">信号量的基本概念与特性</h1>
+<p>信号量和队列极其类似，不同就在于信号量不进行数据读写操作，只储存计数值。</p>
+<p>信号量是操作系统中最基础的同步机制，本质上是一个计数器，用于控制对共享资源的访问和任务间的同步。</p>
+<p><strong>核心特性</strong>：
+- <strong>计数器机制</strong>：通过计数值管理资源可用性
+- <strong>线程安全</strong>：原子操作，不会出现竞争条件
+- <strong>阻塞等待</strong>：任务可以阻塞等待信号量可用
+- <strong>无数据传递</strong>：只传递信号，不传递实际数据</p>
+<p><strong>信号量 vs 队列</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>信号量</th>
+<th>队列</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据传递</td>
+<td>不传递数据</td>
+<td>传递数据</td>
+</tr>
+<tr>
+<td>主要用途</td>
+<td>同步、互斥</td>
+<td>数据传输</td>
+</tr>
+<tr>
+<td>内存开销</td>
+<td>较小</td>
+<td>较大</td>
+</tr>
+<tr>
+<td>灵活性</td>
+<td>相对较低</td>
+<td>较高</td>
+</tr>
+</tbody>
+</table>
+<h1 id="_2">信号量基本操作</h1>
+<p>可以把信号量想象成一个<strong>游乐场的门票管理员</strong>，他管理着一个热门游乐设施（<strong>共享资源</strong>）。</p>
+<p>这个管理员手里掌握着一定数量的门票（<strong>信号量的计数值</strong>），他的规则非常简单：</p>
+<hr />
+<h3 id="_3">类比：游乐场门票管理员</h3>
+<ul>
+<li><strong>共享资源</strong>：一个只能同时容纳固定人数的热门游乐设施（比如“太空漩涡”）。</li>
+<li><strong>信号量</strong>：管理这个设施的管理员，以及他手里的门票。</li>
+<li><strong>信号量计数值</strong>：管理员手里<strong>剩余的可直接入场门票的数量</strong>。<ul>
+<li>初始值 = 设施的容量（比如 3 张票，表示最多3个人同时玩）。</li>
+</ul>
+</li>
+<li><strong>任务</strong>：想要玩“太空漩涡”的游客们。</li>
+</ul>
+<hr />
+<h3 id="_4">信号量的两大核心操作</h3>
+<h4 id="1-take-">1. <code>take()</code> 操作 - “获取门票”</h4>
+<p>这个名字有很多等价叫法：<code>wait</code>， <code>P</code> 操作， <code>acquire</code>， <code>take</code>。 就像游客对管理员说：<strong>“我要一张票！”</strong></p>
+<p><strong>形象化的步骤：</strong></p>
+<ol>
+<li><strong>你走过去问管理员</strong>：“我要一张票”（调用 <code>wait()</code>）。</li>
+<li><strong>管理员检查手里</strong>：<ul>
+<li><strong>情况A（有票）</strong>：如果计数值 &gt; 0（比如还有1张票），他二话不说，直接递给你一张票，同时把手里的票数减1（<code>计数值--</code>）。你可以直接进去玩了！</li>
+<li><strong>情况B（没票）</strong>：如果计数值 = 0（票发完了），管理员会让你去旁边<strong>排队等待</strong>（任务进入阻塞状态）。你会被挂在那个设施的等待队列里。</li>
+</ul>
+</li>
+<li><strong>什么时候能醒来？</strong><ul>
+<li>当里面有一个人玩完了出来（执行了 <code>signal()</code> 操作），还回一张票时，管理员会叫醒排队队伍里的第一个人（比如按照优先级或先来后到），把票给他。</li>
+</ul>
+</li>
+</ol>
+<p><strong><code>wait()</code> 的核心目的就是申请资源的访问权。如果申请不到，就乖乖排队等着。</strong></p>
+<hr />
+<h4 id="2-give-">2. <code>give()</code> 操作 - “归还门票”</h4>
+<p>这个名字也有很多等价叫法：<code>signal</code>, <code>V</code> 操作, <code>release</code>, <code>give</code>。 就像游客玩完了出来对管理员说：<strong>“我出来了，票还你！”</strong></p>
+<p><strong>形象化的步骤：</strong></p>
+<ol>
+<li><strong>你玩完了，从出口出来</strong>（临界区代码执行完毕）。</li>
+<li><strong>你对管理员说</strong>：“我还票”（调用 <code>signal()</code>）。</li>
+<li><strong>管理员检查等待队列</strong>：<ul>
+<li><strong>情况A（有人在等）</strong>：如果等待队列里有其他游客在等票，管理员不会把票收回盒子，而是<strong>直接拍拍队伍第一个人的肩膀，把这张票给他</strong>。那个被叫醒的人就可以进去玩了。<strong>此时，管理员手里的票数（计数值）没有变化</strong>（还是0），他只是完成了一次“交接”。</li>
+<li><strong>情况B（没人在等）</strong>：如果等待队列是空的，管理员就把这张票<strong>放回自己手里的票堆</strong>，让可用票数加1（<code>计数值++</code>）。</li>
+</ul>
+</li>
+</ol>
+<p><strong><code>signal()</code> 的核心目的是释放资源的访问权，并通知等待的任务。</strong></p>
+<hr />
+<h3 id="_5">其他相关操作</h3>
+<p>除了核心的 <code>take</code> 和 <code>give</code>，通常还会有：</p>
+<ul>
+<li>
+<p><strong>初始化</strong>：在游乐场开门前，设定这个设施初始有多少张票可用（设置信号量的初始计数值）。</p>
+<ul>
+<li><strong>初始值 = 1</strong>：这就是我们常说的<strong>互斥锁</strong>，因为这个设施一次只允许一个人进去（比如一个单人间鬼屋）。</li>
+<li><strong>初始值 = N (N&gt;1)</strong>：这称为<strong>计数信号量</strong>，用于控制访问数量有限的资源池（比如有3辆的碰碰车场，有10个连接的数据库连接池）。</li>
+</ul>
+</li>
+<li>
+<p><strong>非阻塞等待</strong>：<code>tryWait()</code></p>
+<ul>
+<li>你走过去问管理员：“<strong>有票吗？立刻告诉我！我不想排队</strong>。”</li>
+<li>如果没票，他不会让你排队，而是直接告诉你：“没票！”，然后你就可以转身去玩别的了（函数立即返回错误码）。</li>
+</ul>
+</li>
+<li>
+<p><strong>带超时的等待</strong>：<code>timedWait()</code></p>
+<ul>
+<li>你走过去说：“我要一张票，但我<strong>只排5分钟的队</strong>。”</li>
+<li>如果5分钟内有人还票，你就能进去。</li>
+<li>如果5分钟到了还没票，你就不排了，自己离开（任务从阻塞状态超时返回）。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="_6">总结表格</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">操作</th>
+<th style="text-align: left;">编程函数名</th>
+<th style="text-align: left;">形象化动作</th>
+<th style="text-align: left;">对计数值的影响</th>
+<th style="text-align: left;">对任务的影响</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>初始化</strong></td>
+<td style="text-align: left;"><code>sem_init(&amp;sem, N)</code></td>
+<td style="text-align: left;">管理员准备N张门票</td>
+<td style="text-align: left;">设置为N</td>
+<td style="text-align: left;">无</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>申请资源</strong></td>
+<td style="text-align: left;"><code>sem_wait()</code></td>
+<td style="text-align: left;">“我要一张票！”</td>
+<td style="text-align: left;">如果有票，则减1</td>
+<td style="text-align: left;">如果没票，就排队阻塞</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>释放资源</strong></td>
+<td style="text-align: left;"><code>sem_post()</code></td>
+<td style="text-align: left;">“我出来了，还票！”</td>
+<td style="text-align: left;">如果没人等，则加1<br>如果有人等，不变</td>
+<td style="text-align: left;">叫醒一个排队的人</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>尝试申请</strong></td>
+<td style="text-align: left;"><code>sem_trywait()</code></td>
+<td style="text-align: left;">“有现票吗？没有我走了”</td>
+<td style="text-align: left;">有票则减1，无票不变</td>
+<td style="text-align: left;">不阻塞，立即返回</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>限时申请</strong></td>
+<td style="text-align: left;"><code>sem_timedwait()</code></td>
+<td style="text-align: left;">“我排5分钟队，等不到就走”</td>
+<td style="text-align: left;">超时内等到票则减1</td>
+<td style="text-align: left;">超时则结束阻塞</td>
+</tr>
+</tbody>
+</table>
+<h1 id="_7">二进制信号量详解</h1>
+<h2 id="_8">二进制信号量特性</h2>
+<p>二进制信号量是最简单的信号量类型：
+- <strong>计数值范围</strong>：只有0和1两种状态
+- <strong>行为模式</strong>：类似于锁机制
+- <strong>应用场景</strong>：任务同步、互斥访问</p>
+<p><strong>状态说明</strong>：
+- 1：信号量可用，任务可以获取
+- 0：信号量不可用，任务需要等待</p>
+<h2 id="_9">创建二进制信号量</h2>
+<h3 id="xsemaphorecreatebinary">xSemaphoreCreateBinary</h3>
+<pre><code class="language-c">SemaphoreHandle_t xSemaphoreCreateBinary(void);
+</code></pre>
+<p><strong>重要特性</strong>：
+- 创建后初始状态为0（不可用）
+- 需要手动调用<code>xSemaphoreGive</code>使其可用
+- 适用于动态内存分配</p>
+<p><strong>创建示例</strong>：</p>
+<pre><code class="language-c">// 创建二进制信号量
+SemaphoreHandle_t xBinarySemaphore;
+
+void vInitSemaphores(void) {
+    xBinarySemaphore = xSemaphoreCreateBinary();
+
+    if(xBinarySemaphore != NULL) {
+        // 创建成功后立即使其可用
+        xSemaphoreGive(xBinarySemaphore);
+        printf(&quot;Binary semaphore created and made available\n&quot;);
+    } else {
+        printf(&quot;Failed to create binary semaphore\n&quot;);
+    }
+}
+</code></pre>
+<h3 id="xsemaphorecreatebinarystatic">xSemaphoreCreateBinaryStatic</h3>
+<p>静态创建二进制信号量：</p>
+<pre><code class="language-c">SemaphoreHandle_t xSemaphoreCreateBinaryStatic(StaticSemaphore_t *pxSemaphoreBuffer);
+</code></pre>
+<p><strong>静态创建示例</strong>：</p>
+<pre><code class="language-c">// 静态分配信号量控制块
+static StaticSemaphore_t xBinarySemaphoreBuffer;
+
+void vInitStaticSemaphores(void) {
+    // 静态创建二进制信号量
+    SemaphoreHandle_t xStaticBinarySemaphore;
+    xStaticBinarySemaphore = xSemaphoreCreateBinaryStatic(&amp;xBinarySemaphoreBuffer);
+
+    if(xStaticBinarySemaphore != NULL) {
+        xSemaphoreGive(xStaticBinarySemaphore);
+        printf(&quot;Static binary semaphore created successfully\n&quot;);
+    }
+}
+</code></pre>
+<h1 id="_10">计数信号量详解</h1>
+<h2 id="_11">计数信号量特性</h2>
+<p>计数信号量用于管理多个相同的资源：
+- <strong>计数值范围</strong>：0到最大计数值
+- <strong>资源管理</strong>：计数值表示可用资源数量
+- <strong>应用场景</strong>：资源池管理、限流控制</p>
+<h2 id="_12">创建计数信号量</h2>
+<h3 id="xsemaphorecreatecounting">xSemaphoreCreateCounting</h3>
+<pre><code class="language-c">SemaphoreHandle_t xSemaphoreCreateCounting(UBaseType_t uxMaxCount,
+                                         UBaseType_t uxInitialCount);
+</code></pre>
+<p><strong>参数说明</strong>：
+- <code>uxMaxCount</code>：信号量最大计数值
+- <code>uxInitialCount</code>：信号量初始计数值</p>
+<p><strong>创建示例</strong>：</p>
+<pre><code class="language-c">// 创建各种计数信号量示例
+SemaphoreHandle_t xParkingSemaphore;      // 停车场信号量
+SemaphoreHandle_t xBufferSemaphore;       // 缓冲区信号量
+SemaphoreHandle_t xConnectionSemaphore;   // 连接数信号量
+
+void vCreateCountingSemaphores(void) {
+    // 停车场：10个车位，初始全部空着
+    xParkingSemaphore = xSemaphoreCreateCounting(10, 10);
+
+    // 缓冲区：最多5个缓冲块，初始有3个可用
+    xBufferSemaphore = xSemaphoreCreateCounting(5, 3);
+
+    // 数据库连接：最多8个连接，初始全部可用
+    xConnectionSemaphore = xSemaphoreCreateCounting(8, 8);
+
+    // 检查创建结果
+    if(xParkingSemaphore == NULL || xBufferSemaphore == NULL || xConnectionSemaphore == NULL) {
+        printf(&quot;Error: Failed to create counting semaphores\n&quot;);
+    } else {
+        printf(&quot;All counting semaphores created successfully\n&quot;);
+    }
+}
+</code></pre>
+<h3 id="xsemaphorecreatecountingstatic">xSemaphoreCreateCountingStatic</h3>
+<p>静态创建计数信号量：</p>
+<pre><code class="language-c">SemaphoreHandle_t xSemaphoreCreateCountingStatic(UBaseType_t uxMaxCount,
+                                                UBaseType_t uxInitialCount,
+                                                StaticSemaphore_t *pxSemaphoreBuffer);
+</code></pre>
+<h1 id="_13">信号量基本操作函数</h1>
+<h2 id="xsemaphoretake-">xSemaphoreTake - 获取信号量</h2>
+<pre><code class="language-c">BaseType_t xSemaphoreTake(SemaphoreHandle_t xSemaphore, 
+                         TickType_t xTicksToWait);
+</code></pre>
+<p><strong>参数说明</strong>：
+- <code>xSemaphore</code>：信号量句柄
+- <code>xTicksToWait</code>：阻塞超时时间</p>
+<p><strong>阻塞行为</strong>：
+- <code>0</code>：非阻塞，立即返回
+- <code>portMAX_DELAY</code>：无限阻塞
+- <code>N</code>：阻塞N个时钟节拍</p>
+<p><strong>使用示例</strong>：</p>
+<pre><code class="language-c">void vTaskUsingSemaphore(void *pvParameters) {
+    TickType_t xLastWakeTime = xTaskGetTickCount();
+
+    while(1) {
+        // 尝试获取信号量，等待100ms
+        if(xSemaphoreTake(xBinarySemaphore, 100 / portTICK_PERIOD_MS) == pdTRUE) {
+            // 成功获取信号量，执行受保护的操作
+            printf(&quot;Semaphore acquired, performing critical operation\n&quot;);
+            vPerformCriticalOperation();
+
+            // 释放信号量
+            xSemaphoreGive(xBinarySemaphore);
+            printf(&quot;Semaphore released\n&quot;);
+        } else {
+            // 获取信号量超时
+            printf(&quot;Failed to acquire semaphore within timeout\n&quot;);
+        }
+
+        // 任务周期执行
+        vTaskDelayUntil(&amp;xLastWakeTime, 1000 / portTICK_PERIOD_MS);
+    }
+}
+</code></pre>
+<h2 id="xsemaphoregive-">xSemaphoreGive - 释放信号量</h2>
+<p>任何任务都可以释放</p>
+<pre><code class="language-c">BaseType_t xSemaphoreGive(SemaphoreHandle_t xSemaphore);
+</code></pre>
+<p><strong>返回值</strong>：
+- <code>pdTRUE</code>：成功释放信号量
+- <code>pdFALSE</code>：释放失败（信号量已满）</p>
+<p><strong>释放示例</strong>：</p>
+<pre><code class="language-c">void vProducerTask(void *pvParameters) {
+    while(1) {
+        // 生产数据
+        vProduceData();
+
+        // 释放信号量通知消费者
+        if(xSemaphoreGive(xDataReadySemaphore) == pdTRUE) {
+            printf(&quot;Signal sent to consumer\n&quot;);
+        } else {
+            printf(&quot;Failed to give semaphore\n&quot;);
+        }
+
+        vTaskDelay(500 / portTICK_PERIOD_MS);
+    }
+}
+</code></pre>
+<h2 id="_14">中断安全操作函数</h2>
+<h3 id="xsemaphoretakefromisr">xSemaphoreTakeFromISR</h3>
+<pre><code class="language-c">BaseType_t xSemaphoreTakeFromISR(SemaphoreHandle_t xSemaphore,
+                                BaseType_t *pxHigherPriorityTaskWoken);
+</code></pre>
+<h3 id="xsemaphoregivefromisr">xSemaphoreGiveFromISR</h3>
+<pre><code class="language-c">BaseType_t xSemaphoreGiveFromISR(SemaphoreHandle_t xSemaphore,
+                                BaseType_t *pxHigherPriorityTaskWoken);
+</code></pre>
+<p><strong>中断中使用示例</strong>：</p>
+<pre><code class="language-c">// 外部中断处理函数
+void EXTI0_IRQHandler(void) {
+    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+
+    // 清除中断标志
+    EXTI-&gt;PR = EXTI_PR_PR0;
+
+    // 在中断中释放信号量
+    if(xSemaphoreGiveFromISR(xInterruptSemaphore, &amp;xHigherPriorityTaskWoken) == pdTRUE) {
+        printf(&quot;Semaphore given from ISR\n&quot;);
+    }
+
+    // 必要时进行任务切换
+    portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+}
+
+// 处理中断的任务
+void vInterruptHandlerTask(void *pvParameters) {
+    while(1) {
+        // 等待中断信号
+        if(xSemaphoreTake(xInterruptSemaphore, portMAX_DELAY) == pdTRUE) {
+            printf(&quot;Interrupt received, processing...\n&quot;);
+            vProcessInterrupt();
+        }
+    }
+}
+</code></pre>
+<h1 id="_15">信号量删除函数</h1>
+<h2 id="vsemaphoredelete">vSemaphoreDelete</h2>
+<pre><code class="language-c">void vSemaphoreDelete(SemaphoreHandle_t xSemaphore);
+</code></pre>
+<p><strong>删除信号量示例</strong>：</p>
+<pre><code class="language-c">void vCleanupResources(void) {
+    // 删除不再使用的信号量
+    if(xBinarySemaphore != NULL) {
+        vSemaphoreDelete(xBinarySemaphore);
+        xBinarySemaphore = NULL;
+        printf(&quot;Binary semaphore deleted\n&quot;);
+    }
+
+    if(xCountingSemaphore != NULL) {
+        vSemaphoreDelete(xCountingSemaphore);
+        xCountingSemaphore = NULL;
+        printf(&quot;Counting semaphore deleted\n&quot;);
+    }
+
+    if(xMutex != NULL) {
+        vSemaphoreDelete(xMutex);
+        xMutex = NULL;
+        printf(&quot;Mutex deleted\n&quot;);
+    }
+}
+</code></pre>
+<h1 id="_16">信号量查询函数</h1>
+<h2 id="uxsemaphoregetcount-">uxSemaphoreGetCount - 获取信号量计数</h2>
+<pre><code class="language-c">UBaseType_t uxSemaphoreGetCount(SemaphoreHandle_t xSemaphore);
+</code></pre>
+<p><strong>查询示例</strong>：</p>
+<pre><code class="language-c">void vMonitorSemaphoreStatus(void) {
+    UBaseType_t uxBinaryCount, uxCountingCount, uxMutexCount;
+
+    // 获取各种信号量的当前计数值
+    uxBinaryCount = uxSemaphoreGetCount(xBinarySemaphore);
+    uxCountingCount = uxSemaphoreGetCount(xCountingSemaphore);
+    uxMutexCount = uxSemaphoreGetCount(xMutex);
+
+    printf(&quot;Semaphore Status:\n&quot;);
+    printf(&quot;  Binary: %lu\n&quot;, uxBinaryCount);
+    printf(&quot;  Counting: %lu\n&quot;, uxCountingCount);
+    printf(&quot;  Mutex: %lu\n&quot;, uxMutexCount);
+
+    // 根据状态采取行动
+    if(uxCountingCount == 0) {
+        printf(&quot;Warning: No resources available in counting semaphore!\n&quot;);
+    }
+}
+</code></pre>
+<h1 id="_17">信号量综合实验案例：停车场管理系统</h1>
+<pre><code class="language-c">#include &quot;FreeRTOS.h&quot;
+#include &quot;task.h&quot;
+#include &quot;semphr.h&quot;
+#include &quot;stdio.h&quot;
+#include &quot;string.h&quot;
+
+// 系统信号量定义
+SemaphoreHandle_t xParkingSpaces;      // 停车位计数信号量
+SemaphoreHandle_t xEntryGate;          // 入口闸机二进制信号量
+SemaphoreHandle_t xExitGate;           // 出口闸机二进制信号量
+SemaphoreHandle_t xDisplayMutex;       // 显示屏互斥量
+
+// 系统状态变量
+static uint32_t ulCarsInParking = 0;
+static uint32_t ulTotalCarsServed = 0;
+
+// 显示屏输出函数（受互斥量保护）
+void vSafePrintf(const char *format, ...) {
+    va_list args;
+
+    // 获取显示屏互斥量
+    if(xSemaphoreTake(xDisplayMutex, 100 / portTICK_PERIOD_MS) == pdTRUE) {
+        va_start(args, format);
+        vprintf(format, args);
+        va_end(args);
+
+        // 释放互斥量
+        xSemaphoreGive(xDisplayMutex);
+    }
+}
+
+// 车辆入场任务
+void vCarEntryTask(void *pvParameters) {
+    uint8_t car_id = (uint8_t)pvParameters;
+    char car_plate[10];
+
+    // 生成车牌号
+    snprintf(car_plate, sizeof(car_plate), &quot;CAR%03d&quot;, car_id);
+
+    vSafePrintf(&quot;[ENTRY] Car %s arrived at entrance\n&quot;, car_plate);
+
+    while(1) {
+        // 等待入口闸机可用（二进制信号量）
+        if(xSemaphoreTake(xEntryGate, 2000 / portTICK_PERIOD_MS) == pdTRUE) {
+            vSafePrintf(&quot;[ENTRY] Car %s is at gate\n&quot;, car_plate);
+
+            // 尝试获取停车位（计数信号量）
+            if(xSemaphoreTake(xParkingSpaces, 1000 / portTICK_PERIOD_MS) == pdTRUE) {
+                // 成功获取停车位
+                ulCarsInParking++;
+                ulTotalCarsServed++;
+
+                vSafePrintf(&quot;[ENTRY] Car %s entered. Parking: %lu/%lu, Total: %lu\n&quot;,
+                           car_plate, ulCarsInParking, 
+                           uxSemaphoreGetCount(xParkingSpaces) + ulCarsInParking,
+                           ulTotalCarsServed);
+
+                // 释放入口闸机
+                xSemaphoreGive(xEntryGate);
+
+                // 模拟停车时间（1-10秒）
+                vTaskDelay((1000 + (rand() % 9000)) / portTICK_PERIOD_MS);
+
+                // 车辆准备离开
+                vSafePrintf(&quot;[EXIT]  Car %s preparing to leave\n&quot;, car_plate);
+
+                // 等待出口闸机
+                if(xSemaphoreTake(xExitGate, 2000 / portTICK_PERIOD_MS) == pdTRUE) {
+                    // 释放停车位
+                    xSemaphoreGive(xParkingSpaces);
+                    ulCarsInParking--;
+
+                    vSafePrintf(&quot;[EXIT]  Car %s left. Parking: %lu/%lu\n&quot;,
+                               car_plate, ulCarsInParking,
+                               uxSemaphoreGetCount(xParkingSpaces) + ulCarsInParking);
+
+                    // 释放出口闸机
+                    xSemaphoreGive(xExitGate);
+                }
+
+            } else {
+                // 没有停车位可用
+                vSafePrintf(&quot;[ENTRY] Car %s left - no parking space available\n&quot;, car_plate);
+                xSemaphoreGive(xEntryGate);
+            }
+        } else {
+            vSafePrintf(&quot;[ENTRY] Car %s gave up waiting for gate\n&quot;, car_plate);
+        }
+
+        // 车辆离开后等待一段时间再回来
+        vTaskDelay((5000 + (rand() % 10000)) / portTICK_PERIOD_MS);
+        vSafePrintf(&quot;[ENTRY] Car %s arrived again\n&quot;, car_plate);
+    }
+}
+
+// 停车场监控任务
+void vParkingMonitorTask(void *pvParameters) {
+    UBaseType_t uxAvailableSpaces;
+    UBaseType_t uxMaxSpaces = 10;  // 假设总共10个车位
+
+    vSafePrintf(&quot;[MONITOR] Parking monitor started\n&quot;);
+
+    while(1) {
+        // 获取当前可用车位数量
+        uxAvailableSpaces = uxSemaphoreGetCount(xParkingSpaces);
+
+        vSafePrintf(&quot;\n=== Parking Status ===\n&quot;);
+        vSafePrintf(&quot;Available spaces: %lu\n&quot;, uxAvailableSpaces);
+        vSafePrintf(&quot;Cars in parking:  %lu\n&quot;, ulCarsInParking);
+        vSafePrintf(&quot;Total served:     %lu\n&quot;, ulTotalCarsServed);
+        vSafePrintf(&quot;Utilization:      %.1f%%\n&quot;, 
+                   (float)(uxMaxSpaces - uxAvailableSpaces) / uxMaxSpaces * 100);
+
+        // 状态警告
+        if(uxAvailableSpaces == 0) {
+            vSafePrintf(&quot;WARNING: Parking lot FULL!\n&quot;);
+        } else if(uxAvailableSpaces &lt;= 2) {
+            vSafePrintf(&quot;WARNING: Parking lot almost full\n&quot;);
+        }
+
+        vSafePrintf(&quot;=====================\n\n&quot;);
+
+        // 每5秒监控一次
+        vTaskDelay(5000 / portTICK_PERIOD_MS);
+    }
+}
+
+// 紧急车辆优先任务
+void vEmergencyVehicleTask(void *pvParameters) {
+    vSafePrintf(&quot;[EMERGENCY] Emergency vehicle service started\n&quot;);
+
+    while(1) {
+        // 随机模拟紧急车辆到达
+        vTaskDelay((30000 + (rand() % 30000)) / portTICK_PERIOD_MS);
+
+        vSafePrintf(&quot;[EMERGENCY] Emergency vehicle arriving!\n&quot;);
+
+        // 紧急车辆优先入场
+        if(xSemaphoreTake(xEntryGate, portMAX_DELAY) == pdTRUE) {
+            vSafePrintf(&quot;[EMERGENCY] Emergency vehicle entering\n&quot;);
+
+            // 强制获取停车位（可能等待）
+            if(xSemaphoreTake(xParkingSpaces, portMAX_DELAY) == pdTRUE) {
+                ulCarsInParking++;
+                ulTotalCarsServed++;
+
+                vSafePrintf(&quot;[EMERGENCY] Emergency vehicle parked\n&quot;);
+
+                // 释放入口闸机
+                xSemaphoreGive(xEntryGate);
+
+                // 紧急处理时间较短
+                vTaskDelay(2000 / portTICK_PERIOD_MS);
+
+                // 紧急离开
+                if(xSemaphoreTake(xExitGate, portMAX_DELAY) == pdTRUE) {
+                    xSemaphoreGive(xParkingSpaces);
+                    ulCarsInParking--;
+
+                    vSafePrintf(&quot;[EMERGENCY] Emergency vehicle departed\n&quot;);
+                    xSemaphoreGive(xExitGate);
+                }
+            }
+        }
+    }
+}
+
+// 系统初始化函数
+void vInitializeParkingSystem(void) {
+    printf(&quot;Initializing Parking Management System...\n&quot;);
+
+    // 创建计数信号量：10个停车位，初始全部可用
+    xParkingSpaces = xSemaphoreCreateCounting(10, 10);
+
+    // 创建二进制信号量：入口和出口闸机，初始可用
+    xEntryGate = xSemaphoreCreateBinary();
+    xExitGate = xSemaphoreCreateBinary();
+
+    // 创建互斥量：保护显示屏输出
+    xDisplayMutex = xSemaphoreCreateMutex();
+
+    // 检查信号量创建结果
+    if(xParkingSpaces == NULL || xEntryGate == NULL || 
+       xExitGate == NULL || xDisplayMutex == NULL) {
+        printf(&quot;ERROR: Failed to create semaphores!\n&quot;);
+        while(1); // 系统停止
+    }
+
+    // 使二进制信号量初始可用
+    xSemaphoreGive(xEntryGate);
+    xSemaphoreGive(xExitGate);
+
+    printf(&quot;Parking system initialized successfully\n&quot;);
+    printf(&quot;Total parking spaces: 10\n&quot;);
+}
+
+// 主函数
+int main(void) {
+    // 初始化停车场系统
+    vInitializeParkingSystem();
+
+    // 创建车辆任务（5辆常规车辆）
+    for(int i = 1; i &lt;= 5; i++) {
+        xTaskCreate(vCarEntryTask, &quot;CarEntry&quot;, 1024, (void*)i, 2, NULL);
+    }
+
+    // 创建监控任务
+    xTaskCreate(vParkingMonitorTask, &quot;Monitor&quot;, 1024, NULL, 1, NULL);
+
+    // 创建紧急车辆任务（较高优先级）
+    xTaskCreate(vEmergencyVehicleTask, &quot;Emergency&quot;, 1024, NULL, 3, NULL);
+
+    printf(&quot;Starting FreeRTOS scheduler...\n&quot;);
+    vTaskStartScheduler();
+
+    // 如果调度器启动失败
+    while(1) {
+        printf(&quot;ERROR: Scheduler failed to start!\n&quot;);
+    }
+
+    return 0;
+}
+</code></pre>
+<h1 id="_18">信号量使用最佳实践</h1>
+<h2 id="_19">信号量类型选择指南</h2>
+<p><strong>二进制信号量适用场景</strong>：
+- 任务间同步
+- 简单的互斥保护
+- 事件通知机制</p>
+<p><strong>计数信号量适用场景</strong>：
+- 资源池管理（连接池、缓冲区等）
+- 限流控制
+- 生产者-消费者模式中的资源计数</p>
+<p><strong>互斥量适用场景</strong>：
+- 共享资源保护
+- 可能发生优先级反转的情况
+- 需要递归访问的共享资源</p>
+<h2 id="_20">错误处理策略</h2>
+<h3 id="_21">获取超时处理</h3>
+<pre><code class="language-c">BaseType_t xResult = xSemaphoreTake(xSemaphore, timeout);
+if(xResult != pdTRUE) {
+    // 处理策略：重试、使用备用方案、报告错误等
+    handle_semaphore_timeout();
+}
+</code></pre>
+<h3 id="_22">信号量创建检查</h3>
+<pre><code class="language-c">xSemaphore = xSemaphoreCreateBinary();
+if(xSemaphore == NULL) {
+    // 内存不足处理
+    handle_memory_allocation_failure();
+}
+</code></pre>
+<h2 id="_23">性能优化建议</h2>
+<ol>
+<li><strong>合理设置超时</strong>：避免任务永久阻塞</li>
+<li><strong>使用静态分配</strong>：在确定性系统中减少动态分配</li>
+<li><strong>避免信号量滥用</strong>：简单的标志位可以使用任务通知替代</li>
+<li><strong>注意优先级安排</strong>：防止优先级反转和死锁</li>
+</ol>
+<h1 id="_24">优先级反转</h1>
+<p>这是一个在实时系统或多任务系统中非常重要且经典的问题。</p>
+<h2 id="_25">核心概念：什么是优先级反转？</h2>
+<p><strong>优先级反转</strong>是指：在高优先级任务等待一个被低优先级任务占有的资源时，被一个中间优先级的任务抢占，从而导致高优先级任务被迫等待无限期延长的现象。</p>
+<p>简单来说，就是<strong>高优先级任务“卡住了”，反而让中优先级任务先运行</strong>，这严重违背了优先级调度机制的初衷。</p>
+<hr />
+<h2 id="_26">一个经典的优先级反转场景（举例说明）</h2>
+<p>假设一个系统中有三个任务，优先级从高到低排列：</p>
+<ul>
+<li><strong>任务H</strong>：高优先级</li>
+<li><strong>任务M</strong>：中优先级</li>
+<li><strong>任务L</strong>：低优先级</li>
+</ul>
+<p>系统中有一个资源R（例如一个打印机、一段共享内存），由<strong>信号量S</strong> 来保护。</p>
+<p><strong>问题发生的步骤：</strong></p>
+<ol>
+<li><strong>时刻1</strong>：任务L开始运行，并成功获取了信号量S，开始使用资源R。</li>
+<li><strong>时刻2</strong>：任务H就绪。由于它的优先级最高，系统会抢占任务L，开始运行任务H。</li>
+<li><strong>时刻3</strong>：任务H在运行过程中，也尝试去获取信号量S，以使用资源R。<ul>
+<li>但此时信号量S已经被任务L持有。</li>
+<li>因此，任务H被阻塞，进入等待状态，并释放CPU。</li>
+</ul>
+</li>
+<li><strong>时刻4</strong>：系统需要调度一个新任务。此时，任务L（持有信号量）和任务M（就绪）都在等待CPU。<ul>
+<li>按照优先级规则，任务M的优先级高于任务L。</li>
+<li>因此，系统调度<strong>任务M</strong>开始运行。<strong>（这是问题的关键！）</strong></li>
+</ul>
+</li>
+<li><strong>时刻5</strong>：任务M开始长时间运行（例如，一个大的计算循环），因为它不需要资源R，所以它不会释放信号量S。</li>
+<li><strong>结果</strong>：<ul>
+<li>任务L（持有信号量S）无法运行，因为它被任务M抢占了。</li>
+<li>任务L无法运行，就无法释放信号量S。</li>
+<li>任务H（高优先级）虽然在等待信号量S，但它只能干等着任务L释放信号量。</li>
+<li>而任务L又在等着任务M释放CPU。</li>
+</ul>
+</li>
+</ol>
+<p><strong>最终形成了一个尴尬的链条：<code>H</code> 在等 <code>L</code>，<code>L</code> 在等 <code>M</code>，而 <code>M</code> 与 <code>H</code>、<code>L</code> 都无关。</strong> 高优先级任务H的行为，实际上被中优先级任务M“绑架”了。这就是优先级反转。</p>
+<hr />
+<h2 id="_27">优先级反转的危害</h2>
+<ul>
+<li><strong>破坏实时性</strong>：在严格的实时系统中，高优先级任务必须在规定的时间内完成。优先级反转会导致其响应时间无法预测，甚至无限期延迟，可能导致系统崩溃或严重故障。</li>
+<li><strong>逻辑错误</strong>：在普通系统中，会导致性能下降、死锁-like的现象，难以调试。</li>
+</ul>
+<hr />
+<h2 id="_28">解决方案</h2>
+<p>为了解决优先级反转问题，工程师们提出了几种有效的方案：</p>
+<h4 id="_29">方案一：优先级继承</h4>
+<p>这是最常用的解决方案。</p>
+<ul>
+<li><strong>核心思想</strong>：当一个高优先级任务H等待一个被低优先级任务L占有的信号量时，<strong>临时将任务L的优先级提升到与任务H相同</strong>。(<strong>提拔</strong>)</li>
+<li><strong>如何工作</strong>：<ul>
+<li>在上面的例子中，当任务H在时刻3尝试获取信号量失败时，系统会立即将任务L的优先级提升到与任务H一样高。</li>
+<li>这样，在时刻4进行调度时，任务L的优先级（已被临时提升为高）就高于任务M。</li>
+<li>因此，CPU会立刻分配给任务L，让它继续执行。</li>
+<li>任务L得以快速执行完临界区代码，释放信号量S。</li>
+<li>一旦任务L释放了信号量：<ol>
+<li>它的优先级会恢复为原来的低优先级。</li>
+<li>等待该信号量的任务H立即获取到信号量，并因其本身的高优先级而开始运行。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><strong>效果</strong>：有效打破了“H等L，L被M阻塞”的链条，将反转的影响降到最低。</li>
+</ul>
+<h4 id="_30">方案二：优先级天花板</h4>
+<p>这是一个更激进、也更确定的方案。</p>
+<ul>
+<li><strong>核心思想</strong>：为每个信号量预设一个“天花板”优先级，这个优先级通常等于所有可能访问该信号量的任务中的<strong>最高优先级</strong>。当一个任务成功获取该信号量时，<strong>它的优先级会自动被提升到这个天花板优先级</strong>。</li>
+<li><strong>如何工作</strong>：<ul>
+<li>在例子中，假设信号量S的天花板优先级被设为任务H的优先级。</li>
+<li>在时刻1，任务L一获取信号量S，它的优先级立刻被提升到天花板优先级（即H的优先级）。</li>
+<li>这样，在时刻2，任务H就绪时，它无法抢占任务L，因为此时它们优先级相同（或者根据具体实现，可能仍由L继续运行）。</li>
+<li>任务L会不受干扰地、快速地运行完临界区代码，然后释放信号量，同时优先级恢复原状。</li>
+<li>之后，任务H才能抢占并运行。</li>
+</ul>
+</li>
+<li><strong>效果</strong>：它甚至防止了优先级反转的发生，而不是等发生了再去解决。但它可能导致不必要的优先级提升，稍微降低系统灵活性。</li>
+</ul>
+<hr />
+<h2 id="_31">总结</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">特性</th>
+<th style="text-align: left;">问题：优先级反转</th>
+<th style="text-align: left;">解决方案1：优先级继承</th>
+<th style="text-align: left;">解决方案2：优先级天花板</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>核心思想</strong></td>
+<td style="text-align: left;">高优先级任务被中优先级任务间接阻塞</td>
+<td style="text-align: left;"><strong>临时</strong>提升低优先级任务的优先级</td>
+<td style="text-align: left;">在持有锁时<strong>直接</strong>提升到预设最高优先级</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>行为时机</strong></td>
+<td style="text-align: left;">自然发生</td>
+<td style="text-align: left;"><strong>发生阻塞时</strong>触发提升</td>
+<td style="text-align: left;"><strong>获取信号量时</strong>立即提升</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>优点</strong></td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">动态、高效、资源占用少</td>
+<td style="text-align: left;">能防止死锁，行为更确定</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>缺点</strong></td>
+<td style="text-align: left;">破坏系统实时性，难以调试</td>
+<td style="text-align: left;">实现稍复杂，存在链式继承问题</td>
+<td style="text-align: left;">可能造成不必要的优先级提升</td>
+</tr>
+<tr>
+<td style="text-align: left;">更多请见<a href="EmbeddedSoft/RTOS/FreeRTOS/Mutex.md">Mutex</a></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">## 常见问题与解决方案</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>死锁预防</strong>：
+- 按照固定顺序获取多个信号量
+- 设置合理的超时时间
+- 使用死锁检测机制</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 马梓腾
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.expand", "navigation.indexes", "toc.follow", "content.tabs.link", "content.code.copy", "search.suggest", "search.highlight", "header.autohide"], "search": "../../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
