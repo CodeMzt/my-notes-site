@@ -124,7 +124,7 @@ tech-notes/
 
 感谢所有为这个项目做出贡献的开发者！
 
-[![贡献者](https://img.shields.io/github/contributors/Mzt2006/tech-notes?style=for-the-badge)](https://github.com/Mzt2006/tech-notes/graphs/contributors)
+[![贡献者](https://img.shields.io/github/contributors/CodeMzt/my-notes-site?style=for-the-badge)](https://github.com/CodeMzt/my-notes-site/graphs/contributors)
 
 ---
 
