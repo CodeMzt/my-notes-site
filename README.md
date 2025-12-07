@@ -22,13 +22,6 @@
 | **🤖 机器学习**   | 深度学习、计算机视觉    | PyTorch, TensorFlow, CNN/RNN, 模型部署      |
 | **💡 电控与视觉** | 控制算法、嵌入式视觉    | PID/LQR/SMC, OpenCV, 机器人控制             |
 
-### 🚀 快速导航
-
-- **[嵌入式软件学习路径](docs/EmbeddedSoft/)** - 从ARM汇编到RTOS源码分析
-- **[机器学习笔记](docs/MachineLearning/)** - PyTorch框架与深度学习实践
-- **[电控与视觉算法](docs/Control_Vision/)** - 控制理论与计算机视觉应用
-- **[项目实战案例](docs/Projects/)** - 综合应用实践项目
-
 ---
 
 ## 🛠️ 本地开发与贡献
