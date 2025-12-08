@@ -47,118 +47,152 @@ plugins:
   
 # --- 导航菜单配置 (Nav) ---
 nav:
-  - 🏡 首页: README.md # 注意：根据你的文件树，根目录的首页现在是 README.md
+  - 🏠 首页: README.md
+  
+  # ==========================================================
+  # 🤖 嵌入式软件 (EmbeddedSoft)
+  # ==========================================================
+  - 🤖 嵌入式软件 (EmbeddedSoft):
+    - EmbeddedSoft/EmbeddedSoft.md
+    
+    - 🔩 ARM 架构:
+      - EmbeddedSoft/ARM_Arch/ARM_Arch.md
+      - EmbeddedSoft/ARM_Arch/ARM Cortex-M CPU.md
+      - EmbeddedSoft/ARM_Arch/GeneralReg.md
+      - EmbeddedSoft/ARM_Arch/SpecialReg_xPSR.md
+      
+    - 📝 汇编入门:
+      - EmbeddedSoft/Assembly_Intro/Assembly_Intro.md
+      - EmbeddedSoft/Assembly_Intro/label.md
+      - EmbeddedSoft/Assembly_Intro/B&BX.md
+      - EmbeddedSoft/Assembly_Intro/PUSH.md
+      - EmbeddedSoft/Assembly_Intro/POP.md
+      - EmbeddedSoft/Assembly_Intro/stack.md
+      - EmbeddedSoft/Assembly_Intro/heap.md
+      - EmbeddedSoft/Assembly_Intro/Mem_Mgmt.md
+      
+    - 🔗 硬件通信 (Connective):
+      - EmbeddedSoft/Connective/Connective.md
+      - EmbeddedSoft/Connective/USART.md
+      - EmbeddedSoft/Connective/SPI.md
+      - EmbeddedSoft/Connective/I2C.md
+      - EmbeddedSoft/Connective/CAN.md
+      
+    - ⚙️ 控制算法:
+      - EmbeddedSoft/Control_Algos/Control_Algos.md
+      - EmbeddedSoft/Control_Algos/PID.md
+      - EmbeddedSoft/Control_Algos/LQR.md
+      - EmbeddedSoft/Control_Algos/SMC.md
 
+    - 📸 计算机视觉 (CV) & K230:
+      - EmbeddedSoft/CV/CV.md
+      - EmbeddedSoft/CV/Micropython & K230.md
+      - K230 核心:
+        - EmbeddedSoft/CV/K230/K230.md
+        - 硬件外设:
+          - EmbeddedSoft/CV/K230/Peripherals/Peripherals.md
+          - EmbeddedSoft/CV/K230/Peripherals/GPIO.md
+          - EmbeddedSoft/CV/K230/Peripherals/FPIOA.md
+          - EmbeddedSoft/CV/K230/Peripherals/Timer.md
+          - EmbeddedSoft/CV/K230/Peripherals/UART.md
+        - 媒体 & 显示:
+          - EmbeddedSoft/CV/K230/Media/Media.md
+          - EmbeddedSoft/CV/K230/Media/Sensor.md
+          - EmbeddedSoft/CV/K230/Media/Display.md
+        - AI 模型: EmbeddedSoft/CV/K230/AI-Model/AI-Model.md
+        - OpenMV: EmbeddedSoft/CV/K230/Openmv/Openmv.md
+      
+    - 🧠 实时操作系统 (RTOS):
+      - EmbeddedSoft/RTOS/RTOS.md
+      - 任务管理:
+        - EmbeddedSoft/RTOS/Tasks_Create&Delete.md
+        - EmbeddedSoft/RTOS/Tasks_Stack.md
+        - EmbeddedSoft/RTOS/Tasks_Switch.md
+        - EmbeddedSoft/RTOS/TaksPend&Resume.md
+        - EmbeddedSoft/RTOS/TaskNote.md
+      - FreeRTOS 深入:
+        - EmbeddedSoft/RTOS/FreeRTOS/FreeRTOS.md
+        - EmbeddedSoft/RTOS/FreeRTOS/Porting.md
+        - EmbeddedSoft/RTOS/FreeRTOS/Idle&Scheduling.md
+        - EmbeddedSoft/RTOS/FreeRTOS/Scheduling.md
+        - EmbeddedSoft/RTOS/FreeRTOS/Interrupt_Mgmt.md
+        - EmbeddedSoft/RTOS/FreeRTOS/List&ListItem.md
+        - EmbeddedSoft/RTOS/FreeRTOS/Mem_Mgmt.md
+        - 同步与通信:
+          - EmbeddedSoft/RTOS/FreeRTOS/Sync_Comms.md
+          - EmbeddedSoft/RTOS/FreeRTOS/Queue.md
+          - EmbeddedSoft/RTOS/FreeRTOS/QueueSet.md
+          - EmbeddedSoft/RTOS/FreeRTOS/Semaphore.md
+          - EmbeddedSoft/RTOS/FreeRTOS/Mutex.md
+          - EmbeddedSoft/RTOS/FreeRTOS/EventGroup.md
+          - EmbeddedSoft/RTOS/FreeRTOS/Event_Group.md
+          - EmbeddedSoft/RTOS/FreeRTOS/KernelPend.md
+
+    - 🧱 STM32 HAL 库:
+      - EmbeddedSoft/STM32_HAL/STM32_HAL.md
+      - EmbeddedSoft/STM32_HAL/GPIO.md
+      - EmbeddedSoft/STM32_HAL/NVIC.md
+      - EmbeddedSoft/STM32_HAL/DMA.md
+      - EmbeddedSoft/STM32_HAL/TIM.md
+      - EmbeddedSoft/STM32_HAL/ADC.md
+      - EmbeddedSoft/STM32_HAL/WDG.md
+      - EmbeddedSoft/STM32_HAL/FLASH.md
+      - EmbeddedSoft/STM32_HAL/BKP、RTC&PWR.md
+      - EmbeddedSoft/STM32_HAL/BKP&RTC.md
+      - EmbeddedSoft/STM32_HAL/connective.md
+      
+  # ==========================================================
+  # 💻 深度学习 (DeepLearning)
+  # ==========================================================
   - 🧠 深度学习 (DeepLearning):
-    - 第一部分 (Part 1):
-      - 神经网络与层: DeepLearning/part1/Neurons_and_Layers.ipynb
-      - 咖啡烘焙 (NumPy): DeepLearning/part1/CoffeeRoasting_Numpy.ipynb
-      - 咖啡烘焙 (TF): DeepLearning/part1/CoffeeRoasting_TF.ipynb
-      - 编程作业: DeepLearning/part1/Assignment.ipynb
-    - 第二部分 (Part 2):
-      - ReLu 激活函数: DeepLearning/part2/Relu.ipynb
-      - SoftMax 分类: DeepLearning/part2/SoftMax.ipynb
-      - 多分类 (TF): DeepLearning/part2/Multiclass_TF.ipynb
-      - 反向传播: DeepLearning/part2/backprop/C2_W2_Backprop.ipynb
-      - 导数基础: DeepLearning/part2/backprop/C2_W2_Derivatives.ipynb
-      - 编程作业: DeepLearning/part2/Assignment.ipynb
-    - 机器学习基础 (Part 1): # 对应 MachineLearning/part1
-      - 模型表示: MachineLearning/part1/Model_Representation_Soln.ipynb
-      - 损失函数: MachineLearning/part1/Cost_function_Soln.ipynb
-      - 梯度下降: MachineLearning/part1/Gradient_Descent_Soln.ipynb
-    - 机器学习基础 (Part 2): # 对应 MachineLearning/part2
-      - 线性回归: MachineLearning/part2/Linear_Regression.ipynb
-      - 多变量: MachineLearning/part2/Multiple_Variable_Soln.ipynb
-      - 特征工程与多项式回归: MachineLearning/part2/FeatEng_PolyReg_Soln.ipynb
-      - 特征缩放与学习率: MachineLearning/part2/Feature_Scaling_and_Learning_Rate_Soln.ipynb
-      - Python/Numpy 向量化: MachineLearning/part2/Python_Numpy_Vectorization_Soln.ipynb
-    - 机器学习基础 (Part 3): # 对应 MachineLearning/part3
-      - 逻辑回归: MachineLearning/part3/Logistic_Regression.ipynb
-      - Sigmoid 函数: MachineLearning/part3/Sigmoid_function_Soln.ipynb
-      - 损失函数: MachineLearning/part3/Cost_Function_Soln.ipynb
-      - 决策边界: MachineLearning/part3/Decision_Boundary_Soln.ipynb
-      - 分类与预测: MachineLearning/part3/Classification_Soln.ipynb
-      - 过拟合: MachineLearning/part3/Overfitting_Soln.ipynb
-      - 正则化: MachineLearning/part3/Regularization_Soln.ipynb
-    - Pytorch 学习: # 对应 MachineLearning/Pytorch_Learning
-      - NN 神经网络: MachineLearning/Pytorch_Learning/nn.ipynb
-      - Tensor 张量: MachineLearning/Pytorch_Learning/tensor.ipynb
-      - 数据处理: MachineLearning/Pytorch_Learning/data.ipynb
-      - 转换 (Transform): MachineLearning/Pytorch_Learning/transfrom.ipynb
-      - Tensorboard: MachineLearning/Pytorch_Learning/tensorboard.ipynb
-      - Test (ipynb): MachineLearning/Pytorch_Learning/Test.ipynb
-
-  - 💻 嵌入式软件 (EmbeddedSoft):
-    - 简介: EmbeddedSoft/EmbeddedSoft.md 
-
-    - ⚙️ 架构与底层:
-        - ARM 架构:
-            - 架构概述: EmbeddedSoft/ARM_Arch/ARM_Arch.md
-            - Cortex-M CPU: EmbeddedSoft/ARM_Arch/ARM Cortex-M CPU.md
-            - 通用寄存器 (GPR): EmbeddedSoft/ARM_Arch/GeneralReg.md
-            - 特殊寄存器 (xPSR): EmbeddedSoft/ARM_Arch/SpecialReg_xPSR.md
-        - 汇编基础:
-            - 简介: EmbeddedSoft/Assembly_Intro/Assembly_Intro.md
-            - 内存管理: EmbeddedSoft/Assembly_Intro/Mem_Mgmt.md
-            - 栈 (Stack): EmbeddedSoft/Assembly_Intro/stack.md
-            - 堆 (Heap): EmbeddedSoft/Assembly_Intro/heap.md
-            - 标签 (Label): EmbeddedSoft/Assembly_Intro/label.md
-            - PUSH 指令: EmbeddedSoft/Assembly_Intro/PUSH.md
-            - POP 指令: EmbeddedSoft/Assembly_Intro/POP.md
-            - B & BX 指令: EmbeddedSoft/Assembly_Intro/B&BX.md
-
-    - ⏰ 实时操作系统 (RTOS):
-        - RTOS 基础概念:
-            - 简介: EmbeddedSoft/RTOS/RTOS.md
-            - 任务堆栈: EmbeddedSoft/RTOS/Tasks_Stack.md
-            - 任务切换: EmbeddedSoft/RTOS/Tasks_Switch.md
-            
-        - FreeRTOS 核心机制:
-            # 所有的 FreeRTOS 文件都在 EmbeddedSoft/RTOS/FreeRTOS/ 目录下
-            - FreeRTOS 简介: EmbeddedSoft/RTOS/FreeRTOS/FreeRTOS.md
-            - 任务创建与删除: EmbeddedSoft/RTOS/FreeRTOS/Tasks_Create&Delete.md
-            - 任务调度: EmbeddedSoft/RTOS/FreeRTOS/Scheduling.md
-            - 空闲任务与调度: EmbeddedSoft/RTOS/FreeRTOS/Idle&Scheduling.md
-            - 任务挂起与恢复: EmbeddedSoft/RTOS/FreeRTOS/TaksPend&Resume.md
-            - 列表与列表项: EmbeddedSoft/RTOS/FreeRTOS/List&ListItem.md
-            - 内存管理: EmbeddedSoft/RTOS/FreeRTOS/Mem_Mgmt.md
-            - 内核挂起: EmbeddedSoft/RTOS/FreeRTOS/KernelPend.md
-            - 同步、互斥与通信: EmbeddedSoft/RTOS/FreeRTOS/Sync_Comms.md
-            - 信号量 (Semaphore): EmbeddedSoft/RTOS/FreeRTOS/Semaphore.md
-            - 互斥量 (Mutex): EmbeddedSoft/RTOS/FreeRTOS/Mutex.md
-            - 队列 (Queue): EmbeddedSoft/RTOS/FreeRTOS/Queue.md
-            - 队列集 (Queue Set): EmbeddedSoft/RTOS/FreeRTOS/Queue_Set.md
-            - 任务通知: EmbeddedSoft/RTOS/FreeRTOS/TaskNote.md
-            - 事件组: EmbeddedSoft/RTOS/FreeRTOS/Event_Group.md
-            - 中断管理: EmbeddedSoft/RTOS/FreeRTOS/Interrupt_Mgmt.md
-            - 移植 (Porting): EmbeddedSoft/RTOS/FreeRTOS/Porting.md
-
-
-    - 💻 STM32 HAL 库:
-        - 库简介: EmbeddedSoft/STM32_HAL/STM32_HAL.md
-        - GPIO: EmbeddedSoft/STM32_HAL/GPIO.md
-        - NVIC: EmbeddedSoft/STM32_HAL/NVIC.md
-        - DMA: EmbeddedSoft/STM32_HAL/DMA.md
-        - ADC: EmbeddedSoft/STM32_HAL/ADC.md
-        - 定时器 (TIM): EmbeddedSoft/STM32_HAL/TIM.md
-        - FLASH: EmbeddedSoft/STM32_HAL/FLASH.md
-        - BKP/RTC/PWR: EmbeddedSoft/STM32_HAL/BKP、RTC&PWR.md # 注意：使用原始文件名
-        - 看门狗 (WDG): EmbeddedSoft/STM32_HAL/WDG.md
-        - 通信协议总结: EmbeddedSoft/STM32_HAL/connective.md 
-
-    - 📡 通信协议:
-        - 协议概述: EmbeddedSoft/Connective/Connective.md
-        - I2C: EmbeddedSoft/Connective/I2C.md
-        - SPI: EmbeddedSoft/Connective/SPI.md
-        - USART: EmbeddedSoft/Connective/USART.md
-        - CAN: EmbeddedSoft/Connective/CAN.md
-
-    - 🤖 控制与视觉:
-        - 电控算法:
-            - 算法概述: EmbeddedSoft/Control_Algos/Control_Algos.md
-            - PID 控制: EmbeddedSoft/Control_Algos/PID.md
-            - LQR: EmbeddedSoft/Control_Algos/LQR.md
-            - SMC: EmbeddedSoft/Control_Algos/SMC.md
-        - 计算机视觉 (CV):
-            - 视觉概述: EmbeddedSoft/CV/CV.md
-            - Micropython & K230: EmbeddedSoft/CV/Micropython & K230.md
+    - 第一部分:
+      - DeepLearning/part1/Assignment.ipynb
+      - DeepLearning/part1/CoffeeRoasting_Numpy.ipynb
+      - DeepLearning/part1/CoffeeRoasting_TF.ipynb
+      - DeepLearning/part1/Neurons_and_Layers.ipynb
+    - 第二部分:
+      - DeepLearning/part2/Assignment.ipynb
+      - DeepLearning/part2/Multiclass_TF.ipynb
+      - DeepLearning/part2/Relu.ipynb
+      - DeepLearning/part2/SoftMax.ipynb
+      - 反向传播 (Backprop):
+        - DeepLearning/part2/backprop/C2_W2_Backprop.ipynb
+        - DeepLearning/part2/backprop/C2_W2_Derivatives.ipynb
+        
+  # ==========================================================
+  # 📊 机器学习 (MachineLearning)
+  # ==========================================================
+  - 📈 机器学习 (MachineLearning):
+    - MachineLearning/人工智能学习随记.md
+    - 第一部分:
+      - MachineLearning/part1/Cost_function_Soln.ipynb
+      - MachineLearning/part1/Gradient_Descent_Soln.ipynb
+      - MachineLearning/part1/Model_Representation_Soln.ipynb
+    - 第二部分 (多变量线性回归):
+      - MachineLearning/part2/Linear_Regression.ipynb
+      - MachineLearning/part2/Multiple_Variable_Soln.ipynb
+      - MachineLearning/part2/Python_Numpy_Vectorization_Soln.ipynb
+      - MachineLearning/part2/Feature_Scaling_and_Learning_Rate_Soln.ipynb
+      - MachineLearning/part2/FeatEng_PolyReg_Soln.ipynb
+      - MachineLearning/part2/Sklearn_GD_Soln.ipynb
+      - MachineLearning/part2/Sklearn_Normal_Soln.ipynb
+    - 第三部分 (逻辑回归与正则化):
+      - MachineLearning/part3/Logistic_Regression.ipynb
+      - MachineLearning/part3/Sigmoid_function_Soln.ipynb
+      - MachineLearning/part3/Cost_Function_Soln.ipynb
+      - MachineLearning/part3/LogisticLoss_Soln.ipynb
+      - MachineLearning/part3/Gradient_Descent_Soln.ipynb
+      - MachineLearning/part3/Decision_Boundary_Soln.ipynb
+      - MachineLearning/part3/Classification_Soln.ipynb
+      - MachineLearning/part3/Overfitting_Soln.ipynb
+      - MachineLearning/part3/Regularization_Soln.ipynb
+      - MachineLearning/part3/Scikit_Learn_Soln.ipynb
+    - Pytorch 学习笔记:
+      - MachineLearning/Pytorch_Learning/tensor.ipynb
+      - MachineLearning/Pytorch_Learning/test_tensor.ipynb
+      - MachineLearning/Pytorch_Learning/transfrom.ipynb
+      - MachineLearning/Pytorch_Learning/test_transfrom.ipynb
+      - MachineLearning/Pytorch_Learning/data.ipynb
+      - MachineLearning/Pytorch_Learning/nn.ipynb
+      - MachineLearning/Pytorch_Learning/tensorboard.ipynb
+      - MachineLearning/Pytorch_Learning/Test.ipynb
