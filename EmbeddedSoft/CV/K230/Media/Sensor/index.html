@@ -1,0 +1,6892 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="机器学习与嵌入式开发笔记">
+      
+      
+      
+      
+        <link rel="prev" href="../Media/">
+      
+      
+        <link rel="next" href="../Display/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Sensor - 个人技术与学习笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sensor-api" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="个人技术与学习笔记" class="md-header__button md-logo" aria-label="个人技术与学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            个人技术与学习笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Sensor
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="teal"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="orange"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="个人技术与学习笔记" class="md-nav__button md-logo" aria-label="个人技术与学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    个人技术与学习笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏠 首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🤖 嵌入式软件 (EmbeddedSoft)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🤖 嵌入式软件 (EmbeddedSoft)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../EmbeddedSoft/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EmbeddedSoft
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔩 ARM 架构
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🔩 ARM 架构
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ARM_Arch/ARM_Arch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ARM Arch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ARM_Arch/ARM%20Cortex-M%20CPU/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cortex-M 处理器核心架构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ARM_Arch/GeneralReg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GeneralReg
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ARM_Arch/SpecialReg_xPSR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    xPSR的基本概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📝 汇编入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📝 汇编入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Assembly_Intro/Assembly_Intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    汇编基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Assembly_Intro/label/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Label
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Assembly_Intro/B%26BX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    B 指令
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Assembly_Intro/PUSH/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PUSH
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Assembly_Intro/POP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    POP基本概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Assembly_Intro/stack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    栈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Assembly_Intro/heap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    堆的概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Assembly_Intro/Mem_Mgmt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    内存布局
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔗 硬件通信 (Connective)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🔗 硬件通信 (Connective)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Connective/Connective/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    目录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Connective/USART/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基本概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Connective/SPI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    一、 SPI 协议简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Connective/I2C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I2C
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Connective/CAN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ⚙️ 控制算法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ⚙️ 控制算法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Control_Algos/Control_Algos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control Algos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Control_Algos/PID/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PID
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Control_Algos/LQR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LQR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Control_Algos/SMC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SMC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📸 计算机视觉 (CV) & K230
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📸 计算机视觉 (CV) & K230
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CV/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CV
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Micropython%20%26%20K230/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Micropython & K230
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_6_3" id="__nav_2_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    K230 核心
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    K230 核心
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../K230/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CanMV-K230 介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_6_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6_3_2" id="__nav_2_6_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    硬件外设
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_6_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    硬件外设
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Peripherals/Peripherals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Peripherals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Peripherals/GPIO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPIO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Peripherals/FPIOA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FPIOA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Peripherals/Timer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Timer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Peripherals/UART/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UART
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_3_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_6_3_3" id="__nav_2_6_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    媒体 & 显示
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_6_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_6_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    媒体 & 显示
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Media/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Media
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sensor
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sensor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        概述
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API 介绍
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API 介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        构造函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorreset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.reset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorset_framesize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.set_framesize
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorset_pixformat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.set_pixformat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorset_hmirror" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.set_hmirror
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorset_vflip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.set_vflip
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorrun" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.run
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorstop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.stop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorsnapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.snapshot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorbind_info" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.bind_info
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorget_hmirror" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.get_hmirror
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorget_vflip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.get_vflip
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorwidth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.width
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorheight" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.height
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorget_pixformat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.get_pixformat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorget_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.get_type
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensoragain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.again
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="sensor.again">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analog-gain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模拟增益 (Analog Gain) 的含义
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorauto_focus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.auto_focus
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorfocus_caps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.focus_caps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorfocus_pos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.focus_pos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="sensor.focus_pos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pos描述
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据结构描述
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数据结构描述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#frame_size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        frame_size
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pixel_format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pixel_format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#channel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        channel
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        图像传感器支持列表
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Display/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Display
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AI-Model/AI-Model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Openmv/Openmv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenMV
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 实时操作系统 (RTOS)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🧠 实时操作系统 (RTOS)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../RTOS/RTOS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RTOS简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7_2" id="__nav_2_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    任务管理
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    任务管理
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../RTOS/Tasks_Create&Delete.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    None
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../RTOS/Tasks_Stack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tasks Stack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../RTOS/Tasks_Switch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    任务栈的基本结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../RTOS/TaksPend&Resume.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    None
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../RTOS/TaskNote.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    None
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7_3" id="__nav_2_7_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FreeRTOS 深入
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    FreeRTOS 深入
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../RTOS/FreeRTOS/FreeRTOS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FreeRTOS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../RTOS/FreeRTOS/Porting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    下载官方文件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../RTOS/FreeRTOS/Idle%26Scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../RTOS/FreeRTOS/Scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../RTOS/FreeRTOS/Interrupt_Mgmt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interrupt Mgmt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../RTOS/FreeRTOS/List%26ListItem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    List&ListItem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../RTOS/FreeRTOS/Mem_Mgmt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mem Mgmt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_7_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7_3_8" id="__nav_2_7_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    同步与通信
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_7_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    同步与通信
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../RTOS/FreeRTOS/Sync_Comms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    为什么需要任务间的同步与通信
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../RTOS/FreeRTOS/Queue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Queue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../RTOS/FreeRTOS/QueueSet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QueueSet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../RTOS/FreeRTOS/Semaphore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semaphore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../RTOS/FreeRTOS/Mutex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    互斥量的基本概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../RTOS/FreeRTOS/EventGroup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    事件组的基本概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../RTOS/FreeRTOS/Event_Group/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    事件组的基本概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../RTOS/FreeRTOS/KernelPend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KernelPend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧱 STM32 HAL 库
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🧱 STM32 HAL 库
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../STM32_HAL/STM32_HAL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程架构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../STM32_HAL/GPIO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPIO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../STM32_HAL/NVIC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基本结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../STM32_HAL/DMA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    存储器映像
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../STM32_HAL/TIM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. 定时器的分类和结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../STM32_HAL/ADC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. ADC基础概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../STM32_HAL/WDG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WDG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../STM32_HAL/FLASH/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FLASH
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../STM32_HAL/BKP%E3%80%81RTC%26PWR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. RTC (Real-Time Clock) 实时时钟
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../STM32_HAL/BKP%26RTC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BKP&RTC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../STM32_HAL/connective/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Connective
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 深度学习 (DeepLearning)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🧠 深度学习 (DeepLearning)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一部分
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第一部分
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../DeepLearning/part1/Assignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practice Lab: Neural Networks for Handwritten Digit Recognition, Binary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../DeepLearning/part1/CoffeeRoasting_Numpy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optional Lab - Simple Neural Network
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../DeepLearning/part1/CoffeeRoasting_TF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optional Lab - Simple Neural Network
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../DeepLearning/part1/Neurons_and_Layers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optional Lab - Neurons and Layers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二部分
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第二部分
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../DeepLearning/part2/Assignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practice Lab: Neural Networks for Handwritten Digit Recognition, Multiclass
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../DeepLearning/part2/Multiclass_TF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optional Lab - Multi-class Classification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../DeepLearning/part2/Relu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optional Lab - ReLU activation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../DeepLearning/part2/SoftMax/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optional Lab - Softmax Function
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_5" id="__nav_3_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    反向传播 (Backprop)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    反向传播 (Backprop)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../DeepLearning/part2/backprop/C2_W2_Backprop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optional Lab: Back propagation using a computation graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../DeepLearning/part2/backprop/C2_W2_Derivatives/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optional Lab - Derivatives
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📈 机器学习 (MachineLearning)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📈 机器学习 (MachineLearning)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AD%A6%E4%B9%A0%E9%9A%8F%E8%AE%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人工智能学习随记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一部分
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第一部分
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/part1/Cost_function_Soln/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optional Lab: Cost Function
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/part1/Gradient_Descent_Soln/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optional Lab: Gradient Descent for Linear Regression
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/part1/Model_Representation_Soln/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optional Lab: Model Representation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二部分 (多变量线性回归)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第二部分 (多变量线性回归)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/part2/Linear_Regression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practice Lab: Linear Regression
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/part2/Multiple_Variable_Soln/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optional Lab: Multiple Variable Linear Regression
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/part2/Python_Numpy_Vectorization_Soln/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optional Lab: Python, NumPy and Vectorization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/part2/Feature_Scaling_and_Learning_Rate_Soln/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optional Lab: Feature scaling and Learning Rate (Multi-variable)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/part2/FeatEng_PolyReg_Soln/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optional Lab: Feature Engineering and Polynomial Regression
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/part2/Sklearn_GD_Soln/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optional Lab: Linear Regression using Scikit-Learn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/part2/Sklearn_Normal_Soln/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optional Lab: Linear Regression using Scikit-Learn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三部分 (逻辑回归与正则化)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第三部分 (逻辑回归与正则化)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/part3/Logistic_Regression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logistic Regression
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/part3/Sigmoid_function_Soln/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optional Lab: Logistic Regression
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/part3/Cost_Function_Soln/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optional Lab: Cost Function for Logistic Regression
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/part3/LogisticLoss_Soln/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optional Lab: Logistic Regression, Logistic Loss
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/part3/Gradient_Descent_Soln/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optional Lab: Gradient Descent for Logistic Regression
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/part3/Decision_Boundary_Soln/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optional Lab: Logistic Regression, Decision Boundary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/part3/Classification_Soln/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optional Lab: Classification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/part3/Overfitting_Soln/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ungraded Lab: Overfitting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/part3/Regularization_Soln/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optional Lab - Regularized Cost and Gradient
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/part3/Scikit_Learn_Soln/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ungraded Lab: Logistic Regression using Scikit-Learn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pytorch 学习笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pytorch 学习笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/Pytorch_Learning/tensor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tensor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/Pytorch_Learning/test_tensor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tensor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/Pytorch_Learning/transfrom/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    transform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/Pytorch_Learning/test_transfrom/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    transform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/Pytorch_Learning/data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/Pytorch_Learning/nn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/Pytorch_Learning/tensorboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tensorboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MachineLearning/Pytorch_Learning/Test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        概述
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API 介绍
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API 介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        构造函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorreset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.reset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorset_framesize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.set_framesize
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorset_pixformat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.set_pixformat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorset_hmirror" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.set_hmirror
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorset_vflip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.set_vflip
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorrun" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.run
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorstop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.stop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorsnapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.snapshot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorbind_info" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.bind_info
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorget_hmirror" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.get_hmirror
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorget_vflip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.get_vflip
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorwidth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.width
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorheight" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.height
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorget_pixformat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.get_pixformat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorget_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.get_type
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensoragain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.again
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="sensor.again">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analog-gain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模拟增益 (Analog Gain) 的含义
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorauto_focus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.auto_focus
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorfocus_caps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.focus_caps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorfocus_pos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sensor.focus_pos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="sensor.focus_pos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pos描述
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据结构描述
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数据结构描述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#frame_size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        frame_size
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pixel_format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pixel_format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#channel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        channel
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        图像传感器支持列表
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p>参见：<a href="https://www.kendryte.com/k230_canmv/zh/main/zh/api/mpp/K230_CanMV_Sensor模块API手册.html">Sensor 模块 API 手册 — CanMV K230</a></p>
+<h1 id="sensor-api"><code>Sensor</code> 模块 API 手册</h1>
+<p>注意</p>
+<p>该模块自固件版本 V0.7 起发生了较大改动，若使用 V0.7 之前的固件，请参考旧版本文档。</p>
+<h2 id="_1">概述</h2>
+<p>CanMV K230 平台的 <code>sensor</code> 模块负责图像采集与数据处理。该模块提供了一套高级 API，开发者可以利用这些接口轻松获取不同格式与尺寸的图像，而无需了解底层硬件的具体实现。其架构如下图所示：</p>
+<p><img alt="" src="../../../../photosource/k230-canmv-camera-top.png" /></p>
+<p>图中，sensor 0、sensor 1 和 sensor 2 分别代表三个图像输入传感器设备；Camera Device 0、Camera Device 1 和 Camera Device 2 对应相应的图像处理单元；output channel 0、output channel 1 和 output channel 2 表示每个图像处理单元最多支持三个输出通道。通过软件配置，不同的传感器设备可以灵活映射到相应的图像处理单元。</p>
+<p>CanMV K230 的 <code>sensor</code> 模块最多支持三路图像传感器的同时接入，每一路均可独立完成图像数据的采集、捕获和处理。此外，每个视频通道可并行输出三路图像数据供后端模块进行进一步处理。实际应用中，具体支持的传感器数量、输入分辨率和输出通道数将受限于开发板的硬件配置和内存大小，因此需根据项目需求进行综合评估。</p>
+<h2 id="api">API 介绍</h2>
+<h3 id="_2">构造函数</h3>
+<p><strong>描述</strong></p>
+<p>通过 <code>csi id</code> 和图像传感器类型构建 <code>Sensor</code> 对象。</p>
+<p>在图像处理应用中，用户通常需要首先创建一个 <code>Sensor</code> 对象。CanMV K230 软件可以自动检测内置的图像传感器，无需用户手动指定具体型号，只需设置传感器的最大输出分辨率和帧率。有关支持的图像传感器信息，请参见<a href="./#图像传感器支持列表">图像传感器支持列表</a>如果设定的分辨率或帧率与当前传感器的默认配置不符，系统会自动调整为最优配置，最终的配置可在日志中查看，例如 <code>use sensor 23, output 640x480@90</code>。</p>
+<p><strong>语法</strong></p>
+<pre><code class="language-python">sensor = Sensor(id, [width, height, fps])
+</code></pre>
+<p><strong>参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>描述</th>
+<th>输入/输出</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><code>csi</code> 端口，支持 <code>0-2</code>，具体端口请参考硬件原理图</td>
+<td>输入</td>
+<td>可选，不同型号开发板的默认值不同</td>
+</tr>
+<tr>
+<td>width</td>
+<td><code>sensor</code> 最大输出图像宽度</td>
+<td>输入</td>
+<td>可选，默认 <code>1920</code></td>
+</tr>
+<tr>
+<td>height</td>
+<td><code>sensor</code> 最大输出图像高度</td>
+<td>输入</td>
+<td>可选，默认 <code>1080</code></td>
+</tr>
+<tr>
+<td>fps</td>
+<td><code>sensor</code> 最大输出图像帧率</td>
+<td>输入</td>
+<td>可选，默认 <code>30</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回值</strong></p>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sensor 对象</td>
+<td>传感器对象</td>
+</tr>
+</tbody>
+</table>
+<p><strong>举例</strong></p>
+<pre><code class="language-python">sensor = Sensor(id=0)
+sensor = Sensor(id=0, width=1280, height=720, fps=60)
+sensor = Sensor(id=0, width=640, height=480)
+</code></pre>
+<h3 id="sensorreset">sensor.reset</h3>
+<p><strong>描述</strong></p>
+<p>复位 <code>sensor</code> 对象。在构造 <code>Sensor</code> 对象后，<strong>必须调用此函数以继续执行其他操作。</strong></p>
+<p><strong>语法</strong></p>
+<pre><code class="language-python">sensor.reset()
+</code></pre>
+<p><strong>参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>描述</th>
+<th>输入/输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回值</strong></p>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>举例</strong></p>
+<pre><code class="language-python"># 初始化 sensor 设备 0 以及传感器 OV5647
+sensor.reset()
+</code></pre>
+<h3 id="sensorset_framesize">sensor.set_framesize</h3>
+<p><strong>描述</strong></p>
+<p>设置指定通道的输出图像尺寸。用户可以通过 <code>framesize</code> 参数或直接指定 <code>width</code> 和 <code>height</code> 来配置输出图像尺寸。<strong>宽度会自动对齐到 16 像素宽</strong>。</p>
+<p><strong>语法</strong></p>
+<pre><code class="language-python">sensor.set_framesize(framesize=FRAME_SIZE_INVALID, chn=CAM_CHN_ID_0, alignment=0, crop = None,  **kwargs)
+</code></pre>
+<p><strong>参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>描述</th>
+<th>输入/输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>framesize</td>
+<td>sensor 输出图像尺寸</td>
+<td>输入</td>
+</tr>
+<tr>
+<td>chn</td>
+<td>sensor 输出通道号</td>
+<td>输入</td>
+</tr>
+<tr>
+<td>width</td>
+<td>输出图像宽度，<em>kw_arg</em></td>
+<td>输入</td>
+</tr>
+<tr>
+<td>height</td>
+<td>输出图像高度，<em>kw_arg</em></td>
+<td>输入</td>
+</tr>
+<tr>
+<td>crop</td>
+<td>输出图像裁剪区域; 当输入为 <code>crop</code>=<code>True</code> 时，从画面中心自动裁切出合适的区域; 当输入 <code>crop</code> 为 <code>(crop_x, crop_y, crop_w, crop_h)</code> 时, <code>crop_x</code> 和 <code>crop_y</code> 为裁剪区域的左上角坐标，<code>crop_w</code> 和 <code>crop_h</code> 为裁剪区域的宽度和高度;</td>
+<td>输入</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回值</strong></p>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意事项</strong></p>
+<ul>
+<li>输出图像尺寸不得超过图像传感器的实际输出能力。</li>
+<li>各通道的最大输出图像尺寸受硬件限制。</li>
+</ul>
+<p><strong>举例</strong></p>
+<pre><code class="language-python"># 配置 sensor 设备 0，输出通道 0，输出图尺寸为 640x480
+sensor.set_framesize(chn=CAM_CHN_ID_0, width=640, height=480)
+
+# 配置 sensor 设备 0，输出通道 1，输出图尺寸为 320x240
+sensor.set_framesize(chn=CAM_CHN_ID_1, width=320, height=240)
+</code></pre>
+<h3 id="sensorset_pixformat">sensor.set_pixformat</h3>
+<p><strong>描述</strong></p>
+<p>配置指定通道的图像传感器输出图像格式。</p>
+<p><strong>语法</strong></p>
+<pre><code class="language-python">sensor.set_pixformat(pix_format, chn=CAM_CHN_ID_0)
+</code></pre>
+<p><strong>参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>描述</th>
+<th>输入/输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pix_format</td>
+<td>输出图像格式，可选值见<a href="./#数据结构描述">数据结构描述</a></td>
+<td>输入</td>
+</tr>
+<tr>
+<td>chn</td>
+<td>sensor 输出通道号</td>
+<td>输入</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回值</strong></p>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>举例</strong></p>
+<pre><code class="language-python"># 配置 sensor 设备 0，输出通道 0，输出 NV12 格式
+sensor.set_pixformat(sensor.YUV420SP, chn=CAM_CHN_ID_0)
+
+# 配置 sensor 设备 0，输出通道 1，输出 RGB888 格式
+sensor.set_pixformat(sensor.RGB888, chn=CAM_CHN_ID_1)
+</code></pre>
+<h3 id="sensorset_hmirror">sensor.set_hmirror</h3>
+<p><strong>描述</strong></p>
+<p>配置图像传感器是否进行水平镜像。</p>
+<p><strong>语法</strong></p>
+<pre><code class="language-python">sensor.set_hmirror(enable)
+</code></pre>
+<p><strong>参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>描述</th>
+<th>输入/输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enable</td>
+<td><code>True</code> 开启水平镜像功能 <code>False</code> 关闭水平镜像功能</td>
+<td>输入</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回值</strong></p>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>举例</strong></p>
+<pre><code>sensor.set_hmirror(True)
+</code></pre>
+<h3 id="sensorset_vflip">sensor.set_vflip</h3>
+<p><strong>描述</strong></p>
+<p>配置图像传感器是否进行垂直翻转。</p>
+<p><strong>语法</strong></p>
+<pre><code class="language-python">sensor.set_vflip(enable)
+</code></pre>
+<p><strong>参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>描述</th>
+<th>输入/输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enable</td>
+<td><code>True</code> 开启垂直翻转功能 <code>False</code> 关闭垂直翻转功能</td>
+<td>输入</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回值</strong></p>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>举例</strong></p>
+<pre><code>sensor.set_vflip(True)
+</code></pre>
+<h3 id="sensorrun">sensor.run</h3>
+<p><strong>描述</strong></p>
+<p>启动图像传感器的输出。<strong>必须在调用 <code>MediaManager.init()</code> 之后执行此操作。</strong></p>
+<p><strong>语法</strong></p>
+<pre><code class="language-python">sensor.run()
+</code></pre>
+<p><strong>返回值</strong></p>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意事项</strong></p>
+<ul>
+<li>当同时使用多个传感器（最多 3 个）时，仅需其中一个执行 <code>run</code> 即可。</li>
+</ul>
+<p><strong>举例</strong></p>
+<pre><code class="language-python"># 启动 sensor 设备输出数据流
+sensor.run()
+</code></pre>
+<h3 id="sensorstop">sensor.stop</h3>
+<p><strong>描述</strong></p>
+<p>停止图像传感器输出。<strong>必须在 <code>MediaManager.deinit()</code> 之前调用此方法。</strong></p>
+<p><strong>语法</strong></p>
+<pre><code class="language-python">sensor.stop()
+</code></pre>
+<p><strong>返回值</strong></p>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意事项</strong></p>
+<ul>
+<li>如果同时使用多个图像传感器（最多 3 个），<strong>每个传感器都需单独调用 <code>stop</code></strong>。</li>
+</ul>
+<p><strong>举例</strong></p>
+<pre><code class="language-python"># 停止 sensor 设备 0 的数据流输出
+sensor.stop()
+</code></pre>
+<h3 id="sensorsnapshot">sensor.snapshot</h3>
+<p><strong>描述</strong></p>
+<p>从指定输出通道中捕获一帧图像数据。</p>
+<p><strong>语法</strong></p>
+<pre><code class="language-python">sensor.snapshot(chn=CAM_CHN_ID_0, timeout = 1000, dump_frame = False)
+</code></pre>
+<p><strong>参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>描述</th>
+<th>输入/输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chn</td>
+<td>sensor 输出通道号</td>
+<td>输入</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>sensor 获取一帧超时时间， 默认 1000 ms</td>
+<td>输入</td>
+</tr>
+<tr>
+<td>dump_frame</td>
+<td>如果为 True 返回 py_video_frame_info, 否则返回 Image</td>
+<td>输入</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回值</strong></p>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>image 对象 或 py_video_frame_info</td>
+<td>捕获的图像数据</td>
+</tr>
+<tr>
+<td>其他</td>
+<td>捕获失败</td>
+</tr>
+</tbody>
+</table>
+<p><strong>举例</strong></p>
+<pre><code class="language-python"># 从 sensor 设备 0 的通道 0 捕获一帧图像数据
+sensor.snapshot()
+</code></pre>
+<h3 id="sensorbind_info">sensor.bind_info</h3>
+<p><strong>描述</strong></p>
+<p>获取传感器通道的绑定信息，用于与其他模块（如显示模块）进行绑定。</p>
+<p><strong>语法</strong></p>
+<pre><code class="language-python">sensor.bind_info(x=0, y=0, chn=CAM_CHN_ID_0)
+</code></pre>
+<p><strong>参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>描述</th>
+<th>输入/输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x</td>
+<td>绑定区域的水平起始坐标</td>
+<td>输入</td>
+</tr>
+<tr>
+<td>y</td>
+<td>绑定区域的垂直起始坐标</td>
+<td>输入</td>
+</tr>
+<tr>
+<td>chn</td>
+<td>传感器输出通道号</td>
+<td>输入</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回值</strong></p>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dict 对象</td>
+<td>包含通道的源信息、区域尺寸和像素格式</td>
+</tr>
+</tbody>
+</table>
+<p><strong>举例</strong></p>
+<pre><code class="language-python"># 获取传感器通道0的绑定信息
+info = sensor.bind_info(chn=CAM_CHN_ID_0)
+print(info)  # 输出如 {'src': (0, 0, 0), 'rect': (0, 0, 640, 480), 'pix_format': 2}
+</code></pre>
+<h3 id="sensorget_hmirror">sensor.get_hmirror</h3>
+<p><strong>描述</strong></p>
+<p>获取当前水平镜像功能的启用状态。</p>
+<p><strong>语法</strong></p>
+<pre><code class="language-python">sensor.get_hmirror()
+</code></pre>
+<p><strong>返回值</strong></p>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td><code>True</code> 表示启用，<code>False</code> 表示关闭</td>
+</tr>
+</tbody>
+</table>
+<p><strong>举例</strong></p>
+<pre><code class="language-python">hmirror_enabled = sensor.get_hmirror()
+print(&quot;水平镜像已启用:&quot;, hmirror_enabled)
+</code></pre>
+<h3 id="sensorget_vflip">sensor.get_vflip</h3>
+<p><strong>描述</strong></p>
+<p>获取当前垂直翻转功能的启用状态。</p>
+<p><strong>语法</strong></p>
+<pre><code class="language-python">sensor.get_vflip()
+</code></pre>
+<p><strong>返回值</strong></p>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td><code>True</code> 表示启用，<code>False</code> 表示关闭</td>
+</tr>
+</tbody>
+</table>
+<p><strong>举例</strong></p>
+<pre><code class="language-python">vflip_enabled = sensor.get_vflip()
+print(&quot;垂直翻转已启用:&quot;, vflip_enabled)
+</code></pre>
+<h3 id="sensorwidth">sensor.width</h3>
+<p><strong>描述</strong></p>
+<p>获取指定通道的当前输出图像宽度。</p>
+<p><strong>语法</strong></p>
+<pre><code class="language-python">sensor.width(chn=CAM_CHN_ID_0)
+</code></pre>
+<p><strong>参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>描述</th>
+<th>输入/输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chn</td>
+<td>传感器输出通道号</td>
+<td>输入</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回值</strong></p>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td>图像宽度（像素）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>举例</strong></p>
+<pre><code class="language-python">current_width = sensor.width(chn=CAM_CHN_ID_0)
+print(&quot;当前宽度:&quot;, current_width)
+</code></pre>
+<h3 id="sensorheight">sensor.height</h3>
+<p><strong>描述</strong></p>
+<p>获取指定通道的当前输出图像高度。</p>
+<p><strong>语法</strong></p>
+<pre><code class="language-python">sensor.height(chn=CAM_CHN_ID_0)
+</code></pre>
+<p><strong>参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>描述</th>
+<th>输入/输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chn</td>
+<td>传感器输出通道号</td>
+<td>输入</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回值</strong></p>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td>图像高度（像素）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>举例</strong></p>
+<pre><code class="language-python">current_height = sensor.height(chn=CAM_CHN_ID_0)
+print(&quot;当前高度:&quot;, current_height)
+</code></pre>
+<h3 id="sensorget_pixformat">sensor.get_pixformat</h3>
+<p><strong>描述</strong></p>
+<p>获取指定通道的当前像素格式。</p>
+<p><strong>语法</strong></p>
+<pre><code class="language-python">sensor.get_pixformat(chn=CAM_CHN_ID_0)
+</code></pre>
+<p><strong>参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>描述</th>
+<th>输入/输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chn</td>
+<td>传感器输出通道号</td>
+<td>输入</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回值</strong></p>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td>像素格式枚举值（如 <code>sensor.RGB888</code>）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>举例</strong></p>
+<pre><code class="language-python">current_format = sensor.get_pixformat(chn=CAM_CHN_ID_0)
+print(&quot;当前像素格式:&quot;, current_format)
+</code></pre>
+<h3 id="sensorget_type">sensor.get_type</h3>
+<p><strong>描述</strong>
+获取当前传感器的类型标识符。</p>
+<p><strong>语法</strong></p>
+<pre><code class="language-python">sensor.get_type()
+</code></pre>
+<p><strong>返回值</strong></p>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td>传感器类型枚举值</td>
+</tr>
+</tbody>
+</table>
+<p><strong>举例</strong></p>
+<pre><code class="language-python">sensor_type = sensor.get_type()
+print(&quot;传感器类型:&quot;, sensor_type)
+</code></pre>
+<h3 id="sensoragain">sensor.again</h3>
+<p><strong>描述</strong></p>
+<p>获取或设置传感器的模拟增益值（单位：dB）。</p>
+<p><strong>语法</strong></p>
+<pre><code class="language-python"># 获取增益
+gain = sensor.again()
+
+# 设置增益
+sensor.again(desired_gain)
+</code></pre>
+<p><strong>参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>描述</th>
+<th>输入/输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>desired_gain</td>
+<td>目标增益值（设置时使用）</td>
+<td>输入</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回值</strong></p>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>k_sensor_gain</td>
+<td>当前增益对象（获取时返回）</td>
+</tr>
+<tr>
+<td>int</td>
+<td>操作结果（设置时返回）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意事项</strong></p>
+<ul>
+<li>仅部分 sensor 支持，如 <code>sc132gs</code></li>
+<li>设置增益时需确保传感器已初始化且处于运行状态。</li>
+</ul>
+<p><strong>举例</strong></p>
+<pre><code># 获取当前增益
+current_gain = sensor.again()
+print(&quot;当前增益:&quot;, current_gain)
+
+# 设置增益为10 dB
+result = sensor.again(10)
+if result == 0:
+    print(&quot;增益设置成功&quot;)
+</code></pre>
+<h4 id="analog-gain">模拟增益 (Analog Gain) 的含义</h4>
+<ol>
+<li><strong>作用</strong></li>
+</ol>
+<p>模拟增益发生在信号被转换为数字数据之前。它的主要作用是<strong>提高传感器的灵敏度</strong>，特别是在<strong>低光照环境</strong>下。</p>
+<ul>
+<li>
+<p><strong>增强信号：</strong> 当光线较弱时，光电二极管产生的电信号微弱。模拟增益电路会将这个微弱的信号线性放大，使其更容易被后续的 ADC（模数转换器）识别和处理。</p>
+</li>
+<li>
+<p><strong>单位</strong></p>
+</li>
+</ul>
+<p>增益值通常以 <strong>分贝 (dB)</strong> 为单位表示，因为它是一个放大比率的对数值。</p>
+<ul>
+<li>
+<p>例如，增益为 $10\text{ dB}$ 意味着信号的功率大约被放大了 $10$ 倍。</p>
+</li>
+<li>
+<p><strong>与数字增益 (Digital Gain) 的区别</strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><strong>模拟增益 (Analog Gain - again())</strong></th>
+<th><strong>数字增益 (Digital Gain - 通常是 dgain())</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>发生位置</strong></td>
+<td><strong>ADC 之前</strong>（在模拟域）</td>
+<td><strong>ADC 之后</strong>（在数字域）</td>
+</tr>
+<tr>
+<td><strong>对信噪比 (SNR) 的影响</strong></td>
+<td><strong>能提高 SNR</strong>。因为它放大了有效信号和噪声，但在放大噪声前，信号质量更好。</td>
+<td><strong>不能提高 SNR</strong>。它只是将已经数字化的信号和噪声一起放大，通常会导致图像噪点更明显。</td>
+</tr>
+<tr>
+<td><strong>图像质量</strong></td>
+<td><strong>更优</strong>。是低光照下首选的亮度提升方式。</td>
+<td><strong>较差</strong>。仅在模拟增益达到上限后作为补充手段。</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><strong>调整策略（在低光照环境下）</strong></li>
+</ol>
+<p>在图像处理中，通常会遵循以下策略来增加图像亮度：</p>
+<ol>
+<li><strong>延长曝光时间 (Exposure Time)：</strong> 这是提高图像质量的首选方法，但会受到物体移动（动态模糊）的限制。</li>
+<li><strong>增加模拟增益 (<code>again</code>)：</strong> 当曝光时间不能再延长时，增加模拟增益是下一个选择。</li>
+<li><strong>增加数字增益 (<code>dgain</code>)：</strong> 当模拟增益达到上限时，才考虑使用数字增益，以避免引入过多噪点。</li>
+</ol>
+<h3 id="sensorauto_focus">sensor.auto_focus</h3>
+<p><strong>描述</strong></p>
+<p>获取或设置自动对焦功能的启用状态。</p>
+<p><strong>语法</strong></p>
+<pre><code class="language-python">Sensor.auto_focus(enable = None)
+</code></pre>
+<p><strong>参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>描述</th>
+<th>输入/输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enable</td>
+<td>自动对焦功能的启用状态（设置时使用）</td>
+<td>输入</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回值</strong></p>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>获取时返回当前状态：<code>True</code> 表示启用，<code>False</code> 表示关闭； 设置时返回操作结果：<code>True</code> 表示成功，<code>False</code> 表示失败。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>举例</strong></p>
+<pre><code class="language-python"># 获取自动对焦状态
+auto_focus_get = sensor.auto_focus()
+print(&quot;sensor.auto_focus():&quot;, auto_focus_get)
+
+# 设置自动对焦
+sensor.auto_focus(True)
+</code></pre>
+<p><strong>注意事项</strong></p>
+<ul>
+<li>仅部分 sensor 支持。</li>
+<li>自动对焦功能时需在运行之前设置。</li>
+</ul>
+<h3 id="sensorfocus_caps">sensor.focus_caps</h3>
+<p><strong>描述</strong></p>
+<p>获取传感器的自动对焦功能及其范围。</p>
+<p><strong>语法</strong></p>
+<pre><code class="language-python">focus_caps_tuple = Sensor.focus_caps()
+</code></pre>
+<p><strong>参数</strong></p>
+<p>无</p>
+<p><strong>返回值</strong></p>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>focus_caps_tuple</td>
+<td>包含自动对焦功能及其范围的元组：<code>(isSupport, minPos, maxPos)</code>; <code>isSupport</code> 表示是否支持自动对焦功能，<code>minPos</code> 表示最小对焦位置，<code>maxPos</code> 表示最大对焦位置。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>举例</strong></p>
+<pre><code class="language-python"># 获取自动对焦功能及其范围
+focus_caps_tuple = sensor.focus_caps()
+print(&quot;focus_caps_tuple:&quot;, focus_caps_tuple)
+</code></pre>
+<h3 id="sensorfocus_pos">sensor.focus_pos</h3>
+<p><strong>描述</strong></p>
+<p>获取或设置传感器的当前对焦位置。</p>
+<p><strong>语法</strong></p>
+<pre><code class="language-python">focus_pos = sensor.focus_pos(pos = None)
+</code></pre>
+<p><strong>参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>描述</th>
+<th>输入/输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pos</td>
+<td>对焦位置（设置时使用）</td>
+<td>输入</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回值</strong></p>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>focus_pos</td>
+<td>获取时返回当前对焦位置； 设置时返回操作结果：<code>True</code> 表示成功，<code>False</code> 表示失败。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>举例</strong></p>
+<pre><code class="language-python"># 获取当前对焦位置
+current_focus_pos = sensor.focus_pos()
+print(&quot;当前对焦位置:&quot;, current_focus_pos)
+
+# 设置对焦位置
+sensor.focus_pos(300)
+</code></pre>
+<h4 id="pos">pos描述</h4>
+<table>
+<thead>
+<tr>
+<th><strong>属性</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>数据类型</strong></td>
+<td><strong><code>int</code> (整数)</strong></td>
+</tr>
+<tr>
+<td><strong>物理含义</strong></td>
+<td>镜头马达的<strong>步进计数</strong>或<strong>物理位移量</strong>。</td>
+</tr>
+<tr>
+<td><strong>范围</strong></td>
+<td>由镜头模组的机械结构决定。通常 $0$ 到几千。</td>
+</tr>
+<tr>
+<td><strong>最大值/最小值</strong></td>
+<td>通常代表镜头的<strong>最近对焦距离</strong>和<strong>无穷远对焦</strong>。</td>
+</tr>
+<tr>
+<td><strong>单位</strong></td>
+<td>无标准单位（是电机步进单位），但代表焦平面与传感器平面的<strong>距离</strong>。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">数据结构描述</h2>
+<h3 id="frame_size">frame_size</h3>
+<table>
+<thead>
+<tr>
+<th>图像帧尺寸</th>
+<th>分辨率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>QQCIF</td>
+<td>88x72</td>
+</tr>
+<tr>
+<td>QCIF</td>
+<td>176x144</td>
+</tr>
+<tr>
+<td>CIF</td>
+<td>352x288</td>
+</tr>
+<tr>
+<td>QSIF</td>
+<td>176x120</td>
+</tr>
+<tr>
+<td>SIF</td>
+<td>352x240</td>
+</tr>
+<tr>
+<td>QQVGA</td>
+<td>160x120</td>
+</tr>
+<tr>
+<td>QVGA</td>
+<td>320x240</td>
+</tr>
+<tr>
+<td>VGA</td>
+<td>640x480</td>
+</tr>
+<tr>
+<td>HQQVGA</td>
+<td>120x80</td>
+</tr>
+<tr>
+<td>HQVGA</td>
+<td>240x160</td>
+</tr>
+<tr>
+<td>HVGA</td>
+<td>480x320</td>
+</tr>
+<tr>
+<td>B64X64</td>
+<td>64x64</td>
+</tr>
+<tr>
+<td>B128X64</td>
+<td>128x64</td>
+</tr>
+<tr>
+<td>B128X128</td>
+<td>128x128</td>
+</tr>
+<tr>
+<td>B160X160</td>
+<td>160x160</td>
+</tr>
+<tr>
+<td>B320X320</td>
+<td>320x320</td>
+</tr>
+<tr>
+<td>QQVGA2</td>
+<td>128x160</td>
+</tr>
+<tr>
+<td>WVGA</td>
+<td>720x480</td>
+</tr>
+<tr>
+<td>WVGA2</td>
+<td>752x480</td>
+</tr>
+<tr>
+<td>SVGA</td>
+<td>800x600</td>
+</tr>
+<tr>
+<td>XGA</td>
+<td>1024x768</td>
+</tr>
+<tr>
+<td>WXGA</td>
+<td>1280x768</td>
+</tr>
+<tr>
+<td>SXGA</td>
+<td>1280x1024</td>
+</tr>
+<tr>
+<td>SXGAM</td>
+<td>1280x960</td>
+</tr>
+<tr>
+<td>UXGA</td>
+<td>1600x1200</td>
+</tr>
+<tr>
+<td>HD</td>
+<td>1280x720</td>
+</tr>
+<tr>
+<td>FHD</td>
+<td>1920x1080</td>
+</tr>
+<tr>
+<td>QHD</td>
+<td>2560x1440</td>
+</tr>
+<tr>
+<td>QXGA</td>
+<td>2048x1536</td>
+</tr>
+<tr>
+<td>WQXGA</td>
+<td>2560x1600</td>
+</tr>
+<tr>
+<td>WQXGA2</td>
+<td>2592x1944</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pixel_format">pixel_format</h3>
+<table>
+<thead>
+<tr>
+<th>像素格式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RGB565</td>
+<td>16 位 RGB 格式</td>
+</tr>
+<tr>
+<td>RGB888</td>
+<td>24 位 RGB 格式</td>
+</tr>
+<tr>
+<td>RGBP888</td>
+<td>分离的 24 位 RGB</td>
+</tr>
+<tr>
+<td>YUV420SP</td>
+<td>半平面 YUV</td>
+</tr>
+<tr>
+<td>GRAYSCALE</td>
+<td>灰度图</td>
+</tr>
+</tbody>
+</table>
+<h3 id="channel">channel</h3>
+<table>
+<thead>
+<tr>
+<th>通道号</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CAM_CHN_ID_0</td>
+<td>通道 0</td>
+</tr>
+<tr>
+<td>CAM_CHN_ID_1</td>
+<td>通道 1</td>
+</tr>
+<tr>
+<td>CAM_CHN_ID_2</td>
+<td>通道 2</td>
+</tr>
+<tr>
+<td>CAM_CHN_ID_MAX</td>
+<td>非法通道</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_4">图像传感器支持列表</h2>
+<table>
+<thead>
+<tr>
+<th>图像传感器型号</th>
+<th>分辨率 Width x Height</th>
+<th>帧率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OV5647</td>
+<td>2592x1944</td>
+<td>10 FPS</td>
+</tr>
+<tr>
+<td></td>
+<td>1920x1080</td>
+<td>30 FPS</td>
+</tr>
+<tr>
+<td></td>
+<td>1280x960</td>
+<td>45 FPS</td>
+</tr>
+<tr>
+<td></td>
+<td>1280x720</td>
+<td>60 FPS</td>
+</tr>
+<tr>
+<td></td>
+<td>640x480</td>
+<td>90 FPS</td>
+</tr>
+<tr>
+<td>GC2093</td>
+<td>1920x1080</td>
+<td>30 FPS</td>
+</tr>
+<tr>
+<td></td>
+<td>1920x1080</td>
+<td>60 FPS</td>
+</tr>
+<tr>
+<td></td>
+<td>1280x960</td>
+<td>60 FPS</td>
+</tr>
+<tr>
+<td></td>
+<td>1280x720</td>
+<td>90 FPS</td>
+</tr>
+<tr>
+<td>IMX335</td>
+<td>1920x1080</td>
+<td>30 FPS</td>
+</tr>
+<tr>
+<td></td>
+<td>2592x1944</td>
+<td>30 FPS</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 马梓腾
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.expand", "navigation.indexes", "toc.follow", "content.tabs.link", "content.code.copy", "search.suggest", "search.highlight", "header.autohide"], "search": "../../../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
