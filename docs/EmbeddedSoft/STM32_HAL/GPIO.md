@@ -1,4 +1,5 @@
 [TOC]
+# GPIO
 # **GPIO 基本概念与 CubeMX 配置流程**
 
 **GPIO** (General Purpose Input/Output) 是微控制器与外部硬件进行交互的基础接口。在 STM32 中，每个 GPIO 引脚都可以独立配置为不同的模式和功能。

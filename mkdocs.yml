@@ -50,6 +50,24 @@ nav:
   - 🏠 首页: README.md
   
   # ==========================================================
+  # 🧠 深度学习 (DeepLearning)
+  # ==========================================================
+  - 🧠 深度学习 (DeepLearning):
+    - 第一部分:
+      - DeepLearning/part1/Assignment.ipynb
+      - DeepLearning/part1/CoffeeRoasting_Numpy.ipynb
+      - DeepLearning/part1/CoffeeRoasting_TF.ipynb
+      - DeepLearning/part1/Neurons_and_Layers.ipynb
+    - 第二部分:
+      - DeepLearning/part2/Assignment.ipynb
+      - DeepLearning/part2/Multiclass_TF.ipynb
+      - DeepLearning/part2/Relu.ipynb
+      - DeepLearning/part2/SoftMax.ipynb
+      - 反向传播 (Backprop):
+        - DeepLearning/part2/backprop/C2_W2_Backprop.ipynb
+        - DeepLearning/part2/backprop/C2_W2_Derivatives.ipynb
+        
+  # ==========================================================
   # 🤖 嵌入式软件 (EmbeddedSoft)
   # ==========================================================
   - 🤖 嵌入式软件 (EmbeddedSoft):
@@ -84,23 +102,25 @@ nav:
       - EmbeddedSoft/Control_Algos/LQR.md
       - EmbeddedSoft/Control_Algos/SMC.md
 
-    - 📸 计算机视觉 (CV) & K230:
+    - 📸 计算机视觉 (CV):
       - EmbeddedSoft/CV/CV.md
       - EmbeddedSoft/CV/Micropython & K230.md
       - K230 核心:
         - EmbeddedSoft/CV/K230/K230.md
-        - 硬件外设:
+        - K230 - AI 模型: EmbeddedSoft/CV/K230/AI-Model/AI-Model.md
+        - K230 - 媒体 & 显示:
+          - EmbeddedSoft/CV/K230/Media/Media.md
+          - EmbeddedSoft/CV/K230/Media/Sensor.md
+          - EmbeddedSoft/CV/K230/Media/Display.md
+          # EmbeddedSoft/CV/K230/Media/Image.md
+        - K230 - Openmv: EmbeddedSoft/CV/K230/Openmv/Openmv.md
+        - K230 - 外设 (Peripherals):
           - EmbeddedSoft/CV/K230/Peripherals/Peripherals.md
           - EmbeddedSoft/CV/K230/Peripherals/GPIO.md
           - EmbeddedSoft/CV/K230/Peripherals/FPIOA.md
           - EmbeddedSoft/CV/K230/Peripherals/Timer.md
           - EmbeddedSoft/CV/K230/Peripherals/UART.md
-        - 媒体 & 显示:
-          - EmbeddedSoft/CV/K230/Media/Media.md
-          - EmbeddedSoft/CV/K230/Media/Sensor.md
-          - EmbeddedSoft/CV/K230/Media/Display.md
-        - AI 模型: EmbeddedSoft/CV/K230/AI-Model/AI-Model.md
-        - OpenMV: EmbeddedSoft/CV/K230/Openmv/Openmv.md
+      - 外部 Openmv: EmbeddedSoft/CV/Openmv/Openmv.md
       
     - 🧠 实时操作系统 (RTOS):
       - EmbeddedSoft/RTOS/RTOS.md
@@ -122,6 +142,7 @@ nav:
           - EmbeddedSoft/RTOS/FreeRTOS/Sync_Comms.md
           - EmbeddedSoft/RTOS/FreeRTOS/Queue.md
           - EmbeddedSoft/RTOS/FreeRTOS/QueueSet.md
+          - EmbeddedSoft/RTOS/FreeRTOS/Queue_Set.md
           - EmbeddedSoft/RTOS/FreeRTOS/Semaphore.md
           - EmbeddedSoft/RTOS/FreeRTOS/Mutex.md
           - EmbeddedSoft/RTOS/FreeRTOS/EventGroup.md
@@ -142,33 +163,15 @@ nav:
       - EmbeddedSoft/STM32_HAL/connective.md
       
   # ==========================================================
-  # 💻 深度学习 (DeepLearning)
-  # ==========================================================
-  - 🧠 深度学习 (DeepLearning):
-    - 第一部分:
-      - DeepLearning/part1/Assignment.ipynb
-      - DeepLearning/part1/CoffeeRoasting_Numpy.ipynb
-      - DeepLearning/part1/CoffeeRoasting_TF.ipynb
-      - DeepLearning/part1/Neurons_and_Layers.ipynb
-    - 第二部分:
-      - DeepLearning/part2/Assignment.ipynb
-      - DeepLearning/part2/Multiclass_TF.ipynb
-      - DeepLearning/part2/Relu.ipynb
-      - DeepLearning/part2/SoftMax.ipynb
-      - 反向传播 (Backprop):
-        - DeepLearning/part2/backprop/C2_W2_Backprop.ipynb
-        - DeepLearning/part2/backprop/C2_W2_Derivatives.ipynb
-        
-  # ==========================================================
-  # 📊 机器学习 (MachineLearning)
+  # 📈 机器学习 (MachineLearning)
   # ==========================================================
   - 📈 机器学习 (MachineLearning):
     - MachineLearning/人工智能学习随记.md
     - 第一部分:
+      - MachineLearning/part1/Model_Representation_Soln.ipynb
       - MachineLearning/part1/Cost_function_Soln.ipynb
       - MachineLearning/part1/Gradient_Descent_Soln.ipynb
-      - MachineLearning/part1/Model_Representation_Soln.ipynb
-    - 第二部分 (多变量线性回归):
+    - 第二部分 (线性回归):
       - MachineLearning/part2/Linear_Regression.ipynb
       - MachineLearning/part2/Multiple_Variable_Soln.ipynb
       - MachineLearning/part2/Python_Numpy_Vectorization_Soln.ipynb
