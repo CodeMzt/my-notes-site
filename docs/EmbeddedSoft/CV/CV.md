@@ -1,2 +1,5 @@
+本笔记记录CV即Computer Science相关内容，分类主要是看芯片类型。
 # 目录
-- [Micropython & K230](Micropython%20&%20K230.md)
+
+- [K230](K230/K230.md)
+- [Openmv](Openmv/Openmv.md)
