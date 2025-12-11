@@ -857,8 +857,6 @@ image.div(image[, invert=False[, mask=None]])
 
 ### 1.61 `min`
 
-
-
 ```python
 image.min(image[, mask=None])
 ```
@@ -877,13 +875,9 @@ image.min(image[, mask=None])
 
 ### 1.62 `max`
 
-
-
 ```python
 image.max(image[, mask=None])
 ```
-
-1
 
 用两个图像在像素级的最大值替换当前图像中的像素。
 
@@ -897,13 +891,9 @@ image.max(image[, mask=None])
 
 ### 1.63 `difference`
 
-
-
 ```python
 image.difference(image[, mask=None])
 ```
-
-1
 
 对两个图像的像素值取绝对差。每个颜色通道的像素值按如下方式更新：`ABS(this.pixel - image.pixel)`。
 
@@ -917,13 +907,9 @@ image.difference(image[, mask=None])
 
 ### 1.64 `blend`
 
-
-
 ```python
 image.blend(image[, alpha=128[, mask=None]])
 ```
-
-1
 
 将另一张图像与当前图像进行融合操作。
 
@@ -939,13 +925,9 @@ image.blend(image[, alpha=128[, mask=None]])
 
 ### 1.65 `histeq`
 
-
-
 ```python
 image.histeq([adaptive=False[, clip_limit=-1[, mask=None]]])
 ```
-
-1
 
 对图像执行直方图均衡化，使图像的对比度和亮度标准化。
 
@@ -961,13 +943,9 @@ image.histeq([adaptive=False[, clip_limit=-1[, mask=None]]])
 
 ### 1.66 `mean`
 
-
-
 ```python
 image.mean(size[, threshold=False[, offset=0[, invert=False[, mask=None]]]])
 ```
-
-1
 
 使用盒式滤波器对图像进行标准均值模糊处理。
 
@@ -983,13 +961,9 @@ image.mean(size[, threshold=False[, offset=0[, invert=False[, mask=None]]]])
 
 ### 1.67 `median`
 
-
-
 ```python
 image.median(size, percentile=0.5[, threshold=False[, offset=0[, invert=False[, mask=None]]]])
 ```
-
-1
 
 对图像应用中值滤波，该滤波器能够在保持边缘细节的前提下平滑图像，但处理速度较慢。
 
@@ -1007,13 +981,9 @@ image.median(size, percentile=0.5[, threshold=False[, offset=0[, invert=False[, 
 
 ### 1.68 `mode`
 
-
-
 ```python
 image.mode(size[, threshold=False, offset=0, invert=False, mask])
 ```
-
-1
 
 在图像上应用众数滤波，通过相邻像素的模式替换每个像素。该方法在灰度图像中效果良好，但由于其非线性特性，可能在RGB图像的边缘处产生伪影。
 
@@ -1031,13 +1001,9 @@ image.mode(size[, threshold=False, offset=0, invert=False, mask])
 
 ### 1.69 `midpoint`
 
-
-
 ```python
 image.midpoint(size[, bias=0.5, threshold=False, offset=0, invert=False, mask])
 ```
-
-1
 
 在图像上应用中点滤波，针对每个像素邻域计算中点值((max-min)/2)。
 
@@ -1056,13 +1022,9 @@ image.midpoint(size[, bias=0.5, threshold=False, offset=0, invert=False, mask])
 
 ### 1.70 `morph`
 
-
-
 ```python
 image.morph(size, kernel, mul=Auto, add=0)
 ```
-
-1
 
 通过指定的卷积内核对图像进行卷积操作，实现通用卷积。
 
@@ -1078,16 +1040,11 @@ image.morph(size, kernel, mul=Auto, add=0)
 **返回值**：返回图像对象，以便进一步调用其他方法。
 
 **注意**：不支持压缩图像和Bayer图像。
-
 ### 1.71 `gaussian`
-
-
 
 ```python
 image.gaussian(size[, unsharp=False[, mul[, add=0[, threshold=False[, offset=0[, invert=False[, mask=None]]]]]]])
 ```
-
-1
 
 通过高斯核平滑图像进行卷积。
 
@@ -1106,13 +1063,9 @@ image.gaussian(size[, unsharp=False[, mul[, add=0[, threshold=False[, offset=0[,
 
 ### 1.72 `laplacian`
 
-
-
 ```python
 image.laplacian(size[, sharpen=False[, mul[, add=0[, threshold=False[, offset=0[, invert=False[, mask=None]]]]]]])
 ```
-
-1
 
 通过拉普拉斯核进行边缘检测，对图像进行卷积。
 
@@ -1131,13 +1084,9 @@ image.laplacian(size[, sharpen=False[, mul[, add=0[, threshold=False[, offset=0[
 
 ### 1.73 `bilateral`
 
-
-
 ```python
 image.bilateral(size[, color_sigma=0.1[, space_sigma=1[, threshold=False[, offset=0[, invert=False[, mask=None]]]]]])
 ```
-
-1
 
 通过双边滤波器对图像进行卷积，平滑图像的同时保持边缘特征。
 
@@ -1153,13 +1102,9 @@ image.bilateral(size[, color_sigma=0.1[, space_sigma=1[, threshold=False[, offse
 
 ### 1.74 `cartoon`
 
-
-
 ```python
 image.cartoon(size[, seed_threshold=0.05[, floating_threshold=0.05[, mask=None]]])
 ```
-
-1
 
 通过使用Flood-Fill算法对图像进行处理，使图像中的所有像素区域被填充，从而有效去除纹理。
 
@@ -1175,13 +1120,9 @@ image.cartoon(size[, seed_threshold=0.05[, floating_threshold=0.05[, mask=None]]
 
 ### 1.75 `remove_shadows`
 
-
-
 ```python
 image.remove_shadows([image])
 ```
-
-1
 
 从当前图像中移除阴影。
 
@@ -1196,13 +1137,9 @@ image.remove_shadows([image])
 
 ### 1.76 `chrominvar`
 
-
-
 ```python
 image.chrominvar()
 ```
-
-1
 
 去除图像中的照明效果，仅保留颜色渐变。此方法速度较快，但对阴影存在一定的敏感性。
 
@@ -1212,13 +1149,9 @@ image.chrominvar()
 
 ### 1.77 `illuminvar`
 
-
-
 ```python
 image.illuminvar()
 ```
-
-1
 
 从图像中去除照明效果，仅保留颜色渐变。该方法速度较慢，但对阴影不敏感。
 

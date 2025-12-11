@@ -50,6 +50,18 @@ nav:
   - 🏠 首页: README.md
   
   # ==========================================================
+  # ➕ 附加内容 (Addition)
+  # ==========================================================
+  - ➕ 附加内容 (Addition):
+    - 概览: Addition/Addition.md
+    - Python 库 (Python库):
+      - Addition/Python库/Python库.md
+      - Addition/Python库/Numpy.md
+      - Addition/Python库/Pandas.md
+      - Addition/Python库/Matplotlib.md
+      - Addition/Python库/Seaborn.md
+      
+  # ==========================================================
   # 🧠 深度学习 (DeepLearning)
   # ==========================================================
   - 🧠 深度学习 (DeepLearning):
@@ -71,7 +83,7 @@ nav:
   # 🤖 嵌入式软件 (EmbeddedSoft)
   # ==========================================================
   - 🤖 嵌入式软件 (EmbeddedSoft):
-    - EmbeddedSoft/EmbeddedSoft.md
+    - 概览: EmbeddedSoft/EmbeddedSoft.md
     
     - 🔩 ARM 架构:
       - EmbeddedSoft/ARM_Arch/ARM_Arch.md
@@ -112,7 +124,6 @@ nav:
           - EmbeddedSoft/CV/K230/Media/Media.md
           - EmbeddedSoft/CV/K230/Media/Sensor.md
           - EmbeddedSoft/CV/K230/Media/Display.md
-          # EmbeddedSoft/CV/K230/Media/Image.md
         - K230 - Openmv: EmbeddedSoft/CV/K230/Openmv/Openmv.md
         - K230 - 外设 (Peripherals):
           - EmbeddedSoft/CV/K230/Peripherals/Peripherals.md
@@ -166,7 +177,7 @@ nav:
   # 📈 机器学习 (MachineLearning)
   # ==========================================================
   - 📈 机器学习 (MachineLearning):
-    - MachineLearning/人工智能学习随记.md
+    - 随记: MachineLearning/人工智能学习随记.md
     - 第一部分:
       - MachineLearning/part1/Model_Representation_Soln.ipynb
       - MachineLearning/part1/Cost_function_Soln.ipynb
@@ -191,8 +202,10 @@ nav:
       - MachineLearning/part3/Regularization_Soln.ipynb
       - MachineLearning/part3/Scikit_Learn_Soln.ipynb
     - Pytorch 学习笔记:
+      - MachineLearning/Pytorch_Learning/笔记.md
       - MachineLearning/Pytorch_Learning/tensor.ipynb
       - MachineLearning/Pytorch_Learning/test_tensor.ipynb
+      - MachineLearning/Pytorch_Learning/auto_grad.ipynb
       - MachineLearning/Pytorch_Learning/transfrom.ipynb
       - MachineLearning/Pytorch_Learning/test_transfrom.ipynb
       - MachineLearning/Pytorch_Learning/data.ipynb
