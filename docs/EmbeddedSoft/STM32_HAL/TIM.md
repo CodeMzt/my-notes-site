@@ -427,3 +427,9 @@ HAL_TIM_Base_Start(&htim2); // 启动从定时器
 |**设置 ARR**|`__HAL_TIM_SET_AUTORELOAD(&htimx, value)`|动态改周期|
 # 11. RCC时钟树
  ![](../photosource/RCC时钟树.jpg)
+
+ # 经验
+
+- Encoder不能和定时中断、输出比较（PWM）一起用，因为Encoder会：1.使用CCR寄存器（与PWM冲突）2. 归零counter 与定时中断溢出冲突
+
+ 

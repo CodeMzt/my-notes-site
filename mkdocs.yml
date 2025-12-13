@@ -45,6 +45,11 @@ plugins:
   - search 
   - mkdocs-jupyter
   
+markdown_extensions:
+  # ... 其他已有的扩展
+  - pymdownx.arithmatex:
+      generic: true # 启用通用模式，允许在 $$...$$ 和 $...$ 中使用公式
+
 # --- 导航菜单配置 (Nav) ---
 nav:
   - 🏠 首页: README.md
@@ -116,6 +121,7 @@ nav:
 
     - 📸 计算机视觉 (CV):
       - EmbeddedSoft/CV/CV.md
+      - EmbeddedSoft/CV/传统计算机视觉.md # <-- 新增文件
       - EmbeddedSoft/CV/Micropython & K230.md
       - K230 核心:
         - EmbeddedSoft/CV/K230/K230.md
@@ -211,4 +217,5 @@ nav:
       - MachineLearning/Pytorch_Learning/data.ipynb
       - MachineLearning/Pytorch_Learning/nn.ipynb
       - MachineLearning/Pytorch_Learning/tensorboard.ipynb
+      - MachineLearning/Pytorch_Learning/Peoject1.ipynb # <-- 新增文件
       - MachineLearning/Pytorch_Learning/Test.ipynb
