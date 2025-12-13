@@ -50,6 +50,11 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true # 启用通用模式，允许在 $$...$$ 和 $...$ 中使用公式
 
+extra:
+  # 如果使用 Material for MkDocs，启用 KaTeX
+  katex:
+    enabled: true
+
 # --- 导航菜单配置 (Nav) ---
 nav:
   - 🏠 首页: README.md
